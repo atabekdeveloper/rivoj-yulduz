@@ -1,0 +1,42 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { ISharedType } from './shared.types';
+
+const initialState: ISharedType = {
+  id: 0,
+  isModal: false,
+  isModal2: false,
+  isMenu: false,
+  paramsItem: null,
+  tinyContent: '',
+};
+
+const sharedSlice = createSlice({
+  name: 'shared',
+  initialState,
+  reducers: {
+    toggleModal(state) {
+      state.isModal = !state.isModal;
+    },
+    toggleModal2(state) {
+      state.isModal2 = !state.isModal2;
+    },
+    toggleMenu(state) {
+      state.isMenu = !state.isMenu;
+    },
+    setId(state, { payload }: PayloadAction<number>) {
+      state.id = payload;
+    },
+    setParamsItem(state, { payload }: PayloadAction<any>) {
+      state.paramsItem = payload;
+    },
+    setParamsItemForm(state, { payload }: PayloadAction<any>) {
+      state.paramsItem = payload;
+      state.isModal = true;
+    },
+    setTinyContent(state, { payload }: PayloadAction<string>) {
+      state.tinyContent = payload;
+    },
+  },
+});
+export const { reducer, actions } = sharedSlice;

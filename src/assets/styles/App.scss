@@ -1,22 +1,16 @@
 .app {
-  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
-  background-color: var(--clr-bg);
-  &.light {
-    --clr-bg: #e2e8f0;
-    --clr-text: #475569;
-    --clr-text-v2: #475569;
-    --clr-violet: #5b21b6;
-    --clr-nav: #f1f5f9;
-  }
-
-  &.dark {
-    --clr-bg: #0f172a;
-    --clr-text: #94a3b8;
-    --clr-text-v2: #fff;
-    --clr-violet: #5b21b6;
-    --clr-nav: #141e33;
-  }
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-white);
+  --clr-blue: #1a509d;
+  --clr-pink: #e5087f;
+  --clr-gray: #909090;
+  --clr-gray-100: #f9f1f1;
+  --clr-gray-200: #e8edf5;
+  --clr-black: #303030;
+  --clr-white: #fff;
 }
 .none {
   pointer-events: none;
@@ -24,4 +18,9 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }

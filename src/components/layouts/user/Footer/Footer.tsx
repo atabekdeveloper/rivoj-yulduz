@@ -1,5 +1,35 @@
 import React from 'react';
+import Img from 'react-cool-img';
+import { AiFillInstagram } from 'react-icons/ai';
+import { BsTelegram } from 'react-icons/bs';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import logo from 'src/assets/images/logo.svg';
 
-const Footer: React.FC = () => <div>Footer</div>;
+import s from './footer.module.scss';
+
+const Footer: React.FC = () => (
+  <footer className={s.footer}>
+    <div className="container">
+      <div className={s.body}>
+        <Img className={s.logo} src={logo} alt="Logo" />
+        <div className={s.address}>
+          <FaMapMarkerAlt size={20} />
+          <p>
+            <span>г. Нукус, просп. Узбекистана, 19</span>
+            <span>Тел: 8 91 383 88 31</span>
+          </p>
+        </div>
+        <div className={s.links}>
+          <p>Наши соц. сети</p>
+          <p>
+            <AiFillInstagram size={30} cursor="pointer" />
+            <BsTelegram size={25} cursor="pointer" />
+          </p>
+        </div>
+      </div>
+      <p className={s.bottom}>© Rivoj Yulduz 2023</p>
+    </div>
+  </footer>
+);
 
 export { Footer };

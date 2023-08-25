@@ -1,0 +1,32 @@
+@import 'src/assets/styles/base/_mixin.scss';
+.notFound {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .inner {
+    padding: 30px 50px;
+    border-radius: 10px;
+    border: 1px solid var(--clr-blue);
+    max-width: 800px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    @media (max-width: 710px) {
+      justify-content: center;
+    }
+    p {
+      color: var(--clr-black);
+    }
+    h1 {
+      color: var(--clr-pink);
+      font-size: 100px;
+      line-height: 1;
+      @include adaptiv-font(100, 50, 100);
+    }
+  }
+}

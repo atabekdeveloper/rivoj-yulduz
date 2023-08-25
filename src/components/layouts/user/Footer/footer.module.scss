@@ -1,4 +1,7 @@
 .footer {
+  position: sticky;
+  top: 100%;
+  bottom: 0;
   background-color: var(--clr-blue);
   padding-bottom: 40px;
   .body {

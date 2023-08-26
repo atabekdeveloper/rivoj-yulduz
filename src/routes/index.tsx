@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
-import { ReactSuspense } from 'src/components/providers';
 import { Home, HomePage, NotFoundPage, ServicePage } from 'src/components/screens';
+import { ReactSuspense } from 'src/providers';
 
 const adminRoutes = [
   {

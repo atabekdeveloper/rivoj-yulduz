@@ -17,6 +17,7 @@ const Header: React.FC = () => {
   const { isMobile } = useResponsive(866);
   React.useEffect(() => {
     setIsNav(false);
+    window.scrollTo(0, 0);
   }, [pathname]);
   return (
     <header className={s.header}>

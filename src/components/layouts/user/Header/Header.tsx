@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Cross as Hamburger } from 'hamburger-react';
 import React from 'react';
 import Img from 'react-cool-img';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
 import { useResponsive } from 'src/hooks';
 
@@ -14,6 +14,7 @@ import s from './header.module.scss';
 const Header: React.FC = () => {
   const [isNav, setIsNav] = React.useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { isMobile } = useResponsive(866);
   React.useEffect(() => {
     setIsNav(false);
@@ -23,7 +24,7 @@ const Header: React.FC = () => {
     <header className={s.header}>
       <div className="container">
         <div className={clsx(s.body, isMobile && s.active)}>
-          <Img src={logo} alt="Logo" />
+          <Img src={logo} alt="Logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
           <ul className={clsx(s.items, isMobile && s.active, isNav && s.activeMenu)}>
             {routes.map((route) => (
               <li className={clsx(s.item, pathname === route.key && s.active)} key={route.key}>

@@ -1,0 +1,23 @@
+.slick-dots {
+  .slick-active {
+    width: 48px !important;
+    background-color: #e5087f !important;
+    border-radius: 100px !important;
+  }
+  li {
+    width: 16px !important;
+    height: 16px !important;
+    background-color: #909090 !important;
+    border-radius: 50% !important;
+    transition: width 0.1s ease-in-out !important;
+    button {
+      &::before {
+        color: transparent !important;
+      }
+    }
+  }
+}
+.slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}

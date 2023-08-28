@@ -1,9 +1,8 @@
 import React from 'react';
 import Img from 'react-cool-img';
 import logo from 'src/assets/images/shadow-logo.svg';
+import { NewsPage, ServicePage } from 'src/components/screens';
 import { UiButton } from 'src/components/ui';
-
-import { ServicePage } from '../Service/ServicePage';
 
 import s from './home.module.scss';
 
@@ -30,6 +29,7 @@ const HomePage: React.FC = () => (
       </div>
     </div>
     <ServicePage />
+    <NewsPage />
   </>
 );
 

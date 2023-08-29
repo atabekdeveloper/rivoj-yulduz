@@ -1,0 +1,30 @@
+.btn {
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &.default {
+    &.blue {
+      color: var(--clr-blue);
+      border: 1px solid var(--clr-blue);
+    }
+    &.pink {
+      color: var(--clr-pink);
+      border: 1px solid var(--clr-pink);
+    }
+  }
+  &.primary {
+    color: var(--clr-white);
+    border-color: none;
+    &.blue {
+      background-color: var(--clr-blue);
+    }
+    &.pink {
+      background-color: var(--clr-pink);
+    }
+  }
+}

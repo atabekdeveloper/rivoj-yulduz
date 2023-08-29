@@ -22,7 +22,7 @@ const HomePage: React.FC = () => (
               metus orci facilisi elementum. Sem in eget sed parturient tempus. Sed urna magna leo
               neque convallis sit cras auctor. Vestibulum ut sed nunc risus ullamcorper donec.
             </p>
-            <UiButton size="large">Оставить заявку</UiButton>
+            <UiButton text="Оставить заявку" type="primary" color="pink" />
           </div>
           <Img src={logo} alt="Logo" />
         </div>

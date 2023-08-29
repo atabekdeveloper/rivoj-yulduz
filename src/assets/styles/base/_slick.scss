@@ -1,4 +1,20 @@
+.slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}
+.slick-list {
+  margin: 0 -10px !important;
+}
+.slick-slide {
+  max-width: 100% !important;
+  width: 100% !important;
+}
 .slick-dots {
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  bottom: -50px !important;
   .slick-active {
     width: 48px !important;
     background-color: #e5087f !important;
@@ -10,14 +26,11 @@
     background-color: #909090 !important;
     border-radius: 50% !important;
     transition: width 0.1s ease-in-out !important;
+    margin: 0 !important;
     button {
       &::before {
         color: transparent !important;
       }
     }
   }
-}
-.slick-track {
-  display: flex !important;
-  gap: 20px !important;
 }

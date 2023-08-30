@@ -1,5 +1,11 @@
-/* eslint-disable object-curly-newline */
-import { Home, HomePage, NewsPage, NotFoundPage, ServicePage } from 'src/components/screens';
+import {
+  Home,
+  HomePage,
+  NewsInfoPage,
+  NewsPage,
+  NotFoundPage,
+  ServicePage,
+} from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
 
 const adminRoutes = [
@@ -13,6 +19,7 @@ const userRoutes = [
   { path: '/', element: <HomePage /> },
   { path: '/service', element: <ServicePage /> },
   { path: '/news', element: <NewsPage /> },
+  { path: '/news/:id', element: <NewsInfoPage /> },
   { path: '*', element: <NotFoundPage /> },
 ];
 

@@ -9,7 +9,7 @@ import { TNewsItem } from './news.types';
 
 import s from './news.module.scss';
 
-const NewsItem: React.FC<TNewsItem> = ({ direction }) => {
+const NewsItem: React.FC<TNewsItem> = ({ direction, num }) => {
   const { isMobile } = useResponsive(772);
   return (
     <div className={clsx(s.item, s[`${isMobile ? 'vertical' : direction}`])}>
@@ -17,12 +17,12 @@ const NewsItem: React.FC<TNewsItem> = ({ direction }) => {
       <div className={s.inner}>
         <span>15.08.2023 10:41</span>
         <div className={s.body}>
-          <h2>Новости 1</h2>
+          <h2>{`Новости ${num}`}</h2>
           <p>
             Egestas sagittis quis ultrices iaculis viverra id. Laoreet ipsum vitae lobortis. Egestas
             sagittis quis ultrices.
           </p>
-          <Link to="/news">Подробнее</Link>
+          <Link to="/news/1">Подробнее</Link>
         </div>
       </div>
     </div>

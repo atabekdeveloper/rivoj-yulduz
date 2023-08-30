@@ -13,8 +13,8 @@ const NewsSliderItems: React.FC = () => {
   return (
     <div className={s.sliders}>
       <Slider {...newsSettings}>
-        {[...Array(10)].map((_, i) => (
-          <NewsItem direction="vertical" key={i} />
+        {[...Array(4)].map((_, i) => (
+          <NewsItem direction="vertical" key={i} num={i + 1} />
         ))}
       </Slider>
       <div className={s.btn}>

@@ -1,4 +1,5 @@
 import {
+  AboutInfoPage,
   Home,
   HomePage,
   NewsInfoPage,
@@ -20,6 +21,7 @@ const userRoutes = [
   { path: '/service', element: <ServicePage /> },
   { path: '/news', element: <NewsPage /> },
   { path: '/news/:id', element: <NewsInfoPage /> },
+  { path: '/about', element: <AboutInfoPage /> },
   { path: '*', element: <NotFoundPage /> },
 ];
 

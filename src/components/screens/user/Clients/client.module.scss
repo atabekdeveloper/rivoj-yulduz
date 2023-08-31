@@ -1,0 +1,12 @@
+.clients {
+  padding-bottom: 70px;
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    img {
+      margin: 0 auto;
+    }
+  }
+}

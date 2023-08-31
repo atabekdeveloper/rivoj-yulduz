@@ -1,8 +1,14 @@
-/* eslint-disable object-curly-newline */
 import React from 'react';
 import Img from 'react-cool-img';
 import logo from 'src/assets/images/shadow-logo.svg';
-import { AboutPage, NewsPage, PortfolioPage, ServicePage } from 'src/components/screens';
+import {
+  AboutPage,
+  AchievementPage,
+  ClientsPage,
+  NewsPage,
+  PortfolioPage,
+  ServicePage,
+} from 'src/components/screens';
 import { UiButton } from 'src/components/ui';
 
 import s from './home.module.scss';
@@ -33,6 +39,8 @@ const HomePage: React.FC = () => (
     <NewsPage />
     <AboutPage />
     <PortfolioPage />
+    <ClientsPage />
+    <AchievementPage />
   </>
 );
 

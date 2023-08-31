@@ -1,0 +1,21 @@
+.portfolio {
+  padding-bottom: 60px;
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    @media (max-width: 612px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    img {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+  }
+}

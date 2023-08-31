@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   background-color: var(--clr-blue);
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   @media (max-width: 912px) {
     grid-template-columns: repeat(1, 1fr);
   }

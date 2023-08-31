@@ -4,4 +4,5 @@ export * from './About/AboutPage';
 export * from './Home/HomePage';
 export * from './News/NewsInfoPage';
 export * from './News/NewsPage';
+export * from './Portfolio/PortfolioPage';
 export * from './Service/ServicePage';

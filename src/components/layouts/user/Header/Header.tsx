@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+import { Space } from 'antd';
 import clsx from 'clsx';
 import { Cross as Hamburger } from 'hamburger-react';
 import React from 'react';
@@ -24,7 +25,7 @@ const Header: React.FC = () => {
   return (
     <header className={s.header}>
       <div className="container">
-        <div className={clsx(s.body, isMobile && s.active)}>
+        <div className={s.body}>
           <Img src={logo} alt="Logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
           <ul className={clsx(s.items, isMobile && s.active, isNav && s.activeMenu)}>
             {routes.map((route) => (
@@ -33,17 +34,19 @@ const Header: React.FC = () => {
               </li>
             ))}
           </ul>
-          {isMobile && (
-            <div style={{ zIndex: 2200 }}>
-              <Hamburger
-                color={isNav ? '#1a509d' : '#fff'}
-                toggled={isNav}
-                toggle={() => setIsNav((prev) => !prev)}
-                direction="left"
-              />
-            </div>
-          )}
-          <UiButton color="blue" text="Вход" type="primary" />
+          <Space>
+            <UiButton color="blue" text="Вход" type="primary" />
+            {isMobile && (
+              <div style={{ position: 'relative', zIndex: 2200 }}>
+                <Hamburger
+                  color={isNav ? '#1a509d' : '#fff'}
+                  toggled={isNav}
+                  toggle={() => setIsNav((prev) => !prev)}
+                  direction="left"
+                />
+              </div>
+            )}
+          </Space>
         </div>
       </div>
     </header>

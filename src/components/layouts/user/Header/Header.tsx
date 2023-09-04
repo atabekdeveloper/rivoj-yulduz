@@ -5,6 +5,7 @@ import React from 'react';
 import Img from 'react-cool-img';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
+import { UiButton } from 'src/components/ui';
 import { useResponsive } from 'src/hooks';
 
 import { routes } from '../routes';
@@ -42,6 +43,7 @@ const Header: React.FC = () => {
               />
             </div>
           )}
+          <UiButton color="blue" text="Вход" type="primary" />
         </div>
       </div>
     </header>

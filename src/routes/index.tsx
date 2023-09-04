@@ -5,6 +5,7 @@ import {
   NewsInfoPage,
   NewsPage,
   NotFoundPage,
+  PortfolioInfoPage,
   ServicePage,
 } from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
@@ -22,6 +23,7 @@ const userRoutes = [
   { path: '/news', element: <NewsPage /> },
   { path: '/news/:id', element: <NewsInfoPage /> },
   { path: '/about', element: <AboutInfoPage /> },
+  { path: '/portfolio', element: <PortfolioInfoPage /> },
   { path: '*', element: <NotFoundPage /> },
 ];
 

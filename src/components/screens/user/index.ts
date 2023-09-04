@@ -3,6 +3,7 @@ export * from './About/AboutInfoPage';
 export * from './About/AboutPage';
 export * from './Achievement/AchievementPage';
 export * from './Clients/ClientsPage';
+export * from './Contact/ContactPage';
 export * from './Home/HomePage';
 export * from './News/NewsInfoPage';
 export * from './News/NewsPage';

@@ -5,6 +5,7 @@ import {
   AboutPage,
   AchievementPage,
   ClientsPage,
+  ContactPage,
   NewsPage,
   PortfolioPage,
   ServicePage,
@@ -41,6 +42,7 @@ const HomePage: React.FC = () => (
     <PortfolioPage />
     <ClientsPage />
     <AchievementPage />
+    <ContactPage />
   </>
 );
 

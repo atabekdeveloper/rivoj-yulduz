@@ -6,6 +6,7 @@ const initialState: ISharedType = {
   id: 0,
   isModal: false,
   isModal2: false,
+  isNavbar: false,
   isMenu: false,
   paramsItem: null,
   tinyContent: '',
@@ -20,6 +21,9 @@ const sharedSlice = createSlice({
     },
     toggleModal2(state) {
       state.isModal2 = !state.isModal2;
+    },
+    toggleNavbar(state) {
+      state.isNavbar = !state.isNavbar;
     },
     toggleMenu(state) {
       state.isMenu = !state.isMenu;

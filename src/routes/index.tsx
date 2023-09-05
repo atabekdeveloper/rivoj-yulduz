@@ -1,10 +1,12 @@
 import {
   AboutInfoPage,
+  CalculationPage,
   Home,
   HomePage,
   NewsInfoPage,
   NewsPage,
   NotFoundPage,
+  OrderPage,
   PortfolioInfoPage,
   ServicePage,
 } from 'src/components/screens';
@@ -20,6 +22,8 @@ const adminRoutes = [
 const userRoutes = [
   { path: '/', element: <HomePage /> },
   { path: '/service', element: <ServicePage /> },
+  { path: '/service/:id', element: <CalculationPage /> },
+  { path: '/order', element: <OrderPage /> },
   { path: '/news', element: <NewsPage /> },
   { path: '/news/:id', element: <NewsInfoPage /> },
   { path: '/about', element: <AboutInfoPage /> },

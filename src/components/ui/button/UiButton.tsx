@@ -7,8 +7,8 @@ import { TUiButton } from './button.types';
 
 import s from './button.module.scss';
 
-const UiButton: React.FC<TUiButton> = ({ type, text, onClick, color, icon }) => (
-  <button className={clsx(s.btn, s[type], s[color])} onClick={onClick}>
+const UiButton: React.FC<TUiButton> = ({ type, text, onClick, color, icon, disabled }) => (
+  <button className={clsx(s.btn, s[type], s[color])} onClick={onClick} disabled={disabled}>
     <span>{text}</span>
     {icon && <AiOutlineRight />}
   </button>

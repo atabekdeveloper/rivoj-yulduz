@@ -4,4 +4,5 @@ export type TUiButton = {
   text: string;
   color: 'blue' | 'pink';
   icon?: boolean;
+  disabled?: boolean;
 };

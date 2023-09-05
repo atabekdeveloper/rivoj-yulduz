@@ -1,0 +1,120 @@
+@import 'src/assets/styles/base/_mixin.scss';
+.calculation {
+  padding: 30px 0;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    h1 {
+      color: var(--clr-blue);
+      @include adaptiv-font(40, 20, 40);
+    }
+    .hamburger {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ede7f6;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: var(--clr-blue);
+        .icon {
+          color: #eee;
+        }
+      }
+      .icon {
+        font-size: 18px;
+        color: var(--clr-blue);
+      }
+    }
+    padding-bottom: 15px;
+  }
+  .body {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: 40px;
+    @media (max-width: 860px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      h2 {
+        font-weight: 600;
+        color: var(--clr-blue);
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .info {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          color: var(--clr-black);
+        }
+        p {
+          color: var(--clr-gray);
+        }
+        padding-bottom: 30px;
+      }
+      .calc {
+        padding: 30px;
+        border-radius: 10px;
+        background-color: var(--clr-blue);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .inputs {
+          display: flex;
+          gap: 20px;
+          @media (max-width: 532px) {
+            flex-wrap: wrap;
+          }
+        }
+        .count {
+          display: flex;
+          align-items: center;
+          gap: 80px;
+          p {
+            color: var(--clr-gray-200);
+          }
+        }
+        .btn {
+          display: flex;
+          justify-content: flex-end;
+          padding-top: 20px;
+        }
+      }
+      .result {
+        border: 2px solid var(--clr-blue);
+        padding: 30px 50px;
+        border-radius: 10px;
+        .count {
+          display: flex;
+          justify-content: space-between;
+          h1 {
+            color: var(--clr-blue);
+          }
+        }
+        .btn {
+          display: flex;
+          justify-content: flex-end;
+          padding-top: 50px;
+        }
+      }
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+    }
+  }
+}

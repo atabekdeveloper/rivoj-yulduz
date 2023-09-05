@@ -72,7 +72,7 @@ const OrderPage: React.FC = () => {
             <div className={s.bottom}>
               <div className={s.btns}>
                 <p>Выберите платёжную систему</p>
-                <Space>
+                <Space wrap>
                   {payItems.map((item) => (
                     <button
                       key={item.type}

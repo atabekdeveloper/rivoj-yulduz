@@ -98,9 +98,11 @@
         display: flex;
         justify-content: space-between;
         gap: 20px;
+        flex-wrap: wrap;
         padding-bottom: 50px;
         h1 {
           color: var(--clr-blue);
+          @include adaptiv-font(40, 24, 40);
         }
         h3 {
           color: var(--clr-black);
@@ -110,10 +112,13 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+        gap: 20px;
+        flex-wrap: wrap;
         .btns {
           p {
             color: var(--clr-gray);
             padding-bottom: 10px;
+            @include adaptiv-font(18, 14, 18);
           }
           .btn {
             width: 110px;

@@ -24,4 +24,5 @@ const authSlice = createSlice({
     },
   },
 });
+
 export const { reducer, actions } = authSlice;

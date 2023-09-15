@@ -35,7 +35,7 @@ const Header: React.FC = () => {
             ))}
           </ul>
           <Space>
-            <UiButton color="blue" text="Вход" type="primary" />
+            <UiButton color="blue" text="Вход" type="primary" onClick={() => navigate('/auth')} />
             {isMobile && (
               <div style={{ position: 'relative', zIndex: 2200 }}>
                 <Hamburger

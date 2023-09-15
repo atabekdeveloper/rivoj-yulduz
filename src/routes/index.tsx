@@ -1,5 +1,6 @@
 import {
   AboutInfoPage,
+  AuthPage,
   CalculationPage,
   Home,
   HomePage,
@@ -21,6 +22,7 @@ const adminRoutes = [
 
 const userRoutes = [
   { path: '/', element: <HomePage /> },
+  { path: '/auth', element: <AuthPage /> },
   { path: '/service', element: <ServicePage /> },
   { path: '/service/:id', element: <CalculationPage /> },
   { path: '/order', element: <OrderPage /> },

@@ -7,6 +7,8 @@ const initialState: ISharedType = {
   isModal: false,
   isModal2: false,
   isNavbar: false,
+  isDrawer: true,
+  isCollapsed: false,
   isMenu: false,
   paramsItem: null,
   tinyContent: '',
@@ -16,6 +18,9 @@ const sharedSlice = createSlice({
   name: 'shared',
   initialState,
   reducers: {
+    toggleDrawer(state) {
+      state.isDrawer = !state.isDrawer;
+    },
     toggleModal(state) {
       state.isModal = !state.isModal;
     },
@@ -27,6 +32,9 @@ const sharedSlice = createSlice({
     },
     toggleMenu(state) {
       state.isMenu = !state.isMenu;
+    },
+    toggleMenuCollapsed(state) {
+      state.isCollapsed = !state.isCollapsed;
     },
     setId(state, { payload }: PayloadAction<number>) {
       state.id = payload;

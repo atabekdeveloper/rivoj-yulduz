@@ -1,0 +1,75 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+  border-bottom: 1px solid #eee;
+  @media (max-width: 900px) {
+    z-index: 40;
+  }
+  .logo {
+    width: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .img {
+      max-width: 130px;
+      cursor: pointer;
+    }
+    .hamburger {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ede7f6;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #087bb8;
+        .icon {
+          color: #eee;
+        }
+      }
+      .icon {
+        font-size: 18px;
+        color: #087bb8;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+.user {
+  cursor: pointer;
+}
+.popover {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #33303cde;
+  }
+}
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

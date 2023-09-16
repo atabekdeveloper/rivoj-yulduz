@@ -18,6 +18,7 @@ const adminRoutes = [
     path: '/admin',
     element: <ReactSuspense comp={<Home />} />,
   },
+  { path: '*', element: <NotFoundPage /> },
 ];
 
 const userRoutes = [

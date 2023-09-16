@@ -25,7 +25,11 @@ const AuthLogin: React.FC<TAuthStateChange> = ({ setStateAuth }) => {
   };
   React.useEffect(() => {
     if (isSuccess) {
-      signIn({ token: loginData.data.token, role: loginData.data.user.role_name });
+      signIn({
+        token: loginData.data.token,
+        role: loginData.data.user.role_name,
+        userName: loginData.data.user.name,
+      });
       form.resetFields();
       navigate('/');
     }

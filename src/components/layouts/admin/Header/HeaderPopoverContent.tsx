@@ -21,7 +21,13 @@ const HeaderPopoverContent: React.FC = () => {
         <AiOutlinePhone />
         <b>{profile?.data.phone}</b>
       </div>
-      <Button className="center" icon={<BiLogOutCircle />} danger onClick={() => logOut()}>
+      <Button
+        className="center"
+        type="primary"
+        icon={<BiLogOutCircle />}
+        danger
+        onClick={() => logOut()}
+      >
         Выйти
       </Button>
     </div>

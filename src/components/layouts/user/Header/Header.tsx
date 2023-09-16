@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { Space } from 'antd';
 import clsx from 'clsx';
 import { Cross as Hamburger } from 'hamburger-react';
@@ -7,7 +6,7 @@ import Img from 'react-cool-img';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
 import { UiButton } from 'src/components/ui';
-import { useResponsive } from 'src/hooks';
+import { useResponsive, useSelectors } from 'src/hooks';
 
 import { routes } from '../routes';
 
@@ -15,9 +14,12 @@ import s from './header.module.scss';
 
 const Header: React.FC = () => {
   const [isNav, setIsNav] = React.useState(false);
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
   const { isMobile } = useResponsive(866);
+  const { pathname } = useLocation();
+  const { token, userName } = useSelectors();
+
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     setIsNav(false);
     window.scrollTo(0, 0);
@@ -35,7 +37,17 @@ const Header: React.FC = () => {
             ))}
           </ul>
           <Space>
-            <UiButton color="blue" text="Вход" type="primary" onClick={() => navigate('/auth')} />
+            {!token && (
+              <UiButton color="blue" text="Вход" type="primary" onClick={() => navigate('/auth')} />
+            )}
+            {token && (
+              <UiButton
+                color="blue"
+                text={userName}
+                type="primary"
+                onClick={() => navigate('/admin')}
+              />
+            )}
             {isMobile && (
               <div style={{ position: 'relative', zIndex: 2200 }}>
                 <Hamburger

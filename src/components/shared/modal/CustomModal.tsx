@@ -10,7 +10,7 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
   const { paramsItem, isModal } = useSelectors();
   const { form, confirmLoading } = _props;
 
-  const { toggleModal, setId, setParamsItem, setBrigadeLocation2 } = useActions();
+  const { toggleModal, setId, setParamsItem } = useActions();
 
   const handleOk = () => form.submit();
 
@@ -19,7 +19,6 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
     form.resetFields();
     setId(0);
     setParamsItem(null);
-    setBrigadeLocation2([]);
   };
   React.useEffect(() => {
     if (!confirmLoading) {
@@ -27,7 +26,6 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
       form.resetFields();
       setParamsItem(null);
       setId(0);
-      setBrigadeLocation2([]);
     }
   }, [form, confirmLoading]);
   return (

@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { AntdProvider } from 'src/providers';
 import { store } from 'src/store';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -27,10 +26,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
     <Provider store={store}>
       <QueryClientProvider client={client}>
-        <AntdProvider>
-          <App />
-          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-        </AntdProvider>
+        <App />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
     </Provider>
   </Router>,

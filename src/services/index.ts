@@ -4,6 +4,8 @@ export * from './delivery/method/delivery-method.api';
 export * from './dimension/dimension.api';
 export * from './format/format.api';
 export * from './profile/profile.api';
+export * from './role/role.api';
 export * from './service/service.api';
+export * from './status/status.api';
 export * from './type/type.api';
 export * from './user/user.api';

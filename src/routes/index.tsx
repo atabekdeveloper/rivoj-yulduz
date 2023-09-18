@@ -10,6 +10,7 @@ import {
   OrderPage,
   PortfolioInfoPage,
   ServicePage,
+  Type,
 } from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
 
@@ -17,6 +18,10 @@ const adminRoutes = [
   {
     path: '/admin',
     element: <ReactSuspense comp={<Home />} />,
+  },
+  {
+    path: '/admin/type',
+    element: <ReactSuspense comp={<Type />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

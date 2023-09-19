@@ -3,6 +3,7 @@ import {
   AuthPage,
   CalculationPage,
   Category,
+  DeliveryMethod,
   Home,
   HomePage,
   NewsInfoPage,
@@ -32,6 +33,10 @@ const adminRoutes = [
   {
     path: '/admin/service',
     element: <ReactSuspense comp={<Service />} />,
+  },
+  {
+    path: '/admin/delivery-method',
+    element: <ReactSuspense comp={<DeliveryMethod />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

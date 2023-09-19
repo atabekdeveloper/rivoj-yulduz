@@ -1,5 +1,7 @@
 import { MenuProps } from 'antd';
 import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai';
+import { BiCategory } from 'react-icons/bi';
+import { RiCustomerService2Line } from 'react-icons/ri';
 
 export const routes: MenuProps['items'] = [
   {
@@ -11,5 +13,15 @@ export const routes: MenuProps['items'] = [
     key: '/admin/type',
     label: 'Типы',
     icon: <AiOutlineSetting />,
+  },
+  {
+    key: '/admin/category',
+    label: 'Категория',
+    icon: <BiCategory />,
+  },
+  {
+    key: '/admin/service',
+    label: 'Сервисы',
+    icon: <RiCustomerService2Line />,
   },
 ];

@@ -3,25 +3,25 @@ import React from 'react';
 import { Head } from 'src/components/shared';
 import { useActions } from 'src/hooks';
 
-import { TypeForm } from './form/TypeForm';
-import { TypeTable } from './table/TypeTable';
+import { ServiceForm } from './form/ServiceForm';
+import { ServiceTable } from './table/ServiceTable';
 
-const Type: React.FC = () => {
+const Service: React.FC = () => {
   const { toggleModal } = useActions();
   return (
     <>
       <Head
-        title="Типы"
+        title="Сервисы"
         childs={[
           <Button type="primary" onClick={() => toggleModal()}>
             Добавить
           </Button>,
         ]}
       />
-      <TypeForm />
-      <TypeTable />
+      <ServiceForm />
+      <ServiceTable />
     </>
   );
 };
 
-export { Type };
+export { Service };

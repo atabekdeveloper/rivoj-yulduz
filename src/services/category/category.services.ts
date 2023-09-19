@@ -12,7 +12,7 @@ export const fetchPostCategory = async (values: TCategoryChange): Promise<SRO<TC
   return res.data;
 };
 export const fetchEditCategory = async (values: TCategoryChange): Promise<SRO<TCategoryItem>> => {
-  const res = await api.post(`/admin/categories/${values.id}`, values);
+  const res = await api.put(`/admin/categories/${values.id}`, values);
   return res.data;
 };
 export const fetchDeleteCategory = async (id: number): Promise<TMessage> => {

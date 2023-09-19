@@ -1,4 +1,5 @@
-import { Button, Space } from 'antd';
+/* eslint-disable object-curly-newline */
+import { Avatar, Button, Image, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
@@ -26,6 +27,16 @@ const TypeTable: React.FC = () => {
       title: 'Название',
       dataIndex: 'title',
       key: 'title',
+    },
+    {
+      title: 'Иконка',
+      dataIndex: 'image',
+      key: 'image',
+      render: (_, r) => (
+        <Image src={r?.icon} width={70}>
+          <Avatar src={r?.icon} shape="square" />
+        </Image>
+      ),
     },
     {
       fixed: 'right',

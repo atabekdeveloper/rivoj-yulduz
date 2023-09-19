@@ -74,6 +74,22 @@ h5,
 h6 {
   margin-bottom: 0 !important;
 }
+input[type='file'] {
+  width: 100%;
+  &::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #087bb8;
+    padding: 5px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  &::file-selector-button:hover {
+    background: #087bb8;
+  }
+}
 .center {
   display: flex !important;
   align-items: center !important;

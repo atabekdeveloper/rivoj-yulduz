@@ -8,11 +8,17 @@ export const fetchGetTypes = async (): Promise<SR<TTypeItem>> => {
   return res.data;
 };
 export const fetchPostType = async (values: TTypeChange): Promise<SRO<TTypeItem>> => {
-  const res = await api.post('/admin/types', values);
+  const res = await api.post('/admin/types', values, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
   return res.data;
 };
 export const fetchEditType = async (values: TTypeChange): Promise<SRO<TTypeItem>> => {
-  const res = await api.post(`/admin/types/${values.id}`, values);
+  const res = await api.post(
+    `/admin/types/${values.id}`,
+    { ...values, _method: 'PUT' },
+    { headers: { 'Content-Type': 'multipart/form-data' } },
+  );
   return res.data;
 };
 export const fetchDeleteType = async (id: number): Promise<TMessage> => {

@@ -16,7 +16,7 @@ export const fetchPostDeliveryMethod = async (
 export const fetchEditDeliveryMethod = async (
   values: TDeliveryMethodItem,
 ): Promise<SRO<TDeliveryMethodItem>> => {
-  const res = await api.post(`/admin/delivery-methods/${values.id}`, values);
+  const res = await api.put(`/admin/delivery-methods/${values.id}`, values);
   return res.data;
 };
 export const fetchDeleteDeliveryMethod = async (id: number): Promise<TMessage> => {

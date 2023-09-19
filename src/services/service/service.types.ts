@@ -1,3 +1,5 @@
+import { TFormatItem } from '../format/format.types';
+
 export type TServiceItem = {
   id: number;
   title: string;
@@ -11,7 +13,7 @@ export type TServiceItem = {
   price: number;
   is_public: boolean;
   image: string;
-  formats: [];
+  formats: TFormatItem[];
 };
 export type TServiceChange = {
   id?: number;
@@ -21,8 +23,6 @@ export type TServiceChange = {
   dimension_id: number;
   price: number;
   each: number;
-  formats: {
-    id: number;
-    value: number;
-  }[];
+  image: string;
+  formats: TFormatItem[];
 };

@@ -3,6 +3,7 @@ export * from './category/category.api';
 export * from './delivery/method/delivery-method.api';
 export * from './dimension/dimension.api';
 export * from './format/format.api';
+export * from './order/order.api';
 export * from './profile/profile.api';
 export * from './role/role.api';
 export * from './service/service.api';

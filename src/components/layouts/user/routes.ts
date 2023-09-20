@@ -16,7 +16,7 @@ export const routes = [
     label: 'О нас',
   },
   {
-    key: '/news',
-    label: 'Новости',
+    key: '/contact',
+    label: 'Контакты',
   },
 ];

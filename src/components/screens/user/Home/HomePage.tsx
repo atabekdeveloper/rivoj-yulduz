@@ -5,8 +5,7 @@ import {
   AboutPage,
   AchievementPage,
   ClientsPage,
-  ContactPage,
-  NewsPage,
+  ContactInfoPage,
   PortfolioPage,
   ServicePage,
 } from 'src/components/screens';
@@ -37,12 +36,11 @@ const HomePage: React.FC = () => (
       </div>
     </div>
     <ServicePage />
-    <NewsPage />
     <AboutPage />
     <PortfolioPage />
     <ClientsPage />
     <AchievementPage />
-    <ContactPage />
+    <ContactInfoPage />
   </>
 );
 

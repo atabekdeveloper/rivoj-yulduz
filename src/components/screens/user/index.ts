@@ -5,6 +5,7 @@ export * from './Achievement/AchievementPage';
 export * from './Auth/AuthPage';
 export * from './Calculation/CalculationPage';
 export * from './Clients/ClientsPage';
+export * from './Contact/ContactInfoPage';
 export * from './Contact/ContactPage';
 export * from './Home/HomePage';
 export * from './News/NewsInfoPage';

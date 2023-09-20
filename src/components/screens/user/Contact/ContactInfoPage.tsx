@@ -8,7 +8,7 @@ import s from './contact.module.scss';
 const ContactInfoPage: React.FC = () => {
   const { isMobile } = useResponsive(770);
   return (
-    <div className={s.contactInfo}>
+    <div className={s.contactInfo} id="contact">
       <ul className={s.absoluteItems}>
         <li />
         <li />

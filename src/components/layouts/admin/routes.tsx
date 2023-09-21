@@ -1,6 +1,7 @@
 import { MenuProps } from 'antd';
 import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai';
 import { BiCategory } from 'react-icons/bi';
+import { LuShoppingCart } from 'react-icons/lu';
 import { RiCustomerService2Line } from 'react-icons/ri';
 import { TbTruckDelivery } from 'react-icons/tb';
 
@@ -29,5 +30,10 @@ export const routes: MenuProps['items'] = [
     key: '/admin/delivery-method',
     label: 'Доставщик метод',
     icon: <TbTruckDelivery />,
+  },
+  {
+    key: '/admin/order',
+    label: 'Заказы',
+    icon: <LuShoppingCart />,
   },
 ];

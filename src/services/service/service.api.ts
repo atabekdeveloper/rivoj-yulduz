@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import { message } from 'antd';
 import { useActions } from 'src/hooks';
 
@@ -7,6 +8,7 @@ import {
   fetchDeleteService,
   fetchEditService,
   fetchGetServices,
+  fetchGetUserServiceItem,
   fetchPostService,
 } from './service.services';
 
@@ -21,6 +23,16 @@ const useGetServicesQuery = () => {
     },
   });
 };
+
+const useGetUserServiceItemQuery = (slug: string) =>
+  useQuery({
+    queryFn: () => fetchGetUserServiceItem(slug),
+    queryKey: ['service', slug],
+    enabled: slug !== '1',
+    onError: (err: Error) => {
+      message.error(err.message);
+    },
+  });
 
 const usePostServiceMutation = () => {
   const client = useQueryClient();
@@ -62,5 +74,6 @@ export {
   useDeleteServiceMutation,
   useEditServiceMutation,
   useGetServicesQuery,
+  useGetUserServiceItemQuery,
   usePostServiceMutation,
 };

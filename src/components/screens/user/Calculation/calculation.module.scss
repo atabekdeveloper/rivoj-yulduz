@@ -118,3 +118,21 @@
     }
   }
 }
+.menuLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  .item {
+    color: var(--clr-gray);
+    cursor: pointer;
+    &.active {
+      color: var(--clr-blue);
+      font-weight: 500;
+    }
+  }
+}
+.empty {
+  background-color: var(--clr-gray-200);
+  border-radius: 10px;
+  padding: 30px 0;
+}

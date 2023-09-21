@@ -22,7 +22,7 @@ const TypeForm: React.FC = () => {
   };
 
   React.useEffect(() => {
-    if (paramsItem) form.setFieldsValue(paramsItem);
+    if (paramsItem) form.setFieldsValue({ ...paramsItem, icon: null });
   }, [paramsItem, form]);
   return (
     <CustomModal form={form} confirmLoading={addLoading || editLoading}>

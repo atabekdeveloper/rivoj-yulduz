@@ -7,6 +7,10 @@ export const fetchGetServices = async (): Promise<SR<TServiceItem>> => {
   const res = await api.get('/admin/services');
   return res.data;
 };
+export const fetchGetUserServiceItem = async (slug: string): Promise<SRO<TServiceItem>> => {
+  const res = await api.get(`/services/${slug}`);
+  return res.data;
+};
 export const fetchPostService = async (values: TServiceChange): Promise<TMessage> => {
   const res = await api.post('/admin/services', values, {
     headers: { 'Content-Type': 'multipart/form-data' },

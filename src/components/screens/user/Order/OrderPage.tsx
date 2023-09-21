@@ -6,6 +6,8 @@ import click from 'src/assets/images/order/click.svg';
 import payme from 'src/assets/images/order/payme.svg';
 import uzum from 'src/assets/images/order/uzum.svg';
 import { UiButton } from 'src/components/ui';
+import { useSelectors } from 'src/hooks';
+import { formatPrice } from 'src/utils';
 
 import s from './order.module.scss';
 
@@ -17,6 +19,7 @@ const payItems = [
 
 const OrderPage: React.FC = () => {
   const [payType, setPayType] = React.useState('');
+  const { paramsItem } = useSelectors();
   return (
     <div className={s.order}>
       <div className="container">
@@ -47,11 +50,11 @@ const OrderPage: React.FC = () => {
               <ul className={s.items}>
                 <li className={s.item}>
                   <span>высота</span>
-                  <span>1 м</span>
+                  <span>{`${paramsItem?.heigth || '-'} м`}</span>
                 </li>
                 <li className={s.item}>
                   <span>ширина</span>
-                  <span>1 м</span>
+                  <span>{`${paramsItem?.width || '-'} м`}</span>
                 </li>
                 <li className={s.item}>
                   <span>толшина</span>
@@ -59,7 +62,7 @@ const OrderPage: React.FC = () => {
                 </li>
                 <li className={s.item}>
                   <span>штук</span>
-                  <span>1</span>
+                  <span>{`${paramsItem?.count || '-'}`}</span>
                 </li>
               </ul>
             </div>
@@ -67,7 +70,7 @@ const OrderPage: React.FC = () => {
           <div className={s.pay}>
             <div className={s.top}>
               <h3>Обшая сумма:</h3>
-              <h1>1 200 000 UZS</h1>
+              <h1>{formatPrice(paramsItem?.quantity, 'uzs')}</h1>
             </div>
             <div className={s.bottom}>
               <div className={s.btns}>
@@ -84,7 +87,7 @@ const OrderPage: React.FC = () => {
                   ))}
                 </Space>
               </div>
-              <UiButton color="pink" type="primary" text="Оплатить" disabled />
+              <UiButton color="pink" type="primary" text="Оплатить" disabled={!payType} />
             </div>
           </div>
         </div>

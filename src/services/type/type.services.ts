@@ -7,6 +7,15 @@ export const fetchGetTypes = async (): Promise<SR<TTypeItem>> => {
   const res = await api.get('/admin/types');
   return res.data;
 };
+
+export const fetchGetUserTypes = async (): Promise<SR<TTypeItem>> => {
+  const res = await api.get('/types');
+  return res.data;
+};
+export const fetchGetUserTypeItem = async (slug: string): Promise<SRO<TTypeItem>> => {
+  const res = await api.get(`/types/${slug}`);
+  return res.data;
+};
 export const fetchPostType = async (values: TTypeChange): Promise<SRO<TTypeItem>> => {
   const res = await api.post('/admin/types', values, {
     headers: { 'Content-Type': 'multipart/form-data' },

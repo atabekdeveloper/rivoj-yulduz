@@ -1,23 +1,15 @@
-import { Button } from 'antd';
 import React from 'react';
 import { Head } from 'src/components/shared';
-import { useActions } from 'src/hooks';
 
-const Order: React.FC = () => {
-  const { toggleModal } = useActions();
-  return (
-    <>
-      <Head
-        title="Сервисы"
-        childs={[
-          <Button type="primary" onClick={() => toggleModal()}>
-            Добавить
-          </Button>,
-        ]}
-      />
-      <div />
-    </>
-  );
-};
+import { OrderForm } from './form/OrderForm';
+import { OrderTable } from './table/OrderTable';
+
+const Order: React.FC = () => (
+  <>
+    <Head title="Заказы" />
+    <OrderForm />
+    <OrderTable />
+  </>
+);
 
 export { Order };

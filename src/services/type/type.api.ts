@@ -1,15 +1,35 @@
-/* eslint-disable object-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { message } from 'antd';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { fetchDeleteType, fetchEditType, fetchGetTypes, fetchPostType } from './type.services';
+import {
+  fetchDeleteType,
+  fetchEditType,
+  fetchGetTypes,
+  fetchGetUserTypeItem,
+  fetchGetUserTypes,
+  fetchPostType,
+} from './type.services';
 
 const useGetTypesQuery = () =>
   useQuery({
     queryFn: () => fetchGetTypes(),
     queryKey: ['type'],
+    onError: (err: Error) => message.error(err.message),
+  });
+
+const useGetUserTypesQuery = () =>
+  useQuery({
+    queryFn: () => fetchGetUserTypes(),
+    queryKey: ['type'],
+    onError: (err: Error) => message.error(err.message),
+  });
+
+const useGetUserTypeItemQuery = (slug: string) =>
+  useQuery({
+    queryFn: () => fetchGetUserTypeItem(slug),
+    queryKey: ['type', slug],
     onError: (err: Error) => message.error(err.message),
   });
 
@@ -49,4 +69,11 @@ const useDeleteTypeMutation = () => {
   });
 };
 
-export { useDeleteTypeMutation, useEditTypeMutation, useGetTypesQuery, usePostTypeMutation };
+export {
+  useDeleteTypeMutation,
+  useEditTypeMutation,
+  useGetTypesQuery,
+  useGetUserTypeItemQuery,
+  useGetUserTypesQuery,
+  usePostTypeMutation,
+};

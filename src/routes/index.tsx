@@ -8,6 +8,7 @@ import {
   Home,
   HomePage,
   NotFoundPage,
+  Order,
   OrderPage,
   PortfolioInfoPage,
   Service,
@@ -37,6 +38,10 @@ const adminRoutes = [
     path: '/admin/delivery-method',
     element: <ReactSuspense comp={<DeliveryMethod />} />,
   },
+  {
+    path: '/admin/order',
+    element: <ReactSuspense comp={<Order />} />,
+  },
   { path: '*', element: <NotFoundPage /> },
 ];
 
@@ -44,7 +49,7 @@ const userRoutes = [
   { path: '/', element: <HomePage /> },
   { path: '/auth', element: <AuthPage /> },
   { path: '/service', element: <ServicePage /> },
-  { path: '/service/:id', element: <CalculationPage /> },
+  { path: '/service/:slugType/:slugService', element: <CalculationPage /> },
   { path: '/order', element: <OrderPage /> },
   { path: '/about', element: <AboutInfoPage /> },
   { path: '/portfolio', element: <PortfolioInfoPage /> },

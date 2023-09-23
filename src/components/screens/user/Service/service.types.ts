@@ -1,5 +1,5 @@
 export type TServiceItem = {
   title: string;
-  icon: string;
+  icon: string | null;
   slug: string;
 };

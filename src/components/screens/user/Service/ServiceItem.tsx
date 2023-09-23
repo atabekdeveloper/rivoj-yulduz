@@ -13,11 +13,11 @@ const ServiceItem: React.FC<TServiceItem> = ({ title, icon, slug }) => {
   const navigate = useNavigate();
   return (
     <li className={s.item} onClick={() => navigate(`/service/${slug}/1`)}>
-      <Link to="/service" className={s.title}>
+      <Link to={`/service/${slug}/1`} className={s.title}>
         <span>{title}</span>
         <MdOutlineKeyboardArrowRight size={25} />
       </Link>
-      <Img className="none" src="" alt={title} />
+      <Img className="none" src={icon} alt={title} />
     </li>
   );
 };

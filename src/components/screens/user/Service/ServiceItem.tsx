@@ -17,7 +17,7 @@ const ServiceItem: React.FC<TServiceItem> = ({ title, icon, slug }) => {
         <span>{title}</span>
         <MdOutlineKeyboardArrowRight size={25} />
       </Link>
-      <Img className="none" src={icon} alt={title} />
+      <Img className="none" src="" alt={title} />
     </li>
   );
 };

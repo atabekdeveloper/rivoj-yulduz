@@ -39,6 +39,16 @@
           color: var(--clr-blue);
         }
       }
+      &:nth-child(7) {
+        background-color: var(--clr-blue);
+      }
+      &:nth-child(9) {
+        background-color: transparent;
+        border: 2px solid var(--clr-blue);
+        .title {
+          color: var(--clr-blue);
+        }
+      }
       img {
         max-width: 60px;
       }

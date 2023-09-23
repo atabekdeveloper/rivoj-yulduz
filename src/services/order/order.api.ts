@@ -1,9 +1,10 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { message } from 'antd';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { fetchDeleteOrder, fetchEditOrder, fetchGetOrders } from './order.services';
+import { fetchDeleteOrder, fetchEditOrder, fetchGetOrders, fetchPostOrder } from './order.services';
 
 const useGetOrdersQuery = () =>
   useQuery({
@@ -12,6 +13,17 @@ const useGetOrdersQuery = () =>
     onError: (err: Error) => message.error(err.message),
   });
 
+const usePostOrderMutation = () => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: fetchPostOrder,
+    onSuccess: (res) => {
+      client.invalidateQueries({ queryKey: ['order'] });
+      message.success(res.message);
+    },
+    onError: (err: Error) => message.error(err.message),
+  });
+};
 const useEditOrderMutation = () => {
   const client = useQueryClient();
   return useMutation({
@@ -36,4 +48,4 @@ const useDeleteOrderMutation = () => {
   });
 };
 
-export { useDeleteOrderMutation, useEditOrderMutation, useGetOrdersQuery };
+export { useDeleteOrderMutation, useEditOrderMutation, useGetOrdersQuery, usePostOrderMutation };

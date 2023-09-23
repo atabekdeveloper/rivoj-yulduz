@@ -22,7 +22,9 @@ const CalculationCounter = () => {
         heigth,
         count,
         quantity: (service.data.price / service.data.each) * count,
-        slug: service.data.slug,
+        service_slug: service.data.slug,
+        category: service.data.category_title,
+        service: service.data.title,
       });
     }
   }, [count, heigth, width, isSuccess]);

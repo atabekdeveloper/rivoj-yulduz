@@ -1,1 +1,1 @@
-export const baseUrl = 'https://rivoj-yulduz.iztileuoff.uz/api/v1';
+export const baseUrl = 'https://rivojyulduz.karsoft.uz/api/v1';

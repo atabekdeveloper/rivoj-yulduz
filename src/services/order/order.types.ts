@@ -18,3 +18,15 @@ export type TOrderChange = {
   description: string;
   type_id: number;
 };
+export type TPostOrderChange = {
+  service_slug: string;
+  quantity: number;
+  width: number;
+  height: number;
+  name: string;
+  phone: string;
+  comment: string;
+};
+export type TPortGetItem = {
+  payType: string;
+};

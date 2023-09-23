@@ -1,4 +1,4 @@
-import { Input, Space } from 'antd';
+import { Form, Input, Space } from 'antd';
 import clsx from 'clsx';
 import React from 'react';
 import Img from 'react-cool-img';
@@ -7,7 +7,7 @@ import payme from 'src/assets/images/order/payme.svg';
 import uzum from 'src/assets/images/order/uzum.svg';
 import { UiButton } from 'src/components/ui';
 import { useSelectors } from 'src/hooks';
-import { formatPrice } from 'src/utils';
+import { formatPrice, formMessage } from 'src/utils';
 
 import s from './order.module.scss';
 
@@ -19,7 +19,23 @@ const payItems = [
 
 const OrderPage: React.FC = () => {
   const [payType, setPayType] = React.useState('');
+  const [submittable, setSubmittable] = React.useState(false);
   const { paramsItem } = useSelectors();
+  const [form] = Form.useForm();
+  const values = Form.useWatch([], form);
+  const onFinish = (values: any) => {
+    console.log({ ...paramsItem, ...values });
+  };
+  const onPayClick = () => {
+    form.submit();
+    if (!submittable) window.scrollTo(0, 0);
+  };
+  React.useEffect(() => {
+    form.validateFields({ validateOnly: true }).then(
+      () => setSubmittable(true),
+      () => setSubmittable(false),
+    );
+  }, [form, values]);
   return (
     <div className={s.order}>
       <div className="container">
@@ -33,17 +49,34 @@ const OrderPage: React.FC = () => {
                 информация
               </p>
             </div>
-            <div className={s.inputs}>
-              <Input placeholder="Имя" size="large" />
-              <Input placeholder="Телефон" size="large" />
-              <Input.TextArea placeholder="Комментарии" size="large" />
-            </div>
+            <Form
+              form={form}
+              name="User Contact"
+              layout="vertical"
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              autoComplete="off"
+              size="large"
+            >
+              <Form.Item name="name" rules={[{ required: true, message: formMessage('Имя') }]}>
+                <Input placeholder="Имя" />
+              </Form.Item>
+              <Form.Item name="phone" rules={[{ required: true, message: formMessage('Телефон') }]}>
+                <Input placeholder="Телефон" />
+              </Form.Item>
+              <Form.Item
+                name="description"
+                rules={[{ required: true, message: formMessage('Комментарии') }]}
+              >
+                <Input.TextArea placeholder="Комментарии" />
+              </Form.Item>
+            </Form>
           </div>
           <h1 className={s.orderTitle}>О заказе</h1>
           <div className={s.info}>
             <div className={s.title}>
-              <h2>Подкатегория 1 /</h2>
-              <p>из деревянного каркаса баннер</p>
+              <h2>{`${paramsItem?.category || '-'} /`}</h2>
+              <p>{`${paramsItem?.service || '-'}`}</p>
             </div>
             <div className={s.size}>
               <h3>Размеры</h3>
@@ -87,7 +120,13 @@ const OrderPage: React.FC = () => {
                   ))}
                 </Space>
               </div>
-              <UiButton color="pink" type="primary" text="Оплатить" disabled={!payType} />
+              <UiButton
+                color="pink"
+                type="primary"
+                text="Оплатить"
+                disabled={!payType}
+                onClick={onPayClick}
+              />
             </div>
           </div>
         </div>

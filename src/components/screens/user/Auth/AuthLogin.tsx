@@ -9,11 +9,9 @@ import { useAuthLoginMutation } from 'src/services';
 import { TAuthLogin } from 'src/services/auth/auth.types';
 import { formatStringJoin, formMessage } from 'src/utils';
 
-import { TAuthStateChange } from './auth.types';
-
 import s from './auth.module.scss';
 
-const AuthLogin: React.FC<TAuthStateChange> = ({ setStateAuth }) => {
+const AuthLogin: React.FC = () => {
   const [form] = Form.useForm();
   const { signIn } = useActions();
   const navigate = useNavigate();
@@ -56,9 +54,6 @@ const AuthLogin: React.FC<TAuthStateChange> = ({ setStateAuth }) => {
           Войти
         </Button>
       </Form>
-      <button className={s.btn} onClick={() => setStateAuth('sign')}>
-        Регистрация
-      </button>
     </div>
   );
 };

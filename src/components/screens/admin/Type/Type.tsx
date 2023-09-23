@@ -1,27 +1,13 @@
-import { Button } from 'antd';
 import React from 'react';
 import { Head } from 'src/components/shared';
-import { useActions } from 'src/hooks';
 
-import { TypeForm } from './form/TypeForm';
 import { TypeTable } from './table/TypeTable';
 
-const Type: React.FC = () => {
-  const { toggleModal } = useActions();
-  return (
-    <>
-      <Head
-        title="Типы"
-        childs={[
-          <Button type="primary" onClick={() => toggleModal()}>
-            Добавить
-          </Button>,
-        ]}
-      />
-      <TypeForm />
-      <TypeTable />
-    </>
-  );
-};
+const Type: React.FC = () => (
+  <>
+    <Head title="Типы" />
+    <TypeTable />
+  </>
+);
 
 export { Type };

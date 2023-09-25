@@ -1,41 +1,56 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Form, Input, Space } from 'antd';
+import { MaskedInput } from 'antd-mask-input';
 import clsx from 'clsx';
 import React from 'react';
 import Img from 'react-cool-img';
 import click from 'src/assets/images/order/click.svg';
 import payme from 'src/assets/images/order/payme.svg';
-import uzum from 'src/assets/images/order/uzum.svg';
 import { UiButton } from 'src/components/ui';
 import { useSelectors } from 'src/hooks';
-import { formatPrice, formMessage } from 'src/utils';
+import { usePostOrderMutation } from 'src/services';
+import { TPostOrderChange } from 'src/services/order/order.types';
+import { formatPrice, formatStringJoin, formMessage } from 'src/utils';
 
 import s from './order.module.scss';
 
 const payItems = [
-  { type: 'click', img: click },
-  { type: 'payme', img: payme },
-  { type: 'uzum', img: uzum },
+  { id: 1, img: click },
+  { id: 2, img: payme },
 ];
 
 const OrderPage: React.FC = () => {
-  const [payType, setPayType] = React.useState('');
+  const [paymentId, setPaymentId] = React.useState(0);
   const [submittable, setSubmittable] = React.useState(false);
   const { paramsItem } = useSelectors();
   const [form] = Form.useForm();
-  const values = Form.useWatch([], form);
-  const onFinish = (values: any) => {
-    console.log({ ...paramsItem, ...values });
+  const formValues = Form.useWatch([], form);
+
+  const { mutate, data: order, isSuccess } = usePostOrderMutation();
+
+  const onFinish = (values: TPostOrderChange) => {
+    mutate({
+      ...paramsItem,
+      ...values,
+      payment_id: paymentId,
+      phone: formatStringJoin(values.phone),
+    });
   };
+
   const onPayClick = () => {
     form.submit();
     if (!submittable) window.scrollTo(0, 0);
   };
+
   React.useEffect(() => {
     form.validateFields({ validateOnly: true }).then(
       () => setSubmittable(true),
       () => setSubmittable(false),
     );
-  }, [form, values]);
+  }, [form, formValues]);
+  React.useEffect(() => {
+    if (isSuccess) window.location.replace(order.data.payment_url);
+  }, [isSuccess]);
   return (
     <div className={s.order}>
       <div className="container">
@@ -59,10 +74,10 @@ const OrderPage: React.FC = () => {
               size="large"
             >
               <Form.Item name="name" rules={[{ required: true, message: formMessage('Имя') }]}>
-                <Input placeholder="Имя" />
+                <Input placeholder="ФИО" />
               </Form.Item>
               <Form.Item name="phone" rules={[{ required: true, message: formMessage('Телефон') }]}>
-                <Input placeholder="Телефон" />
+                <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" />
               </Form.Item>
               <Form.Item
                 name="description"
@@ -111,11 +126,11 @@ const OrderPage: React.FC = () => {
                 <Space wrap>
                   {payItems.map((item) => (
                     <button
-                      key={item.type}
-                      className={clsx(s.btn, item.type === payType && s.active)}
-                      onClick={() => setPayType(item.type)}
+                      key={item.id}
+                      className={clsx(s.btn, item.id === paymentId && s.active)}
+                      onClick={() => setPaymentId(item.id)}
                     >
-                      <Img src={item.img} alt={item.type} />
+                      <Img src={item.img} alt={item.id} />
                     </button>
                   ))}
                 </Space>
@@ -124,7 +139,7 @@ const OrderPage: React.FC = () => {
                 color="pink"
                 type="primary"
                 text="Оплатить"
-                disabled={!payType}
+                disabled={!paymentId}
                 onClick={onPayClick}
               />
             </div>

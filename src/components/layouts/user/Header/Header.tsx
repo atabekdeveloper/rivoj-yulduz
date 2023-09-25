@@ -37,9 +37,6 @@ const Header: React.FC = () => {
             ))}
           </ul>
           <Space>
-            {!token && (
-              <UiButton color="blue" text="Вход" type="primary" onClick={() => navigate('/auth')} />
-            )}
             {token && (
               <UiButton
                 color="blue"

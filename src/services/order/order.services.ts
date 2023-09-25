@@ -9,7 +9,7 @@ export const fetchGetOrders = async (): Promise<SR<TOrderItem>> => {
   return res.data;
 };
 export const fetchPostOrder = async (values: TPostOrderChange): Promise<SRO<TPortGetItem>> => {
-  const res = await api.put('/orders', values);
+  const res = await api.post('/orders', values);
   return res.data;
 };
 export const fetchEditOrder = async (values: TOrderChange): Promise<SRO<TOrderItem>> => {

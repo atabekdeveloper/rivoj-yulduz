@@ -14,7 +14,7 @@ const useGetDeliveryMethodsQuery = () =>
   useQuery({
     queryFn: () => fetchGetDeliveryMethods(),
     queryKey: ['delivery-method'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostDeliveryMethodMutation = () => {
@@ -25,7 +25,7 @@ const usePostDeliveryMethodMutation = () => {
       client.invalidateQueries({ queryKey: ['delivery-method'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -37,7 +37,7 @@ const useEditDeliveryMethodMutation = () => {
       client.invalidateQueries({ queryKey: ['delivery-method'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -49,7 +49,7 @@ const useDeleteDeliveryMethodMutation = () => {
       client.invalidateQueries({ queryKey: ['delivery-method'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

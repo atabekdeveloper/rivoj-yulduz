@@ -29,9 +29,7 @@ const useGetUserServiceItemQuery = (slug: string) =>
     queryFn: () => fetchGetUserServiceItem(slug),
     queryKey: ['service', slug],
     enabled: slug !== '1',
-    onError: (err: Error) => {
-      message.error(err.message);
-    },
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostServiceMutation = () => {
@@ -42,7 +40,7 @@ const usePostServiceMutation = () => {
       client.invalidateQueries({ queryKey: ['service'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -54,7 +52,7 @@ const useEditServiceMutation = () => {
       client.invalidateQueries({ queryKey: ['service'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -66,7 +64,7 @@ const useDeleteServiceMutation = () => {
       client.invalidateQueries({ queryKey: ['service'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

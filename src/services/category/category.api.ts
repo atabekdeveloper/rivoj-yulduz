@@ -14,7 +14,7 @@ const useGetCategoriesQuery = () =>
   useQuery({
     queryFn: () => fetchGetCategories(),
     queryKey: ['category'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostCategoryMutation = () => {
@@ -25,7 +25,7 @@ const usePostCategoryMutation = () => {
       client.invalidateQueries({ queryKey: ['category'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -37,7 +37,7 @@ const useEditCategoryMutation = () => {
       client.invalidateQueries({ queryKey: ['category'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -49,7 +49,7 @@ const useDeleteCategoryMutation = () => {
       client.invalidateQueries({ queryKey: ['category'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

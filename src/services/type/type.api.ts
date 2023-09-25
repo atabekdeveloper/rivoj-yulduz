@@ -16,21 +16,21 @@ const useGetTypesQuery = () =>
   useQuery({
     queryFn: () => fetchGetTypes(),
     queryKey: ['type'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const useGetUserTypesQuery = () =>
   useQuery({
     queryFn: () => fetchGetUserTypes(),
     queryKey: ['type'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const useGetUserTypeItemQuery = (slug: string) =>
   useQuery({
     queryFn: () => fetchGetUserTypeItem(slug),
     queryKey: ['type', slug],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostTypeMutation = () => {
@@ -41,7 +41,7 @@ const usePostTypeMutation = () => {
       client.invalidateQueries({ queryKey: ['type'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -53,7 +53,7 @@ const useEditTypeMutation = () => {
       client.invalidateQueries({ queryKey: ['type'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -65,7 +65,7 @@ const useDeleteTypeMutation = () => {
       client.invalidateQueries({ queryKey: ['type'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

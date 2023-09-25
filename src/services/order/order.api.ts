@@ -10,7 +10,7 @@ const useGetOrdersQuery = () =>
   useQuery({
     queryFn: () => fetchGetOrders(),
     queryKey: ['order'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostOrderMutation = () => {
@@ -21,7 +21,7 @@ const usePostOrderMutation = () => {
       client.invalidateQueries({ queryKey: ['order'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 const useEditOrderMutation = () => {
@@ -32,7 +32,7 @@ const useEditOrderMutation = () => {
       client.invalidateQueries({ queryKey: ['order'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -44,7 +44,7 @@ const useDeleteOrderMutation = () => {
       client.invalidateQueries({ queryKey: ['order'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

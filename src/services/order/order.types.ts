@@ -21,6 +21,7 @@ export type TOrderChange = {
 export type TPostOrderChange = {
   service_slug: string;
   quantity: number;
+  payment_id: number;
   width: number;
   height: number;
   name: string;
@@ -28,5 +29,5 @@ export type TPostOrderChange = {
   comment: string;
 };
 export type TPortGetItem = {
-  payType: string;
+  payment_url: string;
 };

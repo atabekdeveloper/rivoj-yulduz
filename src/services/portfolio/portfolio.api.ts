@@ -15,18 +15,14 @@ const useGetPortfoliosQuery = () =>
   useQuery({
     queryFn: () => fetchGetPortfolios(),
     queryKey: ['portfolio'],
-    onError: (err: Error) => {
-      message.error(err.message);
-    },
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const useGetUserPortfoliosQuery = () =>
   useQuery({
     queryFn: () => fetchGetUserPortfolios(),
     queryKey: ['portfolio'],
-    onError: (err: Error) => {
-      message.error(err.message);
-    },
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 const usePostPortfolioMutation = () => {
@@ -37,7 +33,7 @@ const usePostPortfolioMutation = () => {
       client.invalidateQueries({ queryKey: ['portfolio'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -49,7 +45,7 @@ const useEditPortfolioMutation = () => {
       client.invalidateQueries({ queryKey: ['portfolio'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 
@@ -61,7 +57,7 @@ const useDeletePortfolioMutation = () => {
       client.invalidateQueries({ queryKey: ['portfolio'] });
       message.success(res.message);
     },
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 };
 

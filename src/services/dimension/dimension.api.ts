@@ -9,7 +9,7 @@ const useGetDimensionsQuery = () =>
   useQuery({
     queryFn: () => fetchGetDimensions(),
     queryKey: ['dimension'],
-    onError: (err: Error) => message.error(err.message),
+    onError: (err: any) => message.error(err.response.data.message),
   });
 
 export { useGetDimensionsQuery };

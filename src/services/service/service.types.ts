@@ -3,6 +3,7 @@ import { TFormatItem } from '../format/format.types';
 export type TServiceItem = {
   id: number;
   title: string;
+  description: string;
   slug: string;
   category_id: number;
   category_title: string;

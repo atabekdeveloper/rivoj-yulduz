@@ -56,7 +56,7 @@ const CalculationPage: React.FC = () => {
                 <Img src={service?.data.image} alt="Title" />
                 <div className={s.info}>
                   <h1>{service?.data.title}</h1>
-                  <p />
+                  <p>{service.data.description}</p>
                 </div>
               </>
             ) : (

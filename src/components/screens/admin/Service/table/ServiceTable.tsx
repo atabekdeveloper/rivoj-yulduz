@@ -29,6 +29,11 @@ const ServiceTable: React.FC = () => {
       key: 'title',
     },
     {
+      title: 'Описание',
+      dataIndex: 'description',
+      key: 'description',
+    },
+    {
       title: 'Категория',
       dataIndex: 'category_title',
       key: 'category_title',

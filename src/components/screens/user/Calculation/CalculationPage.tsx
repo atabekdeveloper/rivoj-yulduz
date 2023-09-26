@@ -76,6 +76,7 @@ const CalculationPage: React.FC = () => {
                   text="Заказать"
                   color="pink"
                   type="default"
+                  disabled={!paramsItem?.quantity}
                   onClick={() => navigate('/order')}
                 />
               </div>

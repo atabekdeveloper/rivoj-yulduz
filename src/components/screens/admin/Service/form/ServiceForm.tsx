@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import { Button, Form, Input, InputNumber, Select, Space } from 'antd';
+import { Button, Form, Input, InputNumber, Select } from 'antd';
 import React from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { CustomModal } from 'src/components/shared';

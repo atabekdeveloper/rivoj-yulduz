@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Space } from 'antd';
 import clsx from 'clsx';
 import { Cross as Hamburger } from 'hamburger-react';
@@ -20,6 +21,11 @@ const Header: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const onClickLogo = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   React.useEffect(() => {
     setIsNav(false);
     window.scrollTo(0, 0);
@@ -28,7 +34,7 @@ const Header: React.FC = () => {
     <header className={s.header}>
       <div className="container">
         <div className={s.body}>
-          <Img src={logo} alt="Logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
+          <Img src={logo} alt="Logo" onClick={onClickLogo} style={{ cursor: 'pointer' }} />
           <ul className={clsx(s.items, isMobile && s.active, isNav && s.activeMenu)}>
             {routes.map((route) => (
               <li className={clsx(s.item, pathname === route.key && s.active)} key={route.key}>

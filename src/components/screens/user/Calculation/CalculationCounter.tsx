@@ -1,79 +1,125 @@
+/* eslint-disable react/jsx-wrap-multilines */
+/* eslint-disable object-curly-newline */
+/* eslint-disable operator-linebreak */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, InputNumber, Space } from 'antd';
+import { Button, Form, InputNumber, Space } from 'antd';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { UiButton } from 'src/components/ui';
 import { useActions } from 'src/hooks';
 import { useGetUserServiceItemQuery } from 'src/services';
+import { formMessage } from 'src/utils';
 
 import s from './calculation.module.scss';
 
 const CalculationCounter = () => {
-  const [count, setCount] = React.useState(0);
-  const [width, setWidth] = React.useState(0);
-  const [heigth, setHeigth] = React.useState(0);
+  const [count, setCount] = React.useState<number>(0);
+
+  const [form] = Form.useForm();
   const { slugService } = useParams();
   const { setParamsItem } = useActions();
 
   const { data: service, isSuccess } = useGetUserServiceItemQuery(String(slugService));
-  React.useEffect(() => {
+
+  const onFormatValue = (id: number) => service?.data.formats.find((el) => el.id === id)?.value;
+  const unDimensional = () => {
+    if (service?.data.dimension_id === 1) return true;
+    if (service?.data.dimension_id === 2) return true;
+    if (service?.data.dimension_id === 3) return true;
+  };
+  const addCount = () => {
+    setCount((prev) => prev + 1);
+    form.setFieldValue('count', count);
+  };
+  const minisCount = () => {
+    setCount((prev) => prev - 1);
+    form.setFieldValue('count', count);
+  };
+  const onChangeCount = (value: number | null) => {
+    setCount(Number(value));
+    form.setFieldValue('count', value);
+  };
+  const onFinish = (values: any) => {
     if (isSuccess) {
       setParamsItem({
-        width,
-        heigth,
-        count,
-        quantity: (service.data.price / service.data.each) * count,
+        width: values.width || null,
+        height: values.height || null,
+        count: values.count,
+        quantity:
+          service.data.price_each * values.count * (values.height || 1) * (values.width || 1),
         service_slug: service.data.slug,
         category: service.data.category_title,
         service: service.data.title,
       });
     }
-  }, [count, heigth, width, isSuccess]);
+  };
   return (
     <div className={s.calc}>
-      <div className={s.inputs}>
-        <InputNumber
-          value={heigth || null}
-          onChange={(value) => setHeigth(value || 0)}
-          placeholder="Высота"
-          style={{ width: '100%' }}
-          size="large"
-          type="number"
-        />
-        <InputNumber
-          value={width || null}
-          onChange={(value) => setWidth(value || 0)}
-          placeholder="Ширина"
-          style={{ width: '100%' }}
-          size="large"
-          type="number"
-        />
-      </div>
-      <div className={s.count}>
-        <p>Штук</p>
-        <Space.Compact size="large">
-          <Button
-            type="primary"
-            onClick={() => setCount((prev) => (prev === 0 ? 0 : prev - 1))}
-            style={{ backgroundColor: '#fff', color: '#1A509D' }}
+      <Form
+        form={form}
+        name="User Contact"
+        layout="vertical"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        autoComplete="off"
+        size="large"
+      >
+        <div className={s.inputs}>
+          <Form.Item
+            name="height"
+            rules={[{ required: service?.data.dimension_id !== 1, message: formMessage('Высота') }]}
+            style={{ width: '100%' }}
           >
+            <InputNumber
+              min={onFormatValue(5)}
+              max={onFormatValue(6)}
+              placeholder="Высота"
+              disabled={service?.data.dimension_id === 1}
+              size="large"
+              type="number"
+            />
+          </Form.Item>
+          <Form.Item
+            name="width"
+            rules={[
+              {
+                required: !unDimensional(),
+                message: formMessage('Ширина'),
+              },
+            ]}
+            style={{ width: '100%' }}
+          >
+            <InputNumber
+              min={onFormatValue(3)}
+              max={onFormatValue(4)}
+              placeholder="Ширина"
+              disabled={unDimensional()}
+              size="large"
+              type="number"
+            />
+          </Form.Item>
+        </div>
+        <Space.Compact size="large">
+          <Button type="default" onClick={minisCount}>
             -
           </Button>
-          <InputNumber
-            value={count}
-            min={0}
-            onChange={(value) => setCount(value || 0)}
-            type="number"
-            style={{ backgroundColor: '#E8EDF5' }}
-          />
-          <Button
-            type="primary"
-            onClick={() => setCount((prev) => prev + 1)}
-            style={{ backgroundColor: '#fff', color: '#1A509D' }}
-          >
+          <Form.Item name="count" rules={[{ required: true, message: formMessage('Штук') }]}>
+            <InputNumber
+              value={count}
+              min={onFormatValue(1)}
+              max={onFormatValue(2)}
+              onChange={onChangeCount}
+              placeholder="Штук"
+              type="number"
+            />
+          </Form.Item>
+          <Button type="default" onClick={addCount}>
             +
           </Button>
         </Space.Compact>
-      </div>
+        <br />
+        <UiButton type="primary" color="blue" text="Вычислить" onClick={() => form.submit()} />
+      </Form>
     </div>
   );
 };

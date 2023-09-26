@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Empty } from 'antd';
@@ -21,11 +22,15 @@ const CalculationPage: React.FC = () => {
   const { slugType, slugService } = useParams();
 
   const { paramsItem } = useSelectors();
-  const { toggleNavbar } = useActions();
+  const { toggleNavbar, setParamsItem } = useActions();
   const navigate = useNavigate();
 
   const { data: type } = useGetUserTypeItemQuery(String(slugType));
   const { data: service } = useGetUserServiceItemQuery(String(slugService));
+
+  React.useEffect(() => {
+    setParamsItem(null);
+  }, []);
   return (
     <div className={s.calculation}>
       <div className="container">

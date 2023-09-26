@@ -98,7 +98,7 @@ const OrderPage: React.FC = () => {
               <ul className={s.items}>
                 <li className={s.item}>
                   <span>высота</span>
-                  <span>{`${paramsItem?.heigth || '-'} м`}</span>
+                  <span>{`${paramsItem?.height || '-'} м`}</span>
                 </li>
                 <li className={s.item}>
                   <span>ширина</span>

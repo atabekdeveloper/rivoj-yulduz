@@ -1,5 +1,5 @@
 export type TFormatItem = {
-  id: string;
+  id: number;
   name: string;
   value: number;
 };

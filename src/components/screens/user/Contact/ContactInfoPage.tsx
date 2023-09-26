@@ -21,7 +21,7 @@ const ContactInfoPage: React.FC = () => {
               <p>г. Нукус, просп. Узбекистана, 19</p>
               <p>Тел: 8 91 383 88 31</p>
             </div>
-            <p>График: Пн-Сб, 9:00 — 18:30</p>
+            <p>График работы: Пн-Сб, 9:00 — 18:30</p>
           </div>
           <div className={s.form}>
             <ContactForm />

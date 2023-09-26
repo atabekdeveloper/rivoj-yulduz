@@ -11,6 +11,7 @@ export type TServiceItem = {
   dimension_unit: string;
   each: number;
   price: number;
+  price_each: number;
   is_public: boolean;
   image: string;
   formats: TFormatItem[];

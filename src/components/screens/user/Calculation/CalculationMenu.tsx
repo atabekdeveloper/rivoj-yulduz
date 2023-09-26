@@ -22,7 +22,7 @@ const CalculationMenu: React.FC = () => {
       <ul className={s.menuLayout}>
         {category.services.map((service, sIndex) => (
           <li
-            key={service.id}
+            key={service.slug}
             className={clsx(s.item, slugService === service.slug && s.active)}
             onClick={() => navigate(`/service/${slugType}/${service.slug}`)}
           >

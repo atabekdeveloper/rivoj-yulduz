@@ -80,7 +80,7 @@ const OrderTable: React.FC = () => {
       render: (value) => (value ? formatPrice(value, 'штук') : '-'),
     },
     {
-      title: 'Общая сумма',
+      title: 'Сумма',
       dataIndex: 'total_amount',
       key: 'total_amount',
       render: (value) => formatPrice(value, 'uzs'),

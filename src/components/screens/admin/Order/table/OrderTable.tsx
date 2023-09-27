@@ -82,16 +82,22 @@ const OrderTable: React.FC = () => {
       render: (value) => value || '-',
     },
     {
+      title: 'Способ оплаты',
+      dataIndex: 'pay',
+      key: 'pay',
+      render: (_, r) => r.payment?.name,
+    },
+    {
       title: 'Ширина',
       dataIndex: 'width',
       key: 'width',
-      render: (value) => (value ? formatPrice(value, 'м') : '-'),
+      render: (value) => (value ? formatPrice(value, '') : '-'),
     },
     {
       title: 'Высота',
       dataIndex: 'height',
       key: 'height',
-      render: (value) => (value ? formatPrice(value, 'м') : '-'),
+      render: (value) => (value ? formatPrice(value, '') : '-'),
     },
     {
       title: 'Количество',

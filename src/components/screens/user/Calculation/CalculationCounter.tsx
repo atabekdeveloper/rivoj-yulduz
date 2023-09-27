@@ -13,11 +13,11 @@ import { formMessage } from 'src/utils';
 import s from './calculation.module.scss';
 
 const CalculationCounter = () => {
-  const [count, setCount] = React.useState<number>(0);
-
   const [form] = Form.useForm();
   const { slugService } = useParams();
   const { setParamsItem } = useActions();
+
+  const count = Form.useWatch('count', { form, preserve: true });
 
   const { data: service, isSuccess } = useGetUserServiceItemQuery(String(slugService));
 
@@ -27,18 +27,9 @@ const CalculationCounter = () => {
     if (service?.data.dimension_id === 2) return true;
     if (service?.data.dimension_id === 3) return true;
   };
-  const addCount = () => {
-    setCount((prev) => prev + 1);
-    form.setFieldValue('count', count);
-  };
-  const minisCount = () => {
-    setCount((prev) => prev - 1);
-    form.setFieldValue('count', count);
-  };
-  const onChangeCount = (value: number | null) => {
-    setCount(Number(value));
-    form.setFieldValue('count', value);
-  };
+  const addCount = () => form.setFieldValue('count', count ? count + 1 : 1);
+  const minisCount = () => form.setFieldValue('count', count > 0 ? count - 1 : 0);
+
   const onFinish = (values: any) => {
     if (isSuccess) {
       setParamsItem({
@@ -53,6 +44,9 @@ const CalculationCounter = () => {
       });
     }
   };
+  React.useEffect(() => {
+    form.resetFields();
+  }, [slugService]);
   return (
     <div className={s.calc}>
       <Form
@@ -67,13 +61,20 @@ const CalculationCounter = () => {
         <div className={s.inputs}>
           <Form.Item
             name="height"
-            rules={[{ required: service?.data.dimension_id !== 1, message: formMessage('Высота') }]}
+            rules={[
+              {
+                required: service?.data.dimension_id !== 1,
+                message: formMessage(`Высота в ${service?.data.dimension_unit}`),
+              },
+            ]}
             style={{ width: '100%' }}
           >
             <InputNumber
               min={onFormatValue(5)}
               max={onFormatValue(6)}
-              placeholder="Высота"
+              step={1}
+              precision={0}
+              placeholder={`Высота в ${service?.data.dimension_unit}`}
               disabled={service?.data.dimension_id === 1}
               size="large"
               type="number"
@@ -84,7 +85,7 @@ const CalculationCounter = () => {
             rules={[
               {
                 required: !unDimensional(),
-                message: formMessage('Ширина'),
+                message: formMessage(`Ширина в ${service?.data.dimension_unit}`),
               },
             ]}
             style={{ width: '100%' }}
@@ -92,7 +93,9 @@ const CalculationCounter = () => {
             <InputNumber
               min={onFormatValue(3)}
               max={onFormatValue(4)}
-              placeholder="Ширина"
+              step={1}
+              precision={0}
+              placeholder={`Ширина в ${service?.data.dimension_unit}`}
               disabled={unDimensional()}
               size="large"
               type="number"
@@ -105,10 +108,10 @@ const CalculationCounter = () => {
           </Button>
           <Form.Item name="count" rules={[{ required: true, message: formMessage('Штук') }]}>
             <InputNumber
-              value={count}
-              min={onFormatValue(1)}
+              min={1}
               max={onFormatValue(2)}
-              onChange={onChangeCount}
+              step={1}
+              precision={0}
               placeholder="Штук"
               type="number"
             />

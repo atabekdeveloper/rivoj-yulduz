@@ -30,8 +30,11 @@ const OrderPage: React.FC = () => {
 
   const onFinish = (values: TPostOrderChange) => {
     mutate({
-      ...paramsItem,
       ...values,
+      width: paramsItem.width,
+      height: paramsItem.height,
+      quantity: paramsItem.count,
+      service_slug: paramsItem.service_slug,
       payment_id: paymentId,
       phone: formatStringJoin(values.phone),
     });
@@ -80,7 +83,7 @@ const OrderPage: React.FC = () => {
                 <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" />
               </Form.Item>
               <Form.Item
-                name="description"
+                name="comment"
                 rules={[{ required: true, message: formMessage('Комментарии') }]}
               >
                 <Input.TextArea placeholder="Комментарии" />

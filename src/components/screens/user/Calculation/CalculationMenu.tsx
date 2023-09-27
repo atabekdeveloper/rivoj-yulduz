@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UiCollapse } from 'src/components/ui';
+import { useActions } from 'src/hooks';
 import { useGetUserTypeItemQuery } from 'src/services';
 
 import s from './calculation.module.scss';
@@ -14,6 +15,9 @@ const CalculationMenu: React.FC = () => {
   const { slugType, slugService } = useParams();
   const { data: type, isSuccess } = useGetUserTypeItemQuery(String(slugType));
   const navigate = useNavigate();
+
+  const { setParamsItem } = useActions();
+
   const items = type?.data.categories.map((category, cIndex) => ({
     key: category.slug,
     label: `${cIndex + 1}. ${category.title}`,
@@ -24,7 +28,10 @@ const CalculationMenu: React.FC = () => {
           <li
             key={service.slug}
             className={clsx(s.item, slugService === service.slug && s.active)}
-            onClick={() => navigate(`/service/${slugType}/${service.slug}`)}
+            onClick={() => {
+              navigate(`/service/${slugType}/${service.slug}`);
+              setParamsItem(null);
+            }}
           >
             {`${cIndex + 1}.${sIndex + 1} ${service.title}`}
           </li>

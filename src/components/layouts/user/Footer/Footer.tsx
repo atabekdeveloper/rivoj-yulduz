@@ -22,8 +22,16 @@ const Footer: React.FC = () => (
         <div className={s.links}>
           <p>Наши соц. сети</p>
           <p>
-            <AiFillInstagram size={30} cursor="pointer" />
-            <BsTelegram size={25} cursor="pointer" />
+            <a
+              href="https://www.instagram.com/rivojyulduz/?utm_medium=copy_link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillInstagram size={30} cursor="pointer" />
+            </a>
+            <a href="https://t.me/rivojyulduzgroup" target="_blank" rel="noreferrer">
+              <BsTelegram size={25} cursor="pointer" />
+            </a>
           </p>
         </div>
       </div>

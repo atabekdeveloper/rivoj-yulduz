@@ -17,3 +17,8 @@ export type TGetParamItem = {
   id: number;
   name: string;
 };
+export type TGetParams = {
+  limit: number;
+  page: number;
+  status_id?: number;
+};

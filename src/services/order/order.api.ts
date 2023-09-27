@@ -1,15 +1,16 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { message } from 'antd';
+import { TGetParams } from 'src/services/index.types';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { fetchDeleteOrder, fetchEditOrder, fetchGetOrders, fetchPostOrder } from './order.services';
 
-const useGetOrdersQuery = () =>
+const useGetOrdersQuery = (values: TGetParams) =>
   useQuery({
-    queryFn: () => fetchGetOrders(),
-    queryKey: ['order'],
+    queryFn: () => fetchGetOrders(values),
+    queryKey: ['order', values.page, values.status_id],
     onError: (err: any) => message.error(err.response.data.message),
   });
 

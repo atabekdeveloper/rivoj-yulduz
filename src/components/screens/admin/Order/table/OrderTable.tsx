@@ -1,14 +1,22 @@
-import { Button } from 'antd';
+import { Button, Select, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineClear } from 'react-icons/ai';
 import { CustomPopConfirm, CustomTable } from 'src/components/shared';
-import { useDeleteOrderMutation, useGetOrdersQuery } from 'src/services';
+import { useDeleteOrderMutation, useGetOrdersQuery, useGetStatusesQuery } from 'src/services';
 import { TOrderItem } from 'src/services/order/order.types';
 import { formatPrice } from 'src/utils';
 
 const OrderTable: React.FC = () => {
-  const { data: orders, isLoading } = useGetOrdersQuery();
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [stateStatus, setStateStatus] = React.useState(0);
+
+  const { data: statuses } = useGetStatusesQuery();
+  const { data: orders, isLoading } = useGetOrdersQuery({
+    limit: 10,
+    page: currentPage,
+    status_id: stateStatus,
+  });
   const { mutate: deleteOrder } = useDeleteOrderMutation();
 
   const onDeleteOrder = (id: number) => deleteOrder(id);
@@ -33,7 +41,22 @@ const OrderTable: React.FC = () => {
       render: (_, r) => r.contact?.comment || '-',
     },
     {
-      title: 'Статус',
+      title: (
+        <Space.Compact>
+          <Select
+            placeholder="Статус"
+            value={stateStatus || null}
+            options={statuses?.data.map((status) => ({ value: status.id, label: status.name }))}
+            onChange={(value) => setStateStatus(value)}
+          />
+          <Button
+            type="default"
+            icon={<AiOutlineClear />}
+            danger
+            onClick={() => setStateStatus(0)}
+          />
+        </Space.Compact>
+      ),
       dataIndex: 'status_name',
       key: 'status_name',
       render: (value) => value || '-',
@@ -74,7 +97,18 @@ const OrderTable: React.FC = () => {
       ),
     },
   ];
-  return <CustomTable dataSource={orders?.data} columns={columns} loading={isLoading} />;
+  return (
+    <CustomTable
+      dataSource={orders?.data}
+      columns={columns}
+      loading={isLoading}
+      pagination={{
+        total: orders?.total,
+        current: currentPage,
+        onChange: (value) => setCurrentPage(value),
+      }}
+    />
+  );
 };
 
 export { OrderTable };

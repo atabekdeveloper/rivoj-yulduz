@@ -1,16 +1,22 @@
+import { TGetParamItem } from '../index.types';
+
 export type TOrderItem = {
   id: number;
-  status_id: number;
   status_name: string;
-  delivery_method_id: number;
-  delivery_method_title: string;
-  delivery_method_price: number;
-  model_type: string;
-  model_id: number;
-  phone: string;
-  comment: null;
+  payment: TGetParamItem;
+  contact: TOrderContact;
+  comment: string;
   total_amount: number;
-  paid: boolean;
+  paid: false;
+  quantity: number;
+  width: number;
+  height: number;
+};
+export type TOrderContact = {
+  id: number;
+  name: string;
+  phone: string;
+  comment: string;
 };
 export type TOrderChange = {
   id: number;

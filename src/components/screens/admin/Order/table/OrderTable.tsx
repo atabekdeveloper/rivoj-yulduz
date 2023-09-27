@@ -36,11 +36,12 @@ const OrderTable: React.FC = () => {
     },
     {
       title: (
-        <Space.Compact>
+        <Space.Compact block>
           <Input
             placeholder="Телефон"
             value={statePhone}
             onChange={(e) => setStatePhone(e.target.value)}
+            style={{ width: '100px' }}
           />
           <Button
             type="default"
@@ -62,12 +63,13 @@ const OrderTable: React.FC = () => {
     },
     {
       title: (
-        <Space.Compact>
+        <Space.Compact block>
           <Select
             placeholder="Статус"
             value={stateStatus || null}
             options={statuses?.data.map((status) => ({ value: status.id, label: status.name }))}
             onChange={(value) => setStateStatus(value)}
+            style={{ width: '150px' }}
           />
           <Button
             type="default"

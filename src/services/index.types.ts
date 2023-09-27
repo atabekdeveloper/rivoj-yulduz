@@ -21,4 +21,5 @@ export type TGetParams = {
   limit: number;
   page: number;
   status_id?: number;
+  phone?: string;
 };

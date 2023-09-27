@@ -1,8 +1,10 @@
-import { Button, Select, Space } from 'antd';
+/* eslint-disable object-curly-newline */
+import { Button, Input, Select, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
 import { AiFillDelete, AiOutlineClear } from 'react-icons/ai';
 import { CustomPopConfirm, CustomTable } from 'src/components/shared';
+import { useDebounce } from 'src/hooks';
 import { useDeleteOrderMutation, useGetOrdersQuery, useGetStatusesQuery } from 'src/services';
 import { TOrderItem } from 'src/services/order/order.types';
 import { formatPrice } from 'src/utils';
@@ -10,12 +12,16 @@ import { formatPrice } from 'src/utils';
 const OrderTable: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [stateStatus, setStateStatus] = React.useState(0);
+  const [statePhone, setStatePhone] = React.useState('');
+
+  const debounceValue = useDebounce(statePhone);
 
   const { data: statuses } = useGetStatusesQuery();
   const { data: orders, isLoading } = useGetOrdersQuery({
     limit: 10,
     page: currentPage,
     status_id: stateStatus,
+    phone: debounceValue,
   });
   const { mutate: deleteOrder } = useDeleteOrderMutation();
 
@@ -29,7 +35,21 @@ const OrderTable: React.FC = () => {
       render: (_, r) => r.contact?.name || '-',
     },
     {
-      title: 'Телефон',
+      title: (
+        <Space.Compact>
+          <Input
+            placeholder="Телефон"
+            value={statePhone}
+            onChange={(e) => setStatePhone(e.target.value)}
+          />
+          <Button
+            type="default"
+            icon={<AiOutlineClear />}
+            danger
+            onClick={() => setStatePhone('')}
+          />
+        </Space.Compact>
+      ),
       dataIndex: 'phone',
       key: 'phone',
       render: (_, r) => r.contact?.phone || '-',

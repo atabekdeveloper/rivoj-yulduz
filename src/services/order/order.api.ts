@@ -10,7 +10,7 @@ import { fetchDeleteOrder, fetchEditOrder, fetchGetOrders, fetchPostOrder } from
 const useGetOrdersQuery = (values: TGetParams) =>
   useQuery({
     queryFn: () => fetchGetOrders(values),
-    queryKey: ['order', values.page, values.status_id],
+    queryKey: ['order', values.page, values.status_id, values.phone],
     onError: (err: any) => message.error(err.response.data.message),
   });
 

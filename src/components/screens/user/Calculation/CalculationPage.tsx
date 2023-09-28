@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { UiButton } from 'src/components/ui';
 import { useActions, useResponsive, useSelectors } from 'src/hooks';
 import { useGetUserServiceItemQuery, useGetUserTypeItemQuery } from 'src/services';
-import { formatPrice } from 'src/utils';
+import { formatPrice2 } from 'src/utils';
 
 import { CalculationCounter } from './CalculationCounter';
 import { CalculationDrawer } from './CalculationDrawer';
@@ -69,7 +69,7 @@ const CalculationPage: React.FC = () => {
             <div className={s.result}>
               <div className={s.count}>
                 <p>Итого:</p>
-                <h1>{formatPrice(paramsItem?.quantity, 'uzs')}</h1>
+                <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
               </div>
               <div className={s.btn}>
                 <UiButton

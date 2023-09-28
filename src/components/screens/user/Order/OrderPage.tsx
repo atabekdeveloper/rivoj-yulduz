@@ -10,7 +10,7 @@ import { UiButton } from 'src/components/ui';
 import { useSelectors } from 'src/hooks';
 import { usePostOrderMutation } from 'src/services';
 import { TPostOrderChange } from 'src/services/order/order.types';
-import { formatPrice, formatStringJoin, formMessage } from 'src/utils';
+import { formatPrice2, formatStringJoin, formMessage } from 'src/utils';
 
 import s from './order.module.scss';
 
@@ -121,7 +121,7 @@ const OrderPage: React.FC = () => {
           <div className={s.pay}>
             <div className={s.top}>
               <h3>Обшая сумма:</h3>
-              <h1>{formatPrice(paramsItem?.quantity, 'uzs')}</h1>
+              <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
             </div>
             <div className={s.bottom}>
               <div className={s.btns}>

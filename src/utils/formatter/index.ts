@@ -8,3 +8,9 @@ export const formatPrice = <T>(number: T & number, type: string) => {
   }
   return `0 ${type}`;
 };
+export const formatPrice2 = <T>(number: T & number, type: string) => {
+  if (number) {
+    return `${number.toLocaleString('cs-CZ')} ${type}`;
+  }
+  return `0 ${type}`;
+};

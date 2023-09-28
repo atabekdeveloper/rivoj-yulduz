@@ -22,8 +22,8 @@ const ContactForm: React.FC = () => {
         autoComplete="off"
         size="large"
       >
-        <Form.Item name="name" rules={[{ required: true, message: formMessage('ФИО') }]}>
-          <Input placeholder="ФИО" />
+        <Form.Item name="name" rules={[{ required: true, message: formMessage('ФИО..') }]}>
+          <Input placeholder="ФИО.." />
         </Form.Item>
         <Form.Item name="phone" rules={[{ required: true, message: formMessage('Телефон') }]}>
           <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" />

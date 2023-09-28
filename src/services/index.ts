@@ -9,5 +9,6 @@ export * from './profile/profile.api';
 export * from './role/role.api';
 export * from './service/service.api';
 export * from './status/status.api';
+export * from './support/support.api';
 export * from './type/type.api';
 export * from './user/user.api';

@@ -51,7 +51,15 @@ const CalculationMenu: React.FC = () => {
       </div>
     );
   }
-  return <UiCollapse colorHeading="#fff" expandIconPosition="end" accordion items={items} />;
+  return (
+    <UiCollapse
+      colorHeading="#fff"
+      expandIconPosition="end"
+      accordion
+      items={items}
+      defaultActiveKey={[`${type?.data.categories[0].slug}`]}
+    />
+  );
 };
 
 export { CalculationMenu };

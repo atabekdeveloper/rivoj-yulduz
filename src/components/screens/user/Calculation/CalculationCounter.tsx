@@ -106,7 +106,11 @@ const CalculationCounter = () => {
           <Button type="default" onClick={minisCount}>
             -
           </Button>
-          <Form.Item name="count" rules={[{ required: true, message: formMessage('Штук') }]}>
+          <Form.Item
+            name="count"
+            rules={[{ required: true, message: formMessage('Штук') }]}
+            style={{ width: '80px' }}
+          >
             <InputNumber
               min={1}
               max={onFormatValue(2)}
@@ -121,7 +125,9 @@ const CalculationCounter = () => {
           </Button>
         </Space.Compact>
         <br />
-        <UiButton type="primary" color="blue" text="Вычислить" onClick={() => form.submit()} />
+        <div style={{ float: 'right' }}>
+          <UiButton type="primary" color="blue" text="Вычислить" onClick={() => form.submit()} />
+        </div>
       </Form>
     </div>
   );

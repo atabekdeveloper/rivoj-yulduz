@@ -4,18 +4,12 @@ import icon3 from 'src/assets/images/service/icon3.svg';
 import icon4 from 'src/assets/images/service/icon4.svg';
 import icon5 from 'src/assets/images/service/icon5.svg';
 import icon6 from 'src/assets/images/service/icon6.svg';
-import icon7 from 'src/assets/images/service/icon7.png';
 
 export const serviceItems = [
   {
     title: 'Наружные реклама',
     slug: 'naruznye-reklama',
     icon: icon1,
-  },
-  {
-    title: 'Видеобуквы',
-    slug: 'videobukvy',
-    icon: icon7,
   },
   {
     title: 'Интерьерная реклама',
@@ -35,11 +29,11 @@ export const serviceItems = [
   {
     title: 'Полиграфия',
     slug: 'poligrafiia',
-    icon: icon6,
+    icon: icon5,
   },
   {
     title: 'Аренда мест для рекламы',
     slug: 'arenda-mest-dlia-reklamy',
-    icon: icon5,
+    icon: icon6,
   },
 ];

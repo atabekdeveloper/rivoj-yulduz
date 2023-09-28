@@ -13,11 +13,6 @@ export const serviceItems = [
     icon: icon1,
   },
   {
-    title: 'Видеобуквы',
-    slug: 'videobukvy',
-    icon: icon7,
-  },
-  {
     title: 'Интерьерная реклама',
     slug: 'interernaia-reklama',
     icon: icon2,

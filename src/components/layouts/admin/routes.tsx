@@ -4,6 +4,7 @@ import { BiCategory } from 'react-icons/bi';
 import { LuShoppingCart } from 'react-icons/lu';
 import { MdWorkOutline } from 'react-icons/md';
 import { RiCustomerService2Line } from 'react-icons/ri';
+import { SlCallIn } from 'react-icons/sl';
 
 export const routes: MenuProps['items'] = [
   {
@@ -30,6 +31,11 @@ export const routes: MenuProps['items'] = [
     key: '/admin/portfolio',
     label: 'Портфолио',
     icon: <MdWorkOutline />,
+  },
+  {
+    key: '/admin/support',
+    label: 'Заявки',
+    icon: <SlCallIn />,
   },
   {
     key: '/admin/order',

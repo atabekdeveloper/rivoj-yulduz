@@ -13,6 +13,7 @@ import {
   PortfolioInfoPage,
   Service,
   ServicePage,
+  Support,
   Type,
 } from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
@@ -37,6 +38,10 @@ const adminRoutes = [
   {
     path: '/admin/order',
     element: <ReactSuspense comp={<Order />} />,
+  },
+  {
+    path: '/admin/support',
+    element: <ReactSuspense comp={<Support />} />,
   },
   {
     path: '/admin/portfolio',

@@ -7,7 +7,7 @@ import { MdModeEdit } from 'react-icons/md';
 import { CustomPopConfirm, CustomTable } from 'src/components/shared';
 import { UiAntdButton } from 'src/components/ui';
 import { useActions } from 'src/hooks';
-import { useDeleteServiceMutation, useGetSupportsQuery } from 'src/services';
+import { useDeleteSupportMutation, useGetSupportsQuery } from 'src/services';
 import { TSupportItem } from 'src/services/support/support.types';
 
 const SupportTable: React.FC = () => {
@@ -18,9 +18,9 @@ const SupportTable: React.FC = () => {
     limit: 10,
     page: currentPage,
   });
-  const { mutate: deleteService } = useDeleteServiceMutation();
+  const { mutate: deleteSupport } = useDeleteSupportMutation();
 
-  const onDeleteSupport = (id: number) => deleteService(id);
+  const onDeleteSupport = (id: number) => deleteSupport(id);
   const onEditSupport = (id: number) => {
     const findItem = supports?.data.find((service) => service.id === id);
     setParamsItemForm(findItem);

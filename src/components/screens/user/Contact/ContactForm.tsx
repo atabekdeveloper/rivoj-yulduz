@@ -32,13 +32,18 @@ const ContactForm: React.FC = () => {
           <Input placeholder="Ф.И.О" />
         </Form.Item>
         <Form.Item name="phone" rules={[{ required: true, message: formMessage('Телефон') }]}>
-          <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" />
+          <MaskedInput
+            inputMode="tel"
+            mask="+{998} 00 000 00 00"
+            size="large"
+            placeholder="Телефон"
+          />
         </Form.Item>
         <Form.Item
           name="description"
           rules={[{ required: true, message: formMessage('Комментарии') }]}
         >
-          <Input.TextArea placeholder="Комментарии" />
+          <Input.TextArea placeholder="Комментарии" autoSize />
         </Form.Item>
         <Button htmlType="submit" type="primary" loading={isLoading}>
           Оставить заявку

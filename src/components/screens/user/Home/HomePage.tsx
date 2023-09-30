@@ -1,8 +1,9 @@
+import { Space } from 'antd';
 import React from 'react';
 import Img from 'react-cool-img';
+import { Link } from 'react-router-dom';
 import logo from 'src/assets/images/shadow-logo.svg';
 import {
-  AboutPage,
   AchievementPage,
   ClientsPage,
   ContactInfoPage,
@@ -10,10 +11,13 @@ import {
 } from 'src/components/screens';
 import { UiButton } from 'src/components/ui';
 
+import { HomeSlider } from './HomeSlider';
+
 import s from './home.module.scss';
 
 const HomePage: React.FC = () => (
   <>
+    <HomeSlider />
     <div className={s.home}>
       <div className="container">
         <div className={s.body}>
@@ -28,15 +32,19 @@ const HomePage: React.FC = () => (
               metus orci facilisi elementum. Sem in eget sed parturient tempus. Sed urna magna leo
               neque convallis sit cras auctor. Vestibulum ut sed nunc risus ullamcorper donec.
             </p>
-            <a href="#contact">
-              <UiButton text="Оставить заявку" type="primary" color="pink" />
-            </a>
+            <Space size={20} wrap>
+              <a href="#contact">
+                <UiButton text="Оставить заявку" type="primary" color="pink" />
+              </a>
+              <Link to="/service">
+                <UiButton text="Все категории услуг" type="default" color="blue" />
+              </Link>
+            </Space>
           </div>
           <Img src={logo} alt="Logo" />
         </div>
       </div>
     </div>
-    <AboutPage />
     <PortfolioPage />
     <ClientsPage />
     <AchievementPage />

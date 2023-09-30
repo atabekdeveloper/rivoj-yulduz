@@ -6,14 +6,18 @@
   align-items: center;
   justify-content: center;
   background-color: var(--clr-gray-200);
+  @media (max-width: 992px) {
+    padding: 60px 0;
+    height: 100%;
+    .body {
+      flex-wrap: wrap-reverse;
+    }
+  }
   .body {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    @media (max-width: 992px) {
-      flex-wrap: wrap-reverse;
-    }
     .info {
       display: flex;
       flex-direction: column;
@@ -35,5 +39,12 @@
         display: none;
       }
     }
+  }
+}
+.sliders {
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
   }
 }

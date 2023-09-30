@@ -26,7 +26,10 @@ const ServiceForm: React.FC = () => {
   const { mutate: addService, isLoading: addLoading } = usePostServiceMutation();
   const { mutate: editService, isLoading: editLoading } = useEditServiceMutation();
 
-  const onChangeUpload = (e: any) => setUploadFile(e.target.files[0]);
+  const onChangeUpload = (e: any) => {
+    setUploadFile(e.target.files[0]);
+    console.log(e.target.files);
+  };
 
   const onFinish = (values: TServiceChange) => {
     if (paramsItem) editService({ ...values, id: paramsItem.id, image: uploadFile });
@@ -136,7 +139,7 @@ const ServiceForm: React.FC = () => {
           name="image"
           rules={[{ required: false, message: formMessage('Фото') }]}
         >
-          <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" type="file" />
+          <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" multiple type="file" />
         </Form.Item>
       </Form>
     </CustomModal>

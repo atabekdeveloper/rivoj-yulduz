@@ -17,7 +17,7 @@ export const serviceItems = [
     icon: icon2,
   },
   {
-    title: 'Cборка, доставка и установка рекламного товара',
+    title: 'Доставка и установка',
     slug: 'cborka-dostavka-i-ustanovka-reklamnogo-tovara',
     icon: icon3,
   },

@@ -7,7 +7,6 @@ import {
   ClientsPage,
   ContactInfoPage,
   PortfolioPage,
-  ServicePage,
 } from 'src/components/screens';
 import { UiButton } from 'src/components/ui';
 
@@ -37,7 +36,6 @@ const HomePage: React.FC = () => (
         </div>
       </div>
     </div>
-    <ServicePage />
     <AboutPage />
     <PortfolioPage />
     <ClientsPage />

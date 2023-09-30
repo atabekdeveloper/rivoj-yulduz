@@ -6,18 +6,11 @@ const AchievementPage: React.FC = () => (
   <div className={s.achievement}>
     <div className="container">
       <h1 className="title">Достижении</h1>
-      <ul className={s.topItems}>
+      <ul className={s.items}>
         <li>
           <h1>1400</h1>
           <p>товары...</p>
         </li>
-        <li>
-          <h1>1400</h1>
-          <p>товары...</p>
-        </li>
-      </ul>
-      <br />
-      <ul className={s.bottomItems}>
         <li>
           <h1>1400</h1>
           <p>товары...</p>

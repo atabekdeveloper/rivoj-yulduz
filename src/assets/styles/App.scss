@@ -28,9 +28,8 @@
 .title {
   text-align: center;
   color: var(--clr-blue);
-  font-size: 48px;
   font-weight: 600;
-  @include adaptiv-font(48, 28, 48);
+  @include adaptiv-font(42, 24, 42);
   padding-bottom: 40px;
   &.active {
     text-align: right;

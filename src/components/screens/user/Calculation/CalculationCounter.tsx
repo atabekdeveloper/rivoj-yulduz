@@ -23,9 +23,9 @@ const CalculationCounter = () => {
 
   const onFormatValue = (id: number) => service?.data.formats.find((el) => el.id === id)?.value;
   const unDimensional = () => {
-    if (service?.data.dimension_id === 1) return true;
-    if (service?.data.dimension_id === 2) return true;
-    if (service?.data.dimension_id === 3) return true;
+    if (service?.data.dimension.id === 1) return true;
+    if (service?.data.dimension.id === 2) return true;
+    if (service?.data.dimension.id === 3) return true;
   };
   const addCount = () => form.setFieldValue('count', count ? count + 1 : 1);
   const minisCount = () => form.setFieldValue('count', count > 0 ? count - 1 : 0);
@@ -39,7 +39,7 @@ const CalculationCounter = () => {
         quantity:
           service.data.price_each * values.count * (values.height || 1) * (values.width || 1),
         service_slug: service.data.slug,
-        category: service.data.category_title,
+        category: service.data.category.title,
         service: service.data.title,
       });
     }
@@ -63,8 +63,8 @@ const CalculationCounter = () => {
             name="height"
             rules={[
               {
-                required: service?.data.dimension_id !== 1,
-                message: formMessage(`Высота в ${service?.data.dimension_unit}`),
+                required: service?.data.dimension.id !== 1,
+                message: formMessage(`Высота в ${service?.data.dimension.unit}`),
               },
             ]}
             style={{ width: '100%' }}
@@ -74,8 +74,8 @@ const CalculationCounter = () => {
               max={onFormatValue(6)}
               step={1}
               precision={0}
-              placeholder={`Высота в ${service?.data.dimension_unit}`}
-              disabled={service?.data.dimension_id === 1}
+              placeholder={`Высота в ${service?.data.dimension.unit}`}
+              disabled={service?.data.dimension.id === 1}
               size="large"
               type="number"
             />
@@ -85,7 +85,7 @@ const CalculationCounter = () => {
             rules={[
               {
                 required: !unDimensional(),
-                message: formMessage(`Ширина в ${service?.data.dimension_unit}`),
+                message: formMessage(`Ширина в ${service?.data.dimension.unit}`),
               },
             ]}
             style={{ width: '100%' }}
@@ -95,7 +95,7 @@ const CalculationCounter = () => {
               max={onFormatValue(4)}
               step={1}
               precision={0}
-              placeholder={`Ширина в ${service?.data.dimension_unit}`}
+              placeholder={`Ширина в ${service?.data.dimension.unit}`}
               disabled={unDimensional()}
               size="large"
               type="number"

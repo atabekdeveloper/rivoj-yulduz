@@ -1,3 +1,5 @@
+import { TCategoryItem } from '../category/category.types';
+import { TDimensionItem } from '../dimension/dimension.types';
 import { TFormatItem } from '../format/format.types';
 
 export type TServiceItem = {
@@ -5,11 +7,8 @@ export type TServiceItem = {
   title: string;
   description: string;
   slug: string;
-  category_id: number;
-  category_title: string;
-  dimension_id: number;
-  dimension_name: string;
-  dimension_unit: string;
+  category: TCategoryItem;
+  dimension: TDimensionItem;
   each: number;
   price: number;
   price_each: number;

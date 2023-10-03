@@ -38,13 +38,13 @@ const ServiceTable: React.FC = () => {
       title: 'Категория',
       dataIndex: 'category_title',
       key: 'category_title',
-      render: (_, r) => r.category.title || '-',
+      render: (_, r) => r.category?.title || '-',
     },
     {
       title: 'Единица измерения',
       dataIndex: 'dimension_unit',
       key: 'dimension_unit',
-      render: (_, r) => r.dimension.unit || '-',
+      render: (_, r) => r.dimension?.unit || '-',
     },
     {
       title: 'Сумма',

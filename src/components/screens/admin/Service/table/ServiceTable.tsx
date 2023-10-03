@@ -9,6 +9,7 @@ import { UiAntdButton } from 'src/components/ui';
 import { useActions } from 'src/hooks';
 import { useDeleteServiceMutation, useGetServicesQuery } from 'src/services';
 import { TServiceItem } from 'src/services/service/service.types';
+import { formatPrice } from 'src/utils';
 
 const ServiceTable: React.FC = () => {
   const { setParamsItemForm } = useActions();
@@ -37,16 +38,25 @@ const ServiceTable: React.FC = () => {
       title: 'Категория',
       dataIndex: 'category_title',
       key: 'category_title',
+      render: (_, r) => r.category.title || '-',
     },
     {
       title: 'Единица измерения',
       dataIndex: 'dimension_unit',
       key: 'dimension_unit',
+      render: (_, r) => r.dimension.unit || '-',
     },
     {
       title: 'Сумма',
       dataIndex: 'price',
       key: 'price',
+      render: (value) => formatPrice(value, 'uzs'),
+    },
+    {
+      title: 'Скидка',
+      dataIndex: 'is_discount',
+      key: 'is_discount',
+      render: (value) => (value ? 'Да' : 'Нет'),
     },
     {
       title: 'Форматы',
@@ -66,10 +76,16 @@ const ServiceTable: React.FC = () => {
       title: 'Фото',
       dataIndex: 'image',
       key: 'image',
-      render: (image) => (
-        <Image src={image} width={70}>
-          <Avatar src={image} shape="square" />
-        </Image>
+      render: (_, r) => (
+        <Image.PreviewGroup>
+          <Space>
+            {r.images.map((image) => (
+              <Image src={image.image_url} width={70} key={image.id}>
+                <Avatar src={image.image_url} shape="square" />
+              </Image>
+            ))}
+          </Space>
+        </Image.PreviewGroup>
       ),
     },
     {

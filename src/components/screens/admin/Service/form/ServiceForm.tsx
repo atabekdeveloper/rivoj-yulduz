@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import { Button, Form, Input, InputNumber, Select } from 'antd';
+import { Button, Checkbox, Form, Input, InputNumber, Select } from 'antd';
 import React from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { CustomModal } from 'src/components/shared';
@@ -17,7 +17,7 @@ import { formatNum, formMessage } from 'src/utils';
 const ServiceForm: React.FC = () => {
   const [form] = Form.useForm();
   const { paramsItem } = useSelectors();
-  const [uploadFile, setUploadFile] = React.useState<string>('');
+  const [uploadFile, setUploadFile] = React.useState<string[]>([]);
 
   const { data: dimensions } = useGetDimensionsQuery();
   const { data: categories } = useGetCategoriesQuery();
@@ -27,17 +27,23 @@ const ServiceForm: React.FC = () => {
   const { mutate: editService, isLoading: editLoading } = useEditServiceMutation();
 
   const onChangeUpload = (e: any) => {
-    setUploadFile(e.target.files[0]);
-    console.log(e.target.files);
+    setUploadFile(e.target.files);
   };
 
   const onFinish = (values: TServiceChange) => {
-    if (paramsItem) editService({ ...values, id: paramsItem.id, image: uploadFile });
-    else addService({ ...values, image: uploadFile });
+    if (paramsItem) editService({ ...values, id: paramsItem.id, images: uploadFile });
+    else addService({ ...values, images: uploadFile });
   };
 
   React.useEffect(() => {
-    if (paramsItem) form.setFieldsValue({ ...paramsItem, image: null });
+    if (paramsItem) {
+      form.setFieldsValue({
+        ...paramsItem,
+        category_id: paramsItem.category.id,
+        dimension_id: paramsItem.dimension.id,
+        image: null,
+      });
+    }
   }, [paramsItem, form]);
   return (
     <CustomModal form={form} confirmLoading={addLoading || editLoading}>
@@ -74,11 +80,19 @@ const ServiceForm: React.FC = () => {
         <Form.Item
           name="dimension_id"
           label="Размер"
-          rules={[{ required: true, message: formMessage('Категория') }]}
+          rules={[{ required: true, message: formMessage('Размер') }]}
         >
           <Select
             options={dimensions?.data.map(({ id, title }) => ({ value: id, label: title }))}
           />
+        </Form.Item>
+        <Form.Item
+          name="is_discount"
+          valuePropName="checked"
+          label="Скидка"
+          rules={[{ required: false, message: formMessage('Скидка') }]}
+        >
+          <Checkbox>Скидка</Checkbox>
         </Form.Item>
         <Form.Item
           label="Сумма"
@@ -134,11 +148,7 @@ const ServiceForm: React.FC = () => {
             </>
           )}
         </Form.List>
-        <Form.Item
-          label="Фото"
-          name="image"
-          rules={[{ required: false, message: formMessage('Фото') }]}
-        >
+        <Form.Item label="Фото" rules={[{ required: false, message: formMessage('Фото') }]}>
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" multiple type="file" />
         </Form.Item>
       </Form>

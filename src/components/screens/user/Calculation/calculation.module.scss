@@ -84,14 +84,25 @@
         .count {
           display: flex;
           justify-content: space-between;
+          .price {
+            p {
+              color: var(--clr-gray);
+            }
+          }
           h1 {
             color: var(--clr-blue);
+            @include adaptiv-font(48, 24, 48);
+            font-weight: 400;
           }
         }
         .btn {
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
+          align-items: center;
           padding-top: 50px;
+          h3 {
+            color: var(--clr-pink);
+          }
         }
       }
       img {
@@ -120,4 +131,14 @@
   background-color: var(--clr-gray-200);
   border-radius: 10px;
   padding: 30px 0;
+}
+.sliders {
+  max-width: 100%;
+  width: 800px;
+}
+.sliderImg {
+  max-width: 100%;
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: cover;
 }

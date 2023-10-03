@@ -13,7 +13,10 @@ export type TServiceItem = {
   price: number;
   price_each: number;
   is_public: boolean;
-  image: string;
+  images: {
+    id: number;
+    image_url: string;
+  }[];
   formats: TFormatItem[];
 };
 export type TServiceChange = {
@@ -24,6 +27,6 @@ export type TServiceChange = {
   dimension_id: number;
   price: number;
   each: number;
-  image: string;
+  images: string[];
   formats: TFormatItem[];
 };

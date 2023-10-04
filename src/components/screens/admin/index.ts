@@ -3,5 +3,6 @@ export * from './Home/Home';
 export * from './Order/Order';
 export * from './Portfolio/Portfolio';
 export * from './Service/Service';
+export * from './Slider/Slider';
 export * from './Support/Support';
 export * from './Type/Type';

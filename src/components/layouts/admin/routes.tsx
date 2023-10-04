@@ -1,6 +1,7 @@
 import { MenuProps } from 'antd';
 import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai';
 import { BiCategory } from 'react-icons/bi';
+import { HiOutlineSpeakerphone } from 'react-icons/hi';
 import { LuShoppingCart } from 'react-icons/lu';
 import { MdWorkOutline } from 'react-icons/md';
 import { RiCustomerService2Line } from 'react-icons/ri';
@@ -31,6 +32,11 @@ export const routes: MenuProps['items'] = [
     key: '/admin/portfolio',
     label: 'Портфолио',
     icon: <MdWorkOutline />,
+  },
+  {
+    key: '/admin/slider',
+    label: 'Реклама',
+    icon: <HiOutlineSpeakerphone />,
   },
   {
     key: '/admin/support',

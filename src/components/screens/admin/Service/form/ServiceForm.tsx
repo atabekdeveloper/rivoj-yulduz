@@ -41,7 +41,7 @@ const ServiceForm: React.FC = () => {
         ...paramsItem,
         category_id: paramsItem.category.id,
         dimension_id: paramsItem.dimension.id,
-        image: null,
+        images: null,
       });
     }
   }, [paramsItem, form]);

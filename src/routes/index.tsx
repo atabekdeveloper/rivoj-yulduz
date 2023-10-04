@@ -13,6 +13,7 @@ import {
   PortfolioInfoPage,
   Service,
   ServicePage,
+  Slider,
   Support,
   Type,
 } from 'src/components/screens';
@@ -46,6 +47,10 @@ const adminRoutes = [
   {
     path: '/admin/portfolio',
     element: <ReactSuspense comp={<Portfolio />} />,
+  },
+  {
+    path: '/admin/slider',
+    element: <ReactSuspense comp={<Slider />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

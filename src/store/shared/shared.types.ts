@@ -8,4 +8,5 @@ export interface ISharedType {
   id: number;
   paramsItem: any;
   tinyContent: string;
+  location: number[];
 }

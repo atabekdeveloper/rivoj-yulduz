@@ -8,8 +8,6 @@ export * from './Clients/ClientsPage';
 export * from './Contact/ContactInfoPage';
 export * from './Contact/ContactPage';
 export * from './Home/HomePage';
-export * from './News/NewsInfoPage';
-export * from './News/NewsPage';
 export * from './Order/OrderPage';
 export * from './Portfolio/PortfolioInfoPage';
 export * from './Portfolio/PortfolioPage';

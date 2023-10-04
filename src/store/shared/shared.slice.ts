@@ -12,6 +12,7 @@ const initialState: ISharedType = {
   isMenu: false,
   paramsItem: null,
   tinyContent: '',
+  location: [],
 };
 
 const sharedSlice = createSlice({
@@ -48,6 +49,9 @@ const sharedSlice = createSlice({
     },
     setTinyContent(state, { payload }: PayloadAction<string>) {
       state.tinyContent = payload;
+    },
+    setLocation(state, { payload }: PayloadAction<number[]>) {
+      state.location = payload;
     },
   },
 });

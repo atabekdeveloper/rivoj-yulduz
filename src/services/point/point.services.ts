@@ -13,7 +13,7 @@ export const fetchGetPointTypes = async (): Promise<SR<TPointTypeItem>> => {
   return res.data;
 };
 export const fetchPostPoint = async (values: TPointChange): Promise<SRO<TPointItem>> => {
-  const res = await api.post('/points', values);
+  const res = await api.post('/admin/points', values);
   return res.data;
 };
 export const fetchEditPoint = async (values: TPointChange): Promise<SRO<TPointItem>> => {

@@ -10,7 +10,7 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
   const { paramsItem, isModal } = useSelectors();
   const { form, confirmLoading } = _props;
 
-  const { toggleModal, setId, setParamsItem } = useActions();
+  const { toggleModal, setId, setParamsItem, setLocation } = useActions();
 
   const handleOk = () => form.submit();
 
@@ -19,6 +19,7 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
     form.resetFields();
     setId(0);
     setParamsItem(null);
+    setLocation([]);
   };
   React.useEffect(() => {
     if (!confirmLoading) {
@@ -26,6 +27,7 @@ const CustomModal: React.FC<ModalProps & ICustomModal> = React.memo((_props) => 
       form.resetFields();
       setParamsItem(null);
       setId(0);
+      setLocation([]);
     }
   }, [form, confirmLoading]);
   return (

@@ -9,6 +9,7 @@ import {
   NotFoundPage,
   Order,
   OrderPage,
+  Point,
   Portfolio,
   PortfolioInfoPage,
   Service,
@@ -51,6 +52,10 @@ const adminRoutes = [
   {
     path: '/admin/slider',
     element: <ReactSuspense comp={<Slider />} />,
+  },
+  {
+    path: '/admin/point',
+    element: <ReactSuspense comp={<Point />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable object-curly-newline */
-/* eslint-disable operator-linebreak */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Form, InputNumber, Space } from 'antd';
 import React from 'react';
@@ -70,7 +68,7 @@ const CalculationCounter = () => {
             style={{ width: '100%' }}
           >
             <InputNumber
-              min={onFormatValue(5)}
+              min={onFormatValue(5) || 0}
               max={onFormatValue(6)}
               step={1}
               precision={0}
@@ -91,7 +89,7 @@ const CalculationCounter = () => {
             style={{ width: '100%' }}
           >
             <InputNumber
-              min={onFormatValue(3)}
+              min={onFormatValue(3) || 0}
               max={onFormatValue(4)}
               step={1}
               precision={0}

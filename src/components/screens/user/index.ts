@@ -1,6 +1,5 @@
 export * from './404/NotFoundPage';
 export * from './About/AboutInfoPage';
-export * from './About/AboutPage';
 export * from './Achievement/AchievementPage';
 export * from './Auth/AuthPage';
 export * from './Calculation/CalculationPage';

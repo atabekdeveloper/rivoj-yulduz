@@ -28,9 +28,6 @@ aside {
 }
 html,
 body {
-  width: 100%;
-  overflow: hidden;
-  overflow-y: scroll;
   font-family: 'Inter', sans-serif;
   &::-webkit-scrollbar {
     width: 2px;

@@ -41,10 +41,14 @@
     }
   }
 }
-.sliders {
-  img {
-    width: 100%;
-    object-fit: cover;
-    height: 200px;
+.slider {
+  max-width: 100%;
+  width: 100%;
+  .sliders {
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 200px;
+    }
   }
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { Avatar, Empty } from 'antd';
+import { Empty } from 'antd';
 import React from 'react';
 import Img from 'react-cool-img';
 import { RxHamburgerMenu } from 'react-icons/rx';

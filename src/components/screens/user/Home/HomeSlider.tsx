@@ -15,10 +15,12 @@ const HomeSlider: React.FC = () => {
     slidesToScroll: 1,
   };
   return (
-    <Slider {...settings} className={s.sliders}>
-      <Img src={Banner} alt="Banner" />
-      <Img src={Banner} alt="Banner" />
-    </Slider>
+    <div className={s.slider}>
+      <Slider {...settings} className={s.sliders}>
+        <Img src={Banner} alt="Banner" />
+        <Img src={Banner} alt="Banner" />
+      </Slider>
+    </div>
   );
 };
 

@@ -100,9 +100,14 @@
         gap: 20px;
         flex-wrap: wrap;
         padding-bottom: 50px;
+        .price {
+          p {
+            color: var(--clr-gray);
+          }
+        }
         h1 {
           color: var(--clr-blue);
-          @include adaptiv-font(40, 24, 40);
+          @include adaptiv-font(48, 24, 48);
         }
         h3 {
           color: var(--clr-black);

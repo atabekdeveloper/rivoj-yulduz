@@ -126,7 +126,10 @@ const OrderPage: React.FC = () => {
           <div className={s.pay}>
             <div className={s.top}>
               <h3>Общая сумма:</h3>
-              <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
+              <div className={s.price}>
+                <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
+                <p>Без учета доставки</p>
+              </div>
             </div>
             <div className={s.bottom}>
               <div className={s.btns}>

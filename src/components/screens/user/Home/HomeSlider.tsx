@@ -22,7 +22,7 @@ const HomeSlider: React.FC = () => {
     <div>
       {sliders?.data.length ? (
         <div className={s.slider}>
-          <Slider {...settings} className={s.sliders}>
+          <Slider {...settings} className={s.items}>
             {sliders?.data.map((slider) => (
               <Img
                 key={slider.id}

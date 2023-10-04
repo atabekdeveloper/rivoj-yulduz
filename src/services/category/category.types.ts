@@ -4,6 +4,7 @@ export type TCategoryItem = {
   slug: string;
   description: string;
   type_id: number;
+  type: { slug: string };
 };
 export type TCategoryChange = {
   id?: number;

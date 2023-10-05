@@ -28,7 +28,7 @@ const SliderForm: React.FC = () => {
 
   React.useEffect(() => {
     if (paramsItem) {
-      form.setFieldsValue({ ...paramsItem, service_id: paramsItem.service.id, images: null });
+      form.setFieldsValue({ ...paramsItem, service_id: paramsItem.service?.id, images: null });
     }
   }, [paramsItem, form]);
   return (
@@ -55,7 +55,11 @@ const SliderForm: React.FC = () => {
         >
           <Select options={services?.data.map(({ id, title }) => ({ value: id, label: title }))} />
         </Form.Item>
-        <Form.Item label="Фото" rules={[{ required: false, message: formMessage('Фото') }]}>
+        <Form.Item
+          label="Фото"
+          name="images"
+          rules={[{ required: false, message: formMessage('Фото') }]}
+        >
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" type="file" />
         </Form.Item>
       </Form>

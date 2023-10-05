@@ -13,6 +13,7 @@ export type TServiceItem = {
   price: number;
   price_each: number;
   is_public: boolean;
+  is_discount: boolean;
   images: {
     id: number;
     image_url: string;

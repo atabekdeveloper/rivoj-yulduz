@@ -37,7 +37,7 @@ const SliderTable: React.FC = () => {
       title: 'Сервис',
       dataIndex: 'service',
       key: 'service',
-      render: (_, r) => r.service.title || '-',
+      render: (_, r) => r.service?.title || '-',
     },
     {
       title: 'Фото',

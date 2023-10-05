@@ -8,5 +8,10 @@
   width: 100% !important;
 }
 .ant-input-number-disabled {
-  background-color: #e8edf5 !important;
+  background-color: #dcddd5 !important;
+}
+.ant-btn-default {
+  &:disabled {
+    background-color: #dcddd5 !important;
+  }
 }

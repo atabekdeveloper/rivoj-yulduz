@@ -148,7 +148,11 @@ const ServiceForm: React.FC = () => {
             </>
           )}
         </Form.List>
-        <Form.Item label="Фото" rules={[{ required: false, message: formMessage('Фото') }]}>
+        <Form.Item
+          label="Фото"
+          name="images"
+          rules={[{ required: false, message: formMessage('Фото') }]}
+        >
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" multiple type="file" />
         </Form.Item>
       </Form>

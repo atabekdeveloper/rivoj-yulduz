@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Form, InputNumber, Space } from 'antd';
+import clsx from 'clsx';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { UiButton } from 'src/components/ui';
@@ -15,7 +16,7 @@ const CalculationCounter = () => {
   const { slugService } = useParams();
   const { setParamsItem } = useActions();
 
-  const count = Form.useWatch('count', { form, preserve: true });
+  const count = Form.useWatch('count', { form, preserve: true }) || 0;
 
   const { data: service, isSuccess } = useGetUserServiceItemQuery(String(slugService));
 
@@ -25,6 +26,7 @@ const CalculationCounter = () => {
     if (service?.data.dimension.id === 2) return true;
     if (service?.data.dimension.id === 3) return true;
   };
+  const onSomeSm = () => service?.data.dimension.unit === 'см';
   const addCount = () => form.setFieldValue('count', count ? count + 1 : 1);
   const minisCount = () => form.setFieldValue('count', count > 0 ? count - 1 : 0);
 
@@ -33,6 +35,7 @@ const CalculationCounter = () => {
       setParamsItem({
         width: values.width || null,
         height: values.height || null,
+        unit: service.data.dimension.unit,
         count: values.count,
         quantity:
           service.data.price_each * values.count * (values.height || 1) * (values.width || 1),
@@ -70,8 +73,8 @@ const CalculationCounter = () => {
             <InputNumber
               min={onFormatValue(5) || 0}
               max={onFormatValue(6)}
-              step={1}
-              precision={0}
+              step={clsx(onSomeSm() && 1)}
+              precision={onSomeSm() ? 0 : 1}
               placeholder={`Высота в ${service?.data.dimension.unit}`}
               disabled={service?.data.dimension.id === 1}
               size="large"
@@ -91,8 +94,8 @@ const CalculationCounter = () => {
             <InputNumber
               min={onFormatValue(3) || 0}
               max={onFormatValue(4)}
-              step={1}
-              precision={0}
+              step={clsx(onSomeSm() && 1)}
+              precision={onSomeSm() ? 0 : 1}
               placeholder={`Ширина в ${service?.data.dimension.unit}`}
               disabled={unDimensional()}
               size="large"
@@ -101,7 +104,7 @@ const CalculationCounter = () => {
           </Form.Item>
         </div>
         <Space.Compact size="large">
-          <Button type="default" onClick={minisCount}>
+          <Button type="default" onClick={minisCount} disabled={onFormatValue(1) === count}>
             -
           </Button>
           <Form.Item
@@ -110,7 +113,7 @@ const CalculationCounter = () => {
             style={{ width: '80px' }}
           >
             <InputNumber
-              min={1}
+              min={onFormatValue(1) || 1}
               max={onFormatValue(2)}
               step={1}
               precision={0}
@@ -118,7 +121,7 @@ const CalculationCounter = () => {
               type="number"
             />
           </Form.Item>
-          <Button type="default" onClick={addCount}>
+          <Button type="default" onClick={addCount} disabled={onFormatValue(2) === count}>
             +
           </Button>
         </Space.Compact>

@@ -96,7 +96,9 @@ const CalculationPage: React.FC = () => {
                 </div>
               </div>
               <div className={s.btn}>
-                <h3>{`${paramsItem?.is_discount ? 'Со скидкой' : ''}`}</h3>
+                <h3>
+                  {`${paramsItem?.quantity && service?.data.is_discount ? 'Со скидкой' : ''}`}
+                </h3>
                 <UiButton
                   text="Заказать"
                   color="pink"

@@ -1,4 +1,5 @@
 export * from './Category/Category';
+export * from './Employee/Employee';
 export * from './Home/Home';
 export * from './Order/Order';
 export * from './Point/Point';

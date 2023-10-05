@@ -24,7 +24,7 @@ const client = new QueryClient({
   },
 });
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <Router>
     <Provider store={store}>
       <YMaps query={{ apikey: yandexApi }}>

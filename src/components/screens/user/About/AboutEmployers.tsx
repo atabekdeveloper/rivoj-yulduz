@@ -1,37 +1,23 @@
 import React from 'react';
 import Img from 'react-cool-img';
-import user from 'src/assets/images/user.jpg';
+import { useGetUserEmployeesQuery } from 'src/services';
 
 import s from './about.module.scss';
 
 const AboutEmployers: React.FC = () => {
-  const x = 0;
+  const { data: employees } = useGetUserEmployeesQuery();
   return (
     <ul className={s.items}>
-      <li className={s.item}>
-        <Img src={user} alt="User" />
-        <div className={s.info}>
-          <h3>Taylor Romero</h3>
-          <span>Глава компании</span>
-        </div>
-        <p className={s.phone}>+998 90 230 12 34</p>
-      </li>
-      <li className={s.item}>
-        <Img src={user} alt="User" />
-        <div className={s.info}>
-          <h3>Taylor Romero</h3>
-          <span>Глава компании</span>
-        </div>
-        <p className={s.phone}>+998 90 230 12 34</p>
-      </li>
-      <li className={s.item}>
-        <Img src={user} alt="User" />
-        <div className={s.info}>
-          <h3>Taylor Romero</h3>
-          <span>Глава компании</span>
-        </div>
-        <p className={s.phone}>+998 90 230 12 34</p>
-      </li>
+      {employees?.data.map((employee) => (
+        <li className={s.item} key={employee.id}>
+          <Img src={employee.image?.image_url} alt="User" />
+          <div className={s.info}>
+            <h3>{employee.name}</h3>
+            <span>{employee.position}</span>
+          </div>
+          <p className={s.phone}>{employee.phone}</p>
+        </li>
+      ))}
     </ul>
   );
 };

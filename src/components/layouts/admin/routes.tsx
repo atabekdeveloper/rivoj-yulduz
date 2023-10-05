@@ -4,6 +4,7 @@ import { BiCategory } from 'react-icons/bi';
 import { HiOutlineLocationMarker, HiOutlineSpeakerphone } from 'react-icons/hi';
 import { LuShoppingCart } from 'react-icons/lu';
 import { MdWorkOutline } from 'react-icons/md';
+import { PiUsersLight } from 'react-icons/pi';
 import { RiCustomerService2Line } from 'react-icons/ri';
 import { SlCallIn } from 'react-icons/sl';
 
@@ -42,6 +43,11 @@ export const routes: MenuProps['items'] = [
     key: '/admin/point',
     label: 'Точки',
     icon: <HiOutlineLocationMarker />,
+  },
+  {
+    key: '/admin/employee',
+    label: 'Сотрудники',
+    icon: <PiUsersLight />,
   },
   {
     key: '/admin/support',

@@ -4,6 +4,7 @@ import {
   CalculationPage,
   Category,
   ContactPage,
+  Employee,
   Home,
   HomePage,
   NotFoundPage,
@@ -57,6 +58,10 @@ const adminRoutes = [
   {
     path: '/admin/point',
     element: <ReactSuspense comp={<Point />} />,
+  },
+  {
+    path: '/admin/employee',
+    element: <ReactSuspense comp={<Employee />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

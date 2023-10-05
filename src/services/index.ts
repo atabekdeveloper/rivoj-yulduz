@@ -2,6 +2,7 @@ export * from './auth/auth.api';
 export * from './category/category.api';
 export * from './delivery/method/delivery-method.api';
 export * from './dimension/dimension.api';
+export * from './employee/employee.api';
 export * from './format/format.api';
 export * from './order/order.api';
 export * from './point/point.api';

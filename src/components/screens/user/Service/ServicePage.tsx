@@ -11,9 +11,9 @@ const ServicePage: React.FC = () => {
   return (
     <div className={s.service}>
       <div className="container">
-        <div className="title">
+        <h1 className="title">
           {pathname === '/service' ? <span>Все категории услуг</span> : <span>Наши услуги</span>}
-        </div>
+        </h1>
         <ul className={s.items}>
           {serviceItems.map(({ title, icon, slug }, i) => (
             <ServiceItem key={i} title={title} icon={icon} slug={slug} />

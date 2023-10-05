@@ -8,6 +8,7 @@ import {
   fetchEditPoint,
   fetchGetPoints,
   fetchGetPointTypes,
+  fetchGetUserPoints,
   fetchPostPoint,
 } from './point.services';
 
@@ -15,6 +16,12 @@ const useGetPointsQuery = () =>
   useQuery({
     queryFn: fetchGetPoints,
     queryKey: ['point'],
+    onError: (err: any) => message.error(err.response.data.message),
+  });
+const useGetUserPointsQuery = () =>
+  useQuery({
+    queryFn: fetchGetUserPoints,
+    queryKey: ['point-user'],
     onError: (err: any) => message.error(err.response.data.message),
   });
 
@@ -65,5 +72,6 @@ export {
   useEditPointMutation,
   useGetPointsQuery,
   useGetPointTypesQuery,
+  useGetUserPointsQuery,
   usePostPointMutation,
 };

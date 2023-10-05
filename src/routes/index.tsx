@@ -10,6 +10,7 @@ import {
   Order,
   OrderPage,
   Point,
+  PointPage,
   Portfolio,
   PortfolioInfoPage,
   Service,
@@ -69,6 +70,7 @@ const userRoutes = [
   { path: '/about', element: <AboutInfoPage /> },
   { path: '/portfolio', element: <PortfolioInfoPage /> },
   { path: '/contact', element: <ContactPage /> },
+  { path: '/point', element: <PointPage /> },
   { path: '*', element: <NotFoundPage /> },
 ];
 

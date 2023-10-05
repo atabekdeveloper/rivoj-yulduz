@@ -8,6 +8,10 @@ export const fetchGetPoints = async (): Promise<SR<TPointItem>> => {
   const res = await api.get('/admin/points');
   return res.data;
 };
+export const fetchGetUserPoints = async (): Promise<SR<TPointItem>> => {
+  const res = await api.get('/points');
+  return res.data;
+};
 export const fetchGetPointTypes = async (): Promise<SR<TPointTypeItem>> => {
   const res = await api.get('/admin/point-types');
   return res.data;

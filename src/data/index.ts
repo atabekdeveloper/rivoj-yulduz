@@ -33,7 +33,7 @@ export const serviceItems = [
   },
   {
     title: 'Аренда мест для рекламы',
-    slug: 'arenda-mest-dlia-reklamy',
+    slug: 'point',
     icon: icon6,
   },
 ];

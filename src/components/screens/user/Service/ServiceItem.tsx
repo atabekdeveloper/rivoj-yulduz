@@ -14,7 +14,7 @@ const ServiceItem: React.FC<TServiceItem> = ({ title, icon, slug }) => {
   return (
     <li
       className={s.item}
-      onClick={() => navigate(`${slug === 'service' ? '/service' : `/service/${slug}/1`}`)}
+      onClick={() => navigate(`${slug === 'point' ? '/point' : `/service/${slug}/1`}`)}
     >
       <div className={s.title}>
         <span>{title}</span>

@@ -52,7 +52,12 @@ const PointPage: React.FC = () => {
                 iconImageSize: [32, 32],
                 iconImageOffset: [-16, -16],
               }}
-              onClick={() => notification.info({ message: point.title, placement: 'top' })}
+              onClick={() => {
+                notification.info({
+                  message: `${point.point_type.name}: ${point.title}`,
+                  placement: 'top',
+                });
+              }}
             />
           ))}
         </Map>

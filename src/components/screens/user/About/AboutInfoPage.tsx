@@ -3,10 +3,12 @@ import Img from 'react-cool-img';
 import about1 from 'src/assets/images/about/aboutInfo1.jpg';
 import about2 from 'src/assets/images/about/aboutInfo2.jpg';
 
+import { AboutEmployers } from './AboutEmployers';
+
 import s from './about.module.scss';
 
 const AboutInfoPage: React.FC = () => (
-  <div className={s.aboutInfo}>
+  <div className={s.about}>
     <div className="container">
       <h1 className="title">О нас</h1>
       <div className={s.body}>
@@ -50,6 +52,7 @@ const AboutInfoPage: React.FC = () => (
             ullamcorper morbi amet.
           </p>
         </div>
+        <AboutEmployers />
       </div>
     </div>
   </div>

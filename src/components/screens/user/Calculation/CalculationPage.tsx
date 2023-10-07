@@ -92,7 +92,7 @@ const CalculationPage: React.FC = () => {
                 <p>Итого:</p>
                 <div className={s.price}>
                   <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
-                  {paramsItem?.quantity && <p>Без учета доставки</p>}
+                  {paramsItem?.quantity && <p>Без учета доставки и дизайнерских услуг</p>}
                 </div>
               </div>
               <div className={s.btn}>

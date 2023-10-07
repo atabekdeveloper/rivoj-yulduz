@@ -85,9 +85,12 @@
           display: flex;
           justify-content: space-between;
           .price {
+            text-align: right;
             p {
-              color: var(--clr-gray);
-              text-align: right;
+              padding: 6px 16px;
+              background-color: var(--clr-gray-200);
+              color: var(--clr-blue);
+              border-radius: 8px;
             }
           }
           h1 {

@@ -18,10 +18,10 @@ const useGetPortfoliosQuery = () =>
     onError: (err: any) => message.error(err.response.data.message),
   });
 
-const useGetUserPortfoliosQuery = () =>
+const useGetUserPortfoliosQuery = (limit?: number) =>
   useQuery({
-    queryFn: () => fetchGetUserPortfolios(),
-    queryKey: ['portfolio'],
+    queryFn: () => fetchGetUserPortfolios(limit),
+    queryKey: ['portfolio', limit],
     onError: (err: any) => message.error(err.response.data.message),
   });
 

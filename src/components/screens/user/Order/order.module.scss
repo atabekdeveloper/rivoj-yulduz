@@ -101,9 +101,14 @@
         flex-wrap: wrap;
         padding-bottom: 50px;
         .price {
-          p {
-            color: var(--clr-gray);
+          h1 {
             text-align: right;
+          }
+          p {
+            padding: 6px 16px;
+            background-color: var(--clr-gray-200);
+            color: var(--clr-blue);
+            border-radius: 8px;
           }
         }
         h1 {

@@ -8,7 +8,7 @@ import s from './portfolio.module.scss';
 
 const PortfolioPage: React.FC = () => {
   const navigate = useNavigate();
-  const { data: portfolios } = useGetUserPortfoliosQuery();
+  const { data: portfolios } = useGetUserPortfoliosQuery(4);
   return (
     <div className={s.portfolio}>
       <div className="container">

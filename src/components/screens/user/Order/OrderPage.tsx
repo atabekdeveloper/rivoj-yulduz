@@ -106,11 +106,11 @@ const OrderPage: React.FC = () => {
               <ul className={s.items}>
                 <li className={s.item}>
                   <span>высота</span>
-                  <span>{`${paramsItem?.height || '-'} ${paramsItem.unit}`}</span>
+                  <span>{`${paramsItem?.height || '-'} ${paramsItem?.unit || ''}`}</span>
                 </li>
                 <li className={s.item}>
                   <span>ширина</span>
-                  <span>{`${paramsItem?.width || '-'} ${paramsItem.unit}`}</span>
+                  <span>{`${paramsItem?.width || '-'} ${paramsItem?.unit || ''}`}</span>
                 </li>
                 <li className={s.item}>
                   <span>толшина</span>
@@ -128,7 +128,7 @@ const OrderPage: React.FC = () => {
               <h3>Общая сумма:</h3>
               <div className={s.price}>
                 <h1>{formatPrice2(paramsItem?.quantity, 'uzs')}</h1>
-                <p>Без учета доставки</p>
+                <p>Без учета доставки и дизайнерских услуг</p>
               </div>
             </div>
             <div className={s.bottom}>

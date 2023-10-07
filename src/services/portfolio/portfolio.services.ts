@@ -7,8 +7,8 @@ export const fetchGetPortfolios = async (): Promise<SR<TPortfolioItem>> => {
   const res = await api.get('/admin/portfolios');
   return res.data;
 };
-export const fetchGetUserPortfolios = async (): Promise<SR<TPortfolioItem>> => {
-  const res = await api.get('/portfolios');
+export const fetchGetUserPortfolios = async (limit?: number): Promise<SR<TPortfolioItem>> => {
+  const res = await api.get(`/portfolios?${limit ? `limit=${limit}` : ''}`);
   return res.data;
 };
 export const fetchPostPortfolio = async (values: TPortfolioChange): Promise<TMessage> => {

@@ -34,7 +34,7 @@ const PointPage: React.FC = () => {
           <Placemark
             geometry={[42.4600059, 59.6153464]}
             options={{
-              draggable: true,
+              draggable: false,
               iconLayout: 'default#image',
               iconImageHref: logo,
               iconImageSize: [60, 60],
@@ -46,7 +46,7 @@ const PointPage: React.FC = () => {
               key={point.title}
               geometry={[point.lat, point.lng]}
               options={{
-                draggable: true,
+                draggable: false,
                 iconLayout: 'default#image',
                 iconImageHref: point.point_type.slug === 'ekran' ? pink : blue,
                 iconImageSize: [32, 32],

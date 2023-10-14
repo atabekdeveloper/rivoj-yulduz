@@ -44,3 +44,7 @@ export type TPostOrderChange = {
 export type TPortGetItem = {
   payment_url: string;
 };
+export type TOrderAttachChange = {
+  orderId: number;
+  userId: number;
+};

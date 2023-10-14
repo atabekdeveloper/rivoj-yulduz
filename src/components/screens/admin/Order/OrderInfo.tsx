@@ -12,7 +12,7 @@ const OrderInfo: React.FC = () => {
       <Head
         title="Заказы"
         childs={[
-          <Button type="default" onClick={() => navigate('/admin/order')}>
+          <Button type="primary" onClick={() => navigate('/admin/order')}>
             Назад
           </Button>,
         ]}

@@ -6,10 +6,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import {
   fetchDeleteOrder,
+  fetchDeleteOrderAttach,
   fetchEditOrder,
   fetchGetOrderItem,
   fetchGetOrders,
   fetchPostOrder,
+  fetchPostOrderAttach,
 } from './order.services';
 
 const useGetOrdersQuery = (values: TGetParams) =>
@@ -32,6 +34,18 @@ const usePostOrderMutation = () => {
     mutationFn: fetchPostOrder,
     onSuccess: (res) => {
       client.invalidateQueries({ queryKey: ['order'] });
+      message.success(res.message);
+    },
+    onError: (err: any) => message.error(err.response.data.message),
+  });
+};
+
+const usePostOrderAttachMutation = () => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: fetchPostOrderAttach,
+    onSuccess: (res) => {
+      client.invalidateQueries({ queryKey: ['order-item'] });
       message.success(res.message);
     },
     onError: (err: any) => message.error(err.response.data.message),
@@ -61,10 +75,24 @@ const useDeleteOrderMutation = () => {
   });
 };
 
+const useDeleteOrderAttachMutation = () => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: fetchDeleteOrderAttach,
+    onSuccess: (res) => {
+      client.invalidateQueries({ queryKey: ['order-item'] });
+      message.success(res.message);
+    },
+    onError: (err: any) => message.error(err.response.data.message),
+  });
+};
+
 export {
+  useDeleteOrderAttachMutation,
   useDeleteOrderMutation,
   useEditOrderMutation,
   useGetOrderItemQuery,
   useGetOrdersQuery,
+  usePostOrderAttachMutation,
   usePostOrderMutation,
 };

@@ -8,6 +8,7 @@ import {
   fetchDeleteOrder,
   fetchDeleteOrderAttach,
   fetchEditOrder,
+  fetchEditOrderItem,
   fetchGetOrderItem,
   fetchGetOrders,
   fetchPostOrder,
@@ -62,7 +63,17 @@ const useEditOrderMutation = () => {
     onError: (err: any) => message.error(err.response.data.message),
   });
 };
-
+const useEditOrderItemMutation = () => {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: fetchEditOrderItem,
+    onSuccess: (res) => {
+      client.invalidateQueries({ queryKey: ['order-item'] });
+      message.success(res.message);
+    },
+    onError: (err: any) => message.error(err.response.data.message),
+  });
+};
 const useDeleteOrderMutation = () => {
   const client = useQueryClient();
   return useMutation({
@@ -90,6 +101,7 @@ const useDeleteOrderAttachMutation = () => {
 export {
   useDeleteOrderAttachMutation,
   useDeleteOrderMutation,
+  useEditOrderItemMutation,
   useEditOrderMutation,
   useGetOrderItemQuery,
   useGetOrdersQuery,

@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Head } from 'src/components/shared';
 
+import { OrderInfoForm } from './form/OrderInfoForm';
 import { OrderInfoTable } from './table/OrderInfoTable';
 
 const OrderInfo: React.FC = () => {
@@ -17,6 +18,7 @@ const OrderInfo: React.FC = () => {
           </Button>,
         ]}
       />
+      <OrderInfoForm />
       <OrderInfoTable />
     </>
   );

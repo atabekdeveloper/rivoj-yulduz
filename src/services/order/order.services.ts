@@ -5,6 +5,7 @@ import { SR, SRO, TGetParams, TMessage } from 'src/services/index.types';
 import {
   TOrderAttachChange,
   TOrderChange,
+  TOrderContactChange,
   TOrderItem,
   TPortGetItem,
   TPostOrderChange,
@@ -30,6 +31,10 @@ export const fetchPostOrderAttach = async (
 };
 export const fetchEditOrder = async (values: TOrderChange): Promise<SRO<TOrderItem>> => {
   const res = await api.put(`/admin/orders/${values.id}`, values);
+  return res.data;
+};
+export const fetchEditOrderItem = async (values: TOrderContactChange): Promise<SRO<TOrderItem>> => {
+  const res = await api.patch(`/admin/contacts/${values.id}`, values);
   return res.data;
 };
 export const fetchDeleteOrder = async (id: number): Promise<TMessage> => {

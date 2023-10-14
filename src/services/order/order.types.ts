@@ -27,9 +27,8 @@ export type TOrderContact = {
 };
 export type TOrderChange = {
   id: number;
-  title: string;
-  description: string;
-  type_id: number;
+  status_id?: number;
+  prepaid_expense?: boolean;
 };
 export type TPostOrderChange = {
   service_slug: string;
@@ -47,4 +46,9 @@ export type TPortGetItem = {
 export type TOrderAttachChange = {
   orderId: number;
   userId: number;
+};
+export type TOrderContactChange = {
+  id: number;
+  title: string;
+  address: string;
 };

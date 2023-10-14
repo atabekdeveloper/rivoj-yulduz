@@ -7,7 +7,12 @@ import { AiFillDelete, AiFillEye, AiOutlineClear } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { CustomPopConfirm, CustomTable } from 'src/components/shared';
 import { useDebounce } from 'src/hooks';
-import { useDeleteOrderMutation, useGetOrdersQuery, useGetStatusesQuery } from 'src/services';
+import {
+  useDeleteOrderMutation,
+  useEditOrderMutation,
+  useGetOrdersQuery,
+  useGetStatusesQuery,
+} from 'src/services';
 import { TOrderItem } from 'src/services/order/order.types';
 import { formatPrice } from 'src/utils';
 
@@ -26,6 +31,8 @@ const OrderTable: React.FC = () => {
     status_id: stateStatus,
     phone: debounceValue,
   });
+
+  const { mutate: editOrder } = useEditOrderMutation();
   const { mutate: deleteOrder } = useDeleteOrderMutation();
 
   const onDeleteOrder = (id: number) => deleteOrder(id);
@@ -78,7 +85,15 @@ const OrderTable: React.FC = () => {
       ),
       dataIndex: 'status_name',
       key: 'status_name',
-      render: (value) => value || '-',
+      render: (_, r) => (
+        <Select
+          placeholder="Статус"
+          value={r.status_name}
+          options={statuses?.data.map((status) => ({ value: status.id, label: status.name }))}
+          onChange={(value) => editOrder({ id: r.id, status_id: Number(value) })}
+          style={{ width: '200px' }}
+        />
+      ),
     },
     {
       title: 'Способ оплаты',
@@ -87,28 +102,21 @@ const OrderTable: React.FC = () => {
       render: (_, r) => r.payment?.name,
     },
     {
-      title: 'Ширина',
-      dataIndex: 'width',
-      key: 'width',
-      render: (_, r) => (r?.width ? formatPrice(r.width, r.service.dimension.unit) : '-'),
-    },
-    {
-      title: 'Высота',
-      dataIndex: 'height',
-      key: 'height',
-      render: (_, r) => (r?.height ? formatPrice(r.height, r.service.dimension.unit) : '-'),
-    },
-    {
-      title: 'Количество',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      render: (value) => (value ? formatPrice(value, 'штук') : '-'),
-    },
-    {
       title: 'Аванс',
       dataIndex: 'prepaid_expense',
       key: 'prepaid_expense',
-      render: (value) => (value ? 'аванс оплачен' : 'аванс неоплачен'),
+      render: (_, r) => (
+        <Select
+          placeholder="Аванс"
+          value={r.prepaid_expense}
+          options={[
+            { value: true, label: 'аванс оплачен' },
+            { value: false, label: 'аванс неоплачен' },
+          ]}
+          onChange={(value) => editOrder({ id: r.id, prepaid_expense: value })}
+          style={{ width: '200px' }}
+        />
+      ),
     },
     {
       title: 'Оплачен',

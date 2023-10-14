@@ -2,8 +2,11 @@ import { Button, Select, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
+import { MdModeEdit } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { CustomTable } from 'src/components/shared';
+import { UiAntdButton } from 'src/components/ui';
+import { useActions } from 'src/hooks';
 import {
   useDeleteOrderAttachMutation,
   useGetOrderItemQuery,
@@ -11,9 +14,11 @@ import {
   usePostOrderAttachMutation,
 } from 'src/services';
 import { TOrderItem } from 'src/services/order/order.types';
+import { formatPrice } from 'src/utils';
 
 const OrderInfoTable: React.FC = () => {
   const { id } = useParams();
+  const { setParamsItemForm } = useActions();
 
   const { mutate: editAttach } = usePostOrderAttachMutation();
   const { mutate: deleteAttach } = useDeleteOrderAttachMutation();
@@ -79,7 +84,41 @@ const OrderInfoTable: React.FC = () => {
       title: 'Сервис',
       dataIndex: 'service',
       key: 'service',
+      ellipsis: {
+        showTitle: false,
+      },
       render: (_, r) => r?.service?.title || '-',
+    },
+    {
+      title: 'Ширина',
+      dataIndex: 'width',
+      key: 'width',
+      render: (_, r) => (r?.width ? formatPrice(r.width, r.service?.dimension?.unit) : '-'),
+    },
+    {
+      title: 'Высота',
+      dataIndex: 'height',
+      key: 'height',
+      render: (_, r) => (r?.height ? formatPrice(r.height, r.service?.dimension?.unit) : '-'),
+    },
+    {
+      title: 'Количество',
+      dataIndex: 'quantity',
+      key: 'quantity',
+      render: (value) => (value ? formatPrice(value, 'штук') : '-'),
+    },
+    {
+      fixed: 'right',
+      width: 100,
+      key: 'action',
+      align: 'center',
+      render: () => (
+        <UiAntdButton
+          color="#FFC108"
+          icon={<MdModeEdit />}
+          onClick={() => setParamsItemForm(order?.data)}
+        />
+      ),
     },
   ];
   return (

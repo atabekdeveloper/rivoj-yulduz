@@ -51,4 +51,5 @@ export type TOrderContactChange = {
   id: number;
   title: string;
   address: string;
+  comment: string;
 };

@@ -42,6 +42,13 @@ const OrderInfoForm: React.FC = () => {
         >
           <Input.TextArea />
         </Form.Item>
+        <Form.Item
+          label="Комментария"
+          name="comment"
+          rules={[{ required: false, message: formMessage('Комментария') }]}
+        >
+          <Input.TextArea />
+        </Form.Item>
       </Form>
     </CustomModal>
   );

@@ -8,6 +8,10 @@ export const fetchGetOrders = async (values: TGetParams): Promise<SR<TOrderItem>
   const res = await api.get('/admin/orders', { params: values });
   return res.data;
 };
+export const fetchGetOrderItem = async (id: number): Promise<SRO<TOrderItem>> => {
+  const res = await api.get(`/admin/orders/${id}`);
+  return res.data;
+};
 export const fetchPostOrder = async (values: TPostOrderChange): Promise<SRO<TPortGetItem>> => {
   const res = await api.post('/orders', values);
   return res.data;

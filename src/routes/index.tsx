@@ -9,6 +9,7 @@ import {
   HomePage,
   NotFoundPage,
   Order,
+  OrderInfo,
   OrderPage,
   Point,
   PointPage,
@@ -19,6 +20,7 @@ import {
   Slider,
   Support,
   Type,
+  User,
 } from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
 
@@ -44,6 +46,10 @@ const adminRoutes = [
     element: <ReactSuspense comp={<Order />} />,
   },
   {
+    path: '/admin/order/:id',
+    element: <ReactSuspense comp={<OrderInfo />} />,
+  },
+  {
     path: '/admin/support',
     element: <ReactSuspense comp={<Support />} />,
   },
@@ -62,6 +68,10 @@ const adminRoutes = [
   {
     path: '/admin/employee',
     element: <ReactSuspense comp={<Employee />} />,
+  },
+  {
+    path: '/admin/user',
+    element: <ReactSuspense comp={<User />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

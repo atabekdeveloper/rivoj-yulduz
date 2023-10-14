@@ -1,8 +1,10 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable object-curly-newline */
 import { Button, Input, Select, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
-import { AiFillDelete, AiOutlineClear } from 'react-icons/ai';
+import { AiFillDelete, AiFillEye, AiOutlineClear } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import { CustomPopConfirm, CustomTable } from 'src/components/shared';
 import { useDebounce } from 'src/hooks';
 import { useDeleteOrderMutation, useGetOrdersQuery, useGetStatusesQuery } from 'src/services';
@@ -14,6 +16,7 @@ const OrderTable: React.FC = () => {
   const [stateStatus, setStateStatus] = React.useState(0);
   const [statePhone, setStatePhone] = React.useState('');
 
+  const navigate = useNavigate();
   const debounceValue = useDebounce(statePhone);
 
   const { data: statuses } = useGetStatusesQuery();
@@ -56,12 +59,6 @@ const OrderTable: React.FC = () => {
       render: (_, r) => r.contact?.phone || '-',
     },
     {
-      title: 'Комментария',
-      dataIndex: 'comment',
-      key: 'comment',
-      render: (_, r) => r.contact?.comment || '-',
-    },
-    {
       title: (
         <Space.Compact block>
           <Select
@@ -69,7 +66,7 @@ const OrderTable: React.FC = () => {
             value={stateStatus || null}
             options={statuses?.data.map((status) => ({ value: status.id, label: status.name }))}
             onChange={(value) => setStateStatus(value)}
-            style={{ width: '150px' }}
+            style={{ width: '200px' }}
           />
           <Button
             type="default"
@@ -93,13 +90,13 @@ const OrderTable: React.FC = () => {
       title: 'Ширина',
       dataIndex: 'width',
       key: 'width',
-      render: (value) => (value ? formatPrice(value, '') : '-'),
+      render: (_, r) => (r?.width ? formatPrice(r.width, r.service.dimension.unit) : '-'),
     },
     {
       title: 'Высота',
       dataIndex: 'height',
       key: 'height',
-      render: (value) => (value ? formatPrice(value, '') : '-'),
+      render: (_, r) => (r?.height ? formatPrice(r.height, r.service.dimension.unit) : '-'),
     },
     {
       title: 'Количество',
@@ -108,10 +105,23 @@ const OrderTable: React.FC = () => {
       render: (value) => (value ? formatPrice(value, 'штук') : '-'),
     },
     {
-      title: 'Сумма',
+      title: 'Аванс',
+      dataIndex: 'prepaid_expense',
+      key: 'prepaid_expense',
+      render: (value) => (value ? 'аванс оплачен' : 'аванс неоплачен'),
+    },
+    {
+      title: 'Оплачен',
       dataIndex: 'total_amount',
       key: 'total_amount',
       render: (value) => formatPrice(value, 'uzs'),
+    },
+    {
+      title: 'Сумма',
+      dataIndex: 'amount',
+      key: 'amount',
+      render: (_, r) =>
+        formatPrice((r.width || 1) * (r.height || 1) * r.quantity * r.service.price_each, 'uzs'),
     },
     {
       fixed: 'right',
@@ -119,9 +129,16 @@ const OrderTable: React.FC = () => {
       key: 'action',
       align: 'center',
       render: (_, r) => (
-        <CustomPopConfirm title={r.contact?.name} onConfirm={() => onDeleteOrder(r.id)}>
-          <Button icon={<AiFillDelete />} type="primary" danger />
-        </CustomPopConfirm>
+        <Space>
+          <Button
+            icon={<AiFillEye />}
+            type="primary"
+            onClick={() => navigate(`/admin/order/${r.id}`)}
+          />
+          <CustomPopConfirm title={r.contact?.name} onConfirm={() => onDeleteOrder(r.id)}>
+            <Button icon={<AiFillDelete />} type="primary" danger />
+          </CustomPopConfirm>
+        </Space>
       ),
     },
   ];

@@ -1,6 +1,7 @@
 import { MenuProps } from 'antd';
 import { AiOutlineHome, AiOutlineSetting } from 'react-icons/ai';
 import { BiCategory } from 'react-icons/bi';
+import { FiUsers } from 'react-icons/fi';
 import { HiOutlineLocationMarker, HiOutlineSpeakerphone } from 'react-icons/hi';
 import { LuShoppingCart } from 'react-icons/lu';
 import { MdWorkOutline } from 'react-icons/md';
@@ -58,5 +59,10 @@ export const routes: MenuProps['items'] = [
     key: '/admin/order',
     label: 'Заказы',
     icon: <LuShoppingCart />,
+  },
+  {
+    key: '/admin/user',
+    label: 'Пользователи',
+    icon: <FiUsers />,
   },
 ];

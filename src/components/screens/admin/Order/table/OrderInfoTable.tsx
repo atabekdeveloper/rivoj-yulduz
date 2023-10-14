@@ -20,7 +20,7 @@ const OrderInfoTable: React.FC = () => {
   const { data: order, isLoading } = useGetOrderItemQuery(Number(id));
   const { data: users } = useGetUsersQuery();
 
-  const attachs = users?.data.filter((user) => user.role_id === 3);
+  const attached = users?.data.filter((user) => user.role_id === 3);
 
   const columns: ColumnsType<TOrderItem> = [
     {
@@ -64,7 +64,7 @@ const OrderInfoTable: React.FC = () => {
             onChange={(value) => editAttach({ orderId: Number(id), userId: value })}
             style={{ width: '150px' }}
             placeholder="Измерчик"
-            options={attachs?.map((attach) => ({ value: attach.id, label: attach.name }))}
+            options={attached?.map((attach) => ({ value: attach.id, label: attach.name }))}
           />
           <Button
             type="primary"

@@ -81,22 +81,22 @@ const OrderInfoTable: React.FC = () => {
         </Space.Compact>
       ),
     },
-    // {
-    //   title: 'Фото',
-    //   dataIndex: 'image',
-    //   key: 'image',
-    //   render: (_, r) => (
-    //     <Image.PreviewGroup>
-    //       <Space>
-    //         {r.details.map((detail) => (
-    //           <Image src={detail} width={70} key={detail.id}>
-    //             <Avatar src={detail} shape="square" />
-    //           </Image>
-    //         ))}
-    //       </Space>
-    //     </Image.PreviewGroup>
-    //   ),
-    // },
+    {
+      title: 'Фото',
+      dataIndex: 'image',
+      key: 'image',
+      render: (_, r) => (
+        <Image.PreviewGroup>
+          <Space>
+            {r?.images.map((image) => (
+              <Image src={image.image_url} width={70} key={image.id}>
+                <Avatar src={image.image_url} shape="square" />
+              </Image>
+            ))}
+          </Space>
+        </Image.PreviewGroup>
+      ),
+    },
     {
       title: 'Сервис',
       dataIndex: 'service',

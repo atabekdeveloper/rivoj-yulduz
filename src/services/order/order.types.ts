@@ -9,7 +9,7 @@ export type TOrderItem = {
   contact: TOrderContact;
   service: TServiceItem;
   user: TUserItem;
-  details: TOrderDetailItem[];
+  images: TOrderImageItem[];
   comment: string;
   total_amount: number;
   paid: boolean;
@@ -54,12 +54,7 @@ export type TOrderContactChange = {
   address: string;
   comment: string;
 };
-export type TOrderDetailItem = {
+export type TOrderImageItem = {
+  image_url: string;
   id: number;
-  description: string;
-  images: {
-    image_url: string;
-    id: number;
-  }[];
-  created_at: string;
 };

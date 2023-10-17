@@ -88,9 +88,9 @@ const OrderInfoTable: React.FC = () => {
       render: (_, r) => (
         <Image.PreviewGroup>
           <Space>
-            {r.details.map((image) => (
-              <Image src={image.image_url} width={70} key={image.id}>
-                <Avatar src={image.image_url} shape="square" />
+            {r?.details?.map((image) => (
+              <Image src={image?.image_url} width={70} key={image?.id}>
+                <Avatar src={image?.image_url} shape="square" />
               </Image>
             ))}
           </Space>

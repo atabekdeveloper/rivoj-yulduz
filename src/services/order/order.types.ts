@@ -9,6 +9,10 @@ export type TOrderItem = {
   contact: TOrderContact;
   service: TServiceItem;
   user: TUserItem;
+  details: {
+    image_url: string;
+    id: number;
+  }[];
   comment: string;
   total_amount: number;
   paid: boolean;

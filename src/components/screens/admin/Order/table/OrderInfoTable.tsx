@@ -1,4 +1,5 @@
-import { Button, Select, Space } from 'antd';
+/* eslint-disable object-curly-newline */
+import { Avatar, Button, Image, Select, Space } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
@@ -78,6 +79,22 @@ const OrderInfoTable: React.FC = () => {
             onClick={() => deleteAttach({ orderId: Number(id), userId: r.user.id })}
           />
         </Space.Compact>
+      ),
+    },
+    {
+      title: 'Фото',
+      dataIndex: 'image',
+      key: 'image',
+      render: (_, r) => (
+        <Image.PreviewGroup>
+          <Space>
+            {r.details.map((image) => (
+              <Image src={image.image_url} width={70} key={image.id}>
+                <Avatar src={image.image_url} shape="square" />
+              </Image>
+            ))}
+          </Space>
+        </Image.PreviewGroup>
       ),
     },
     {

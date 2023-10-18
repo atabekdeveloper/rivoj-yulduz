@@ -123,16 +123,16 @@ const ServiceForm: React.FC = () => {
           <InputNumber formatter={formatNum} />
         </Form.Item>
         <Form.Item
-          label="Код"
+          label="ИКПУ"
           name="code"
-          rules={[{ required: true, message: formMessage('Код') }]}
+          rules={[{ required: true, message: formMessage('ИКПУ') }]}
         >
           <InputNumber />
         </Form.Item>
         <Form.Item
-          label="Код пакета"
+          label="КОД УПАКОВКИ"
           name="package_code"
-          rules={[{ required: true, message: formMessage('Код пакета') }]}
+          rules={[{ required: true, message: formMessage('КОД УПАКОВКИ') }]}
         >
           <InputNumber />
         </Form.Item>

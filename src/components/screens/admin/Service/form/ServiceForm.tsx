@@ -31,8 +31,22 @@ const ServiceForm: React.FC = () => {
   };
 
   const onFinish = (values: TServiceChange) => {
-    if (paramsItem) editService({ ...values, id: paramsItem.id, images: uploadFile });
-    else addService({ ...values, images: uploadFile });
+    if (paramsItem) {
+      editService({
+        ...values,
+        id: paramsItem.id,
+        images: uploadFile,
+        code: String(values.code),
+        package_code: String(values.package_code),
+      });
+    } else {
+      addService({
+        ...values,
+        images: uploadFile,
+        code: String(values.code),
+        package_code: String(values.package_code),
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -107,6 +121,20 @@ const ServiceForm: React.FC = () => {
           rules={[{ required: true, message: formMessage('Каждый') }]}
         >
           <InputNumber formatter={formatNum} />
+        </Form.Item>
+        <Form.Item
+          label="Код"
+          name="code"
+          rules={[{ required: true, message: formMessage('Код') }]}
+        >
+          <InputNumber />
+        </Form.Item>
+        <Form.Item
+          label="Код пакета"
+          name="package_code"
+          rules={[{ required: true, message: formMessage('Код пакета') }]}
+        >
+          <InputNumber />
         </Form.Item>
         <Form.List name="formats" initialValue={[{}]}>
           {(fields, { add, remove }) => (

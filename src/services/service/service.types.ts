@@ -30,4 +30,6 @@ export type TServiceChange = {
   each: number;
   images: string[];
   formats: TFormatItem[];
+  code: string;
+  package_code: string;
 };

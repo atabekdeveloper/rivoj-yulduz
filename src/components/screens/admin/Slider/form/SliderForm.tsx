@@ -14,8 +14,16 @@ const SliderForm: React.FC = () => {
 
   const { data: services } = useGetServicesQuery();
 
-  const { mutate: addSlider, isLoading: addLoading } = usePostSliderMutation();
-  const { mutate: editSlider, isLoading: editLoading } = useEditSliderMutation();
+  const {
+    mutate: addSlider,
+    isLoading: addLoading,
+    isSuccess: addSuccess,
+  } = usePostSliderMutation();
+  const {
+    mutate: editSlider,
+    isLoading: editLoading,
+    isSuccess: editSuccess,
+  } = useEditSliderMutation();
 
   const onChangeUpload = (e: any) => {
     setUploadFile(e.target.files);
@@ -31,6 +39,9 @@ const SliderForm: React.FC = () => {
       form.setFieldsValue({ ...paramsItem, service_id: paramsItem.service?.id, images: null });
     }
   }, [paramsItem, form]);
+  React.useEffect(() => {
+    if (addSuccess || editSuccess) setUploadFile([]);
+  }, [addSuccess, editSuccess]);
   return (
     <CustomModal form={form} confirmLoading={addLoading || editLoading}>
       <Form name="Slider Form" form={form} onFinish={onFinish} autoComplete="off" layout="vertical">

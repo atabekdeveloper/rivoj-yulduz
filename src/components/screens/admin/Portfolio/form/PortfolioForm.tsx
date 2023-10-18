@@ -10,21 +10,35 @@ import { formMessage } from 'src/utils';
 const PortfolioForm: React.FC = () => {
   const [form] = Form.useForm();
   const { paramsItem } = useSelectors();
-  const [uploadFile, setUploadFile] = React.useState<string>('');
+  const [uploadFile, setUploadFile] = React.useState<string | null>(null);
 
-  const { mutate: addPortfolio, isLoading: addLoading } = usePostPortfolioMutation();
-  const { mutate: editPortfolio, isLoading: editLoading } = useEditPortfolioMutation();
+  const {
+    mutate: addPortfolio,
+    isLoading: addLoading,
+    isSuccess: addSuccess,
+  } = usePostPortfolioMutation();
+  const {
+    mutate: editPortfolio,
+    isLoading: editLoading,
+    isSuccess: editSuccess,
+  } = useEditPortfolioMutation();
 
   const onChangeUpload = (e: any) => setUploadFile(e.target.files[0]);
 
   const onFinish = (values: TPortfolioChange) => {
-    if (paramsItem) editPortfolio({ ...values, id: paramsItem.id, image: uploadFile });
-    else addPortfolio({ ...values, image: uploadFile });
+    if (paramsItem) {
+      editPortfolio({ ...values, id: paramsItem.id, image: uploadFile });
+    } else {
+      addPortfolio({ ...values, image: uploadFile });
+    }
   };
 
   React.useEffect(() => {
     if (paramsItem) form.setFieldsValue({ ...paramsItem, image: null });
   }, [paramsItem, form]);
+  React.useEffect(() => {
+    if (addSuccess || editSuccess) setUploadFile(null);
+  }, [addSuccess, editSuccess]);
   return (
     <CustomModal form={form} confirmLoading={addLoading || editLoading}>
       <Form

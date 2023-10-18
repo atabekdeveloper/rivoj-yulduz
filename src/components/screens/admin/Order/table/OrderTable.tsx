@@ -1,7 +1,8 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable object-curly-newline */
-import { Button, Input, Select, Space } from 'antd';
+import { Button, Input, Select, Space, Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import clsx from 'clsx';
 import React from 'react';
 import { AiFillDelete, AiFillEye, AiOutlineClear } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -122,7 +123,11 @@ const OrderTable: React.FC = () => {
       title: 'Оплачен',
       dataIndex: 'total_amount',
       key: 'total_amount',
-      render: (value) => formatPrice(value, 'uzs'),
+      render: (_, r) => (
+        <Tag color={clsx(r.paid && 'green', !r.paid && 'red')}>
+          {formatPrice(r.total_amount, 'uzs')}
+        </Tag>
+      ),
     },
     {
       title: 'Сумма',

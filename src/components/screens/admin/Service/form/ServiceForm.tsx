@@ -23,8 +23,16 @@ const ServiceForm: React.FC = () => {
   const { data: categories } = useGetCategoriesQuery();
   const { data: formats } = useGetFormatsQuery();
 
-  const { mutate: addService, isLoading: addLoading } = usePostServiceMutation();
-  const { mutate: editService, isLoading: editLoading } = useEditServiceMutation();
+  const {
+    mutate: addService,
+    isLoading: addLoading,
+    isSuccess: addSuccess,
+  } = usePostServiceMutation();
+  const {
+    mutate: editService,
+    isLoading: editLoading,
+    isSuccess: editSuccess,
+  } = useEditServiceMutation();
 
   const onChangeUpload = (e: any) => {
     setUploadFile(e.target.files);
@@ -59,6 +67,9 @@ const ServiceForm: React.FC = () => {
       });
     }
   }, [paramsItem, form]);
+  React.useEffect(() => {
+    if (addSuccess || editSuccess) setUploadFile([]);
+  }, [addSuccess, editSuccess]);
   return (
     <CustomModal form={form} confirmLoading={addLoading || editLoading}>
       <Form

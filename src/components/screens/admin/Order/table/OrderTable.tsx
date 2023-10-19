@@ -89,7 +89,7 @@ const OrderTable: React.FC = () => {
       render: (_, r) => (
         <Select
           placeholder="Статус"
-          value={r.status_name}
+          value={r.status_id}
           options={statuses?.data.map((status) => ({ value: status.id, label: status.name }))}
           onChange={(value) => editOrder({ id: r.id, status_id: Number(value) })}
           style={{ width: '200px' }}

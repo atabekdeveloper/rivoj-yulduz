@@ -5,6 +5,7 @@ import { TUserItem } from '../user/user.types';
 export type TOrderItem = {
   id: number;
   status_name: string;
+  status_id: number;
   payment: TGetParamItem;
   contact: TOrderContact;
   service: TServiceItem;

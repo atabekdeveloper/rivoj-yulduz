@@ -124,14 +124,14 @@ const ServiceForm: React.FC = () => {
           name="price"
           rules={[{ required: true, message: formMessage('Сумма') }]}
         >
-          <InputNumber formatter={formatNum} addonAfter="uzs" />
+          <InputNumber formatter={formatNum} min={0} addonAfter="uzs" />
         </Form.Item>
         <Form.Item
           label="Каждый"
           name="each"
           rules={[{ required: true, message: formMessage('Каждый') }]}
         >
-          <InputNumber formatter={formatNum} />
+          <InputNumber formatter={formatNum} min={0} />
         </Form.Item>
         <Form.Item
           label="ИКПУ"
@@ -190,7 +190,7 @@ const ServiceForm: React.FC = () => {
         <Form.Item
           label="Фото"
           name="images"
-          rules={[{ required: false, message: formMessage('Фото') }]}
+          rules={[{ required: true, message: formMessage('Фото') }]}
         >
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" multiple type="file" />
         </Form.Item>

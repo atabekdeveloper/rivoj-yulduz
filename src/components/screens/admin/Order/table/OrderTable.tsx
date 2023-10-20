@@ -120,7 +120,7 @@ const OrderTable: React.FC = () => {
       ),
     },
     {
-      title: 'Оплачен',
+      title: 'Cтатус платежа',
       dataIndex: 'total_amount',
       key: 'total_amount',
       render: (_, r) => (

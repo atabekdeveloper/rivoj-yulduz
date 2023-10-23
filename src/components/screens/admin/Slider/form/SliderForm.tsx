@@ -68,7 +68,7 @@ const SliderForm: React.FC = () => {
         <Form.Item
           label="Фото"
           name="images"
-          rules={[{ required: false, message: formMessage('Фото') }]}
+          rules={[{ required: true, message: formMessage('Фото') }]}
         >
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" type="file" />
         </Form.Item>

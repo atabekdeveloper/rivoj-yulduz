@@ -65,7 +65,7 @@ const PortfolioForm: React.FC = () => {
         <Form.Item
           label="Фото"
           name="image"
-          rules={[{ required: false, message: formMessage('Фото') }]}
+          rules={[{ required: true, message: formMessage('Фото') }]}
         >
           <input onChange={onChangeUpload} accept=".jpg, .jpeg, .png" type="file" />
         </Form.Item>

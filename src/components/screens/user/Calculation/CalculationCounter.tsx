@@ -48,6 +48,17 @@ const CalculationCounter = () => {
   React.useEffect(() => {
     form.resetFields();
   }, [slugService]);
+  React.useEffect(() => {
+    const handleKeyDown = (event: any) => {
+      if (event.key === '-') event.preventDefault();
+    };
+    // Добавление обработчика события при монтировании компонента
+    document.addEventListener('keydown', handleKeyDown);
+    // Удаление обработчика при размонтировании компонента
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <div className={s.calc}>
       <Form

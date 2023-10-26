@@ -8,8 +8,8 @@ const AboutEmployers: React.FC = () => {
   const { data: employees } = useGetUserEmployeesQuery();
   return (
     <ul className={s.items}>
-      {employees?.data.map((employee) => (
-        <li className={s.item} key={employee.id}>
+      {employees?.data.map((employee, i) => (
+        <li className={s.item} key={i}>
           <Img src={employee.image?.image_url} alt="User" />
           <div className={s.info}>
             <h3>{employee.name}</h3>

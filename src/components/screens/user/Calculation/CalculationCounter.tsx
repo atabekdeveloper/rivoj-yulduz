@@ -16,11 +16,12 @@ const CalculationCounter = () => {
   const { slugService } = useParams();
   const { setParamsItem } = useActions();
 
-  const count = Form.useWatch('count', { form, preserve: true }) || 0;
-
   const { data: service, isSuccess } = useGetUserServiceItemQuery(String(slugService));
 
   const onFormatValue = (id: number) => service?.data.formats.find((el) => el.id === id)?.value;
+
+  const count = Form.useWatch('count', { form, preserve: true }) || Number(onFormatValue(1)) - 1;
+
   const unDimensional = () => {
     if (service?.data.dimension.id === 1) return true;
     if (service?.data.dimension.id === 2) return true;
@@ -50,7 +51,7 @@ const CalculationCounter = () => {
   }, [slugService]);
   React.useEffect(() => {
     const handleKeyDown = (event: any) => {
-      if (event.key === '-') event.preventDefault();
+      if (event.key === '-' || event.key === '+') event.preventDefault();
     };
     // Добавление обработчика события при монтировании компонента
     document.addEventListener('keydown', handleKeyDown);
@@ -115,7 +116,11 @@ const CalculationCounter = () => {
           </Form.Item>
         </div>
         <Space.Compact size="large">
-          <Button type="default" onClick={minisCount} disabled={onFormatValue(1) === count}>
+          <Button
+            type="default"
+            onClick={minisCount}
+            disabled={onFormatValue(1) === count || Number(onFormatValue(1)) - 1 === count}
+          >
             -
           </Button>
           <Form.Item

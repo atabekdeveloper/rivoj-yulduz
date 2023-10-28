@@ -1,12 +1,12 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Form, Input, Space } from 'antd';
+import { Button, Form, Input, Space } from 'antd';
 import { MaskedInput } from 'antd-mask-input';
 import clsx from 'clsx';
 import React from 'react';
 import Img from 'react-cool-img';
 import click from 'src/assets/images/order/click.svg';
 import payme from 'src/assets/images/order/payme.svg';
-import { UiButton } from 'src/components/ui';
 import { useSelectors } from 'src/hooks';
 import { usePostOrderMutation } from 'src/services';
 import { TPostOrderChange } from 'src/services/order/order.types';
@@ -26,7 +26,7 @@ const OrderPage: React.FC = () => {
   const [form] = Form.useForm();
   const formValues = Form.useWatch([], form);
 
-  const { mutate, data: order, isSuccess } = usePostOrderMutation();
+  const { mutate, data: order, isSuccess, isLoading } = usePostOrderMutation();
 
   const onFinish = (values: TPostOrderChange) => {
     mutate({
@@ -146,13 +146,16 @@ const OrderPage: React.FC = () => {
                   ))}
                 </Space>
               </div>
-              <UiButton
-                color="pink"
+              <Button
+                loading={isLoading}
                 type="primary"
-                text="Оплатить"
+                style={{ background: '#E5087F' }}
+                size="large"
                 disabled={!paymentId}
                 onClick={onPayClick}
-              />
+              >
+                Оплатить
+              </Button>
             </div>
           </div>
         </div>

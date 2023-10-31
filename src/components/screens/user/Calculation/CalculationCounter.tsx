@@ -90,7 +90,6 @@ const CalculationCounter = () => {
               placeholder={`Высота в ${service?.data.dimension.unit}`}
               disabled={service?.data.dimension.id === 1}
               size="large"
-              type="number"
             />
           </Form.Item>
           <Form.Item
@@ -111,7 +110,6 @@ const CalculationCounter = () => {
               placeholder={`Ширина в ${service?.data.dimension.unit}`}
               disabled={unDimensional()}
               size="large"
-              type="number"
             />
           </Form.Item>
         </div>
@@ -134,7 +132,6 @@ const CalculationCounter = () => {
               step={1}
               precision={0}
               placeholder="Штук"
-              type="number"
             />
           </Form.Item>
           <Button type="default" onClick={addCount} disabled={onFormatValue(2) === count}>

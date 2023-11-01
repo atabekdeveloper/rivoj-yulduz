@@ -163,6 +163,7 @@ const OrderTable: React.FC = () => {
       pagination={{
         total: orders?.total,
         current: currentPage,
+        showSizeChanger: false,
         onChange: (value) => setCurrentPage(value),
       }}
     />

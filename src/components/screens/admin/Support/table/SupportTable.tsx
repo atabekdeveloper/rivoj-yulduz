@@ -65,6 +65,7 @@ const SupportTable: React.FC = () => {
       pagination={{
         total: supports?.total,
         current: currentPage,
+        showSizeChanger: false,
         onChange: (value) => setCurrentPage(value),
       }}
     />

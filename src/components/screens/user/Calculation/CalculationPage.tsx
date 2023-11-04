@@ -85,7 +85,7 @@ const CalculationPage: React.FC = () => {
                 <Empty description="Нет информаций" />
               </div>
             )}
-            <h1>Калкульятор</h1>
+            <h1>Калькулятор</h1>
             <CalculationCounter />
             <div className={s.result}>
               <div className={s.count}>

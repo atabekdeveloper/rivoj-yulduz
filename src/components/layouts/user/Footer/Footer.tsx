@@ -1,7 +1,7 @@
 import React from 'react';
 import Img from 'react-cool-img';
-import { AiFillInstagram } from 'react-icons/ai';
-import { BsTelegram } from 'react-icons/bs';
+import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
+import { BsFacebook, BsTelegram, BsTiktok } from 'react-icons/bs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import logo from 'src/assets/images/logo.svg';
 
@@ -16,7 +16,8 @@ const Footer: React.FC = () => (
           <FaMapMarkerAlt size={20} />
           <p>
             <span>г. Нукус, просп. Узбекистана, 19</span>
-            <span>Тел: 8 91 383 88 31</span>
+            <a href="tel:+998913838831">Тел: 8 91 383 88 31</a>
+            <a href="tel:+998883578831">Тел: 8 88 357 88 31</a>
           </p>
         </div>
         <div className={s.links}>
@@ -32,6 +33,30 @@ const Footer: React.FC = () => (
             </a>
             <a key="Telegram" href="https://t.me/rivojyulduzgroup" target="_blank" rel="noreferrer">
               <BsTelegram size={25} cursor="pointer" />
+            </a>
+            <a
+              key="YouTube"
+              href="https://www.youtube.com/@rivojyulduz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillYoutube size={25} cursor="pointer" />
+            </a>
+            <a
+              key="Facebook"
+              href="https://www.facebook.com/rivojyulduz/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsFacebook size={25} cursor="pointer" />
+            </a>
+            <a
+              key="TikTok"
+              href="https://www.tiktok.com/@rivojyulduz?_t=8h4qrWA8nhv&_r=1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsTiktok size={25} cursor="pointer" />
             </a>
           </p>
         </div>

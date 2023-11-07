@@ -15,11 +15,11 @@ import {
   PointPage,
   Portfolio,
   PortfolioInfoPage,
+  Profile,
   Service,
   ServicePage,
   Slider,
   Support,
-  Type,
   User,
 } from 'src/components/screens';
 import { ReactSuspense } from 'src/providers';
@@ -28,10 +28,6 @@ const adminRoutes = [
   {
     path: '/admin',
     element: <ReactSuspense comp={<Home />} />,
-  },
-  {
-    path: '/admin/type',
-    element: <ReactSuspense comp={<Type />} />,
   },
   {
     path: '/admin/category',
@@ -72,6 +68,10 @@ const adminRoutes = [
   {
     path: '/admin/user',
     element: <ReactSuspense comp={<User />} />,
+  },
+  {
+    path: '/admin/profile',
+    element: <ReactSuspense comp={<Profile />} />,
   },
   { path: '*', element: <NotFoundPage /> },
 ];

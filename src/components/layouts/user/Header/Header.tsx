@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                 color="blue"
                 text={userName}
                 type="primary"
-                onClick={() => navigate('/admin')}
+                onClick={() => navigate('/admin/category')}
               />
             )}
             {isMobile && (

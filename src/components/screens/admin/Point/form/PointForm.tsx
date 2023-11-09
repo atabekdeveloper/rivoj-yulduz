@@ -59,7 +59,13 @@ const PointForm: React.FC = () => {
         >
           <Select options={types?.data.map(({ id, name }) => ({ value: id, label: name }))} />
         </Form.Item>
-        <PointFormMap />
+        <Form.Item
+          name="map"
+          label="Точка"
+          rules={[{ required: !location.length, message: formMessage('Точка') }]}
+        >
+          <PointFormMap />
+        </Form.Item>
       </Form>
     </CustomModal>
   );

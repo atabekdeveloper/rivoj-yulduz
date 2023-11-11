@@ -46,7 +46,7 @@ const UserForm: React.FC = () => {
         <Form.Item
           name="password"
           label="Пароль"
-          rules={[{ required: false, message: formMessage('Пароль') }]}
+          rules={[{ required: true, message: formMessage('Пароль') }]}
         >
           <Input.Password />
         </Form.Item>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import { useNavigate } from 'react-router-dom';
 import { UiButton } from 'src/components/ui';
 import { useGetUserPortfoliosQuery } from 'src/services';
@@ -15,7 +15,9 @@ const PortfolioPage: React.FC = () => {
         <h1 className="title">Портфолио</h1>
         <div className={s.items}>
           {portfolios?.data.map((el) => (
-            <Img key={el.slug} src={el.image} alt={el.title} />
+            <LazyLoad key={el.slug}>
+              <img src={el.image} alt={el.title} />
+            </LazyLoad>
           ))}
         </div>
         <div className={s.btn}>

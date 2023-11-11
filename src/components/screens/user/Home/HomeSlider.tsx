@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useGetUserSlidersQuery } from 'src/services';
@@ -24,14 +26,17 @@ const HomeSlider: React.FC = () => {
         <div className={s.slider}>
           <Slider {...settings} className={s.items}>
             {sliders?.data.map((slider) => (
-              <Img
-                key={slider.id}
-                src={slider.image.image_url}
-                alt={slider.title}
-                onClick={() => {
-                  navigate(`/service/${slider.service.category.type.slug}/${slider.service.slug}`);
-                }}
-              />
+              <LazyLoad key={slider.id}>
+                <img
+                  src={slider.image.image_url}
+                  alt={slider.title}
+                  onClick={() => {
+                    navigate(
+                      `/service/${slider.service.category.type.slug}/${slider.service.slug}`,
+                    );
+                  }}
+                />
+              </LazyLoad>
             ))}
           </Slider>
         </div>

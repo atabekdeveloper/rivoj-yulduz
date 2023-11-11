@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { Empty } from 'antd';
+import { Empty, Skeleton } from 'antd';
 import clsx from 'clsx';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -13,7 +13,7 @@ import s from './calculation.module.scss';
 
 const CalculationMenu: React.FC = () => {
   const { slugType, slugService } = useParams();
-  const { data: type, isSuccess } = useGetUserTypeItemQuery(String(slugType));
+  const { data: type, isSuccess, isLoading } = useGetUserTypeItemQuery(String(slugType));
   const navigate = useNavigate();
 
   const { setParamsItem } = useActions();
@@ -44,12 +44,15 @@ const CalculationMenu: React.FC = () => {
       navigate(`/service/${slugType}/${type.data.categories[0]?.services[0]?.slug || '1'}`);
     }
   }, [isSuccess]);
-  if (!items?.length) {
+  if (isSuccess && !items?.length) {
     return (
       <div className={s.empty}>
         <Empty description="Нет услуги" />
       </div>
     );
+  }
+  if (isLoading) {
+    return <Skeleton />;
   }
   return (
     <UiCollapse

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import Img from 'react-cool-img';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import LazyLoad from 'react-lazyload';
 import { useNavigate } from 'react-router-dom';
 
 import { TServiceItem } from './service.types';
@@ -20,7 +20,9 @@ const ServiceItem: React.FC<TServiceItem> = ({ title, icon, slug }) => {
         <span>{title}</span>
         <MdOutlineKeyboardArrowRight size={25} />
       </div>
-      <Img className="none" src={icon} alt={title} />
+      <LazyLoad>
+        <img className="none" src={icon as string} alt={title} />
+      </LazyLoad>
     </li>
   );
 };

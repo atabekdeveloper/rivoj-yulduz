@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { Empty } from 'antd';
+import { Empty, Skeleton } from 'antd';
 import React from 'react';
-import Img from 'react-cool-img';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import LazyLoad from 'react-lazyload';
 import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { UiButton } from 'src/components/ui';
@@ -23,7 +24,7 @@ const CalculationPage: React.FC = () => {
   const { slugType, slugService } = useParams();
 
   const { data: type } = useGetUserTypeItemQuery(String(slugType));
-  const { data: service } = useGetUserServiceItemQuery(String(slugService));
+  const { data: service, isLoading, isSuccess } = useGetUserServiceItemQuery(String(slugService));
 
   const { paramsItem } = useSelectors();
   const { toggleNavbar, setParamsItem } = useActions();
@@ -31,7 +32,11 @@ const CalculationPage: React.FC = () => {
 
   const settings = {
     customPaging(i: number) {
-      return <Img className={s.sliderImg} src={service?.data.images[i].image_url} />;
+      return (
+        <LazyLoad>
+          <img className={s.sliderImg} src={service?.data.images[i].image_url} />
+        </LazyLoad>
+      );
     },
     dots: true,
     dotsClass: 'slick-dots slick-thumb',
@@ -64,12 +69,14 @@ const CalculationPage: React.FC = () => {
           )}
           <CalculationDrawer />
           <div className={s.content}>
-            {service?.data ? (
+            {service?.data && (
               <>
                 <div className={s.sliders}>
                   <Slider {...settings}>
                     {service.data.images.map((image: any, i: number) => (
-                      <Img key={i} src={image.image_url} />
+                      <LazyLoad key={i}>
+                        <img src={image.image_url} />
+                      </LazyLoad>
                     ))}
                   </Slider>
                 </div>
@@ -80,11 +87,13 @@ const CalculationPage: React.FC = () => {
                   <p>{service.data.description}</p>
                 </div>
               </>
-            ) : (
+            )}
+            {isSuccess && !service?.data && (
               <div className={s.empty}>
                 <Empty description="Нет информаций" />
               </div>
             )}
+            {isLoading && <Skeleton />}
             <h1>Калькулятор</h1>
             <CalculationCounter />
             <div className={s.result}>

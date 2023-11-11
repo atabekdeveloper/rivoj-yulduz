@@ -1,8 +1,8 @@
 import React from 'react';
-import Img from 'react-cool-img';
 import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
 import { BsFacebook, BsTelegram, BsTiktok } from 'react-icons/bs';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import LazyLoad from 'react-lazyload';
 import logo from 'src/assets/images/logo.svg';
 
 import s from './footer.module.scss';
@@ -11,7 +11,9 @@ const Footer: React.FC = () => (
   <footer className={s.footer}>
     <div className="container">
       <div className={s.body}>
-        <Img className={s.logo} src={logo} alt="Logo" />
+        <LazyLoad>
+          <img className={s.logo} src={logo} alt="Logo" />
+        </LazyLoad>
         <div className={s.address}>
           <FaMapMarkerAlt size={20} />
           <p>

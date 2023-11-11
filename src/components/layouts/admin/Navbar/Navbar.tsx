@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Drawer } from 'antd';
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import { useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
 import { useActions, useResponsive, useSelectors } from 'src/hooks';
@@ -40,7 +40,9 @@ const Navbar: React.FC = () => {
     >
       <div className={s.menu}>
         <div className={s.logo} onClick={() => navigate('/')}>
-          <Img className={s.img} src={logo} alt="Logo" />
+          <LazyLoad>
+            <img className={s.img} src={logo} alt="Logo" />
+          </LazyLoad>
         </div>
         <NavbarMenu items={routes} />
       </div>

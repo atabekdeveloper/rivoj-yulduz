@@ -4,7 +4,7 @@ import { Button, Form, Input, Space } from 'antd';
 import { MaskedInput } from 'antd-mask-input';
 import clsx from 'clsx';
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import click from 'src/assets/images/order/click.svg';
 import payme from 'src/assets/images/order/payme.svg';
 import { useSelectors } from 'src/hooks';
@@ -141,7 +141,9 @@ const OrderPage: React.FC = () => {
                       className={clsx(s.btn, item.id === paymentId && s.active)}
                       onClick={() => setPaymentId(item.id)}
                     >
-                      <Img src={item.img} alt={item.id} />
+                      <LazyLoad>
+                        <img src={item.img} alt="Img" />
+                      </LazyLoad>
                     </button>
                   ))}
                 </Space>

@@ -2,9 +2,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Avatar } from 'antd';
 import React from 'react';
-import Img from 'react-cool-img';
 import { AiOutlineUser } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import LazyLoad from 'react-lazyload';
 import { useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
 import { useActions, useResponsive } from 'src/hooks';
@@ -30,7 +30,9 @@ const Header: React.FC = () => {
       <div className={s.logo}>
         {!isMobile && (
           <span onClick={homeNavigate}>
-            <Img className={s.img} src={logo} alt="Logo" />
+            <LazyLoad>
+              <img className={s.img} src={logo} alt="Logo" />
+            </LazyLoad>
           </span>
         )}
         <span className={s.hamburger} onClick={onToggleDrawer}>

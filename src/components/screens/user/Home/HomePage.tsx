@@ -1,6 +1,6 @@
 import { Space } from 'antd';
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import logo from 'src/assets/images/shadow-logo.svg';
 import {
@@ -41,7 +41,9 @@ const HomePage: React.FC = () => (
               </Link>
             </Space>
           </div>
-          <Img src={logo} alt="Logo" />
+          <LazyLoad>
+            <img src={logo} alt="Logo" />
+          </LazyLoad>
         </div>
       </div>
     </div>

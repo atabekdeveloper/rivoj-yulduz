@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import about1 from 'src/assets/images/about/aboutInfo1.jpg';
 import about2 from 'src/assets/images/about/aboutInfo2.jpg';
 
@@ -12,7 +12,9 @@ const AboutInfoPage: React.FC = () => (
     <div className="container">
       <h1 className="title">О нас</h1>
       <div className={s.body}>
-        <Img src={about1} alt="About Info 1" />
+        <LazyLoad>
+          <img src={about1} alt="About Info 1" />
+        </LazyLoad>
         <div className={s.title}>
           <h2>Кто мы</h2>
           <p>
@@ -32,7 +34,9 @@ const AboutInfoPage: React.FC = () => (
             ullamcorper morbi amet.
           </p>
         </div>
-        <Img src={about2} alt="About Info 2" />
+        <LazyLoad>
+          <img src={about2} alt="About Info 2" />
+        </LazyLoad>
         <div className={s.title}>
           <h2>Что мы делаем?</h2>
           <p>

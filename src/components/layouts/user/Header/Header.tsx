@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Space } from 'antd';
 import clsx from 'clsx';
 import { Cross as Hamburger } from 'hamburger-react';
 import React from 'react';
-import Img from 'react-cool-img';
+import LazyLoad from 'react-lazyload';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from 'src/assets/images/logo.svg';
 import { UiButton } from 'src/components/ui';
@@ -34,7 +36,9 @@ const Header: React.FC = () => {
     <header className={s.header}>
       <div className="container">
         <div className={s.body}>
-          <Img src={logo} alt="Logo" onClick={onClickLogo} style={{ cursor: 'pointer' }} />
+          <LazyLoad>
+            <img src={logo} alt="Logo" onClick={onClickLogo} style={{ cursor: 'pointer' }} />
+          </LazyLoad>
           <ul className={clsx(s.items, isMobile && s.active, isNav && s.activeMenu)}>
             {routes.map((route) => (
               <li className={clsx(s.item, pathname === route.key && s.active)} key={route.key}>

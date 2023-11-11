@@ -10,6 +10,7 @@ import { formatStringJoin, formMessage } from 'src/utils';
 const SupportForm: React.FC = () => {
   const [form] = Form.useForm();
   const { paramsItem } = useSelectors();
+  const [inputValue, setInputValue] = React.useState('');
 
   const { mutate: editSupport, isLoading: editLoading } = useEditSupportMutation();
 
@@ -20,10 +21,17 @@ const SupportForm: React.FC = () => {
   };
 
   React.useEffect(() => {
-    if (paramsItem) form.setFieldsValue(paramsItem);
+    if (paramsItem) {
+      form.setFieldsValue(paramsItem);
+      setInputValue(paramsItem.phone);
+    }
   }, [paramsItem, form]);
   return (
-    <CustomModal form={form} confirmLoading={editLoading}>
+    <CustomModal
+      form={form}
+      confirmLoading={editLoading}
+      okButtonProps={{ disabled: inputValue.includes('_') }}
+    >
       <Form
         name="Support Form"
         form={form}
@@ -41,9 +49,13 @@ const SupportForm: React.FC = () => {
         <Form.Item
           name="phone"
           label="Телефон"
-          rules={[{ required: true, message: formMessage('Телефон') }]}
+          rules={[{ required: true, message: formMessage('Телефон'), type: 'string' }]}
         >
-          <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" />
+          <MaskedInput
+            inputMode="tel"
+            mask="+{998} 00 000 00 00"
+            onChange={(e) => setInputValue(e.target.value)}
+          />
         </Form.Item>
         <Form.Item
           name="description"

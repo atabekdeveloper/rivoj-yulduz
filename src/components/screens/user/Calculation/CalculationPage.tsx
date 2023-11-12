@@ -20,7 +20,7 @@ import { CalculationMenu } from './CalculationMenu';
 import s from './calculation.module.scss';
 
 const CalculationPage: React.FC = () => {
-  const { isMobile } = useResponsive(860);
+  const { isMobile } = useResponsive(1100);
   const { slugType, slugService } = useParams();
 
   const { data: type } = useGetUserTypeItemQuery(String(slugType));

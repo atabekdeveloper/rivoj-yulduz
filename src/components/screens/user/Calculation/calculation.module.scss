@@ -35,10 +35,10 @@
   }
   .body {
     display: grid;
-    grid-template-columns: 3fr 7fr;
-    gap: 40px;
-    @media (max-width: 860px) {
-      grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 4fr 6fr;
+    gap: 20px;
+    @media (max-width: 1100px) {
+      display: block;
     }
     .menu {
       display: flex;
@@ -75,6 +75,10 @@
           display: flex;
           align-items: center;
           gap: 20px;
+          @media (max-width: 830px) {
+            flex-wrap: wrap;
+            gap: 0px;
+          }
         }
       }
       .result {

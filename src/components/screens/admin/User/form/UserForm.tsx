@@ -35,18 +35,17 @@ const UserForm: React.FC = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item name="phone" rules={[{ required: true, message: formMessage('Телефон') }]}>
-          <MaskedInput
-            inputMode="tel"
-            mask="+{998} 00 000 00 00"
-            size="large"
-            placeholder="Телефон"
-          />
+        <Form.Item
+          label="Телефон"
+          name="phone"
+          rules={[{ required: true, message: formMessage('Телефон') }]}
+        >
+          <MaskedInput inputMode="tel" mask="+{998} 00 000 00 00" size="large" />
         </Form.Item>
         <Form.Item
           name="password"
           label="Пароль"
-          rules={[{ required: true, message: formMessage('Пароль') }]}
+          rules={[{ required: !paramsItem, message: formMessage('Пароль') }]}
         >
           <Input.Password />
         </Form.Item>

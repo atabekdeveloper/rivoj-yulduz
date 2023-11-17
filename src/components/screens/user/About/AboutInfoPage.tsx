@@ -18,20 +18,10 @@ const AboutInfoPage: React.FC = () => (
         <div className={s.title}>
           <h2>Кто мы</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Id cras ornare nulla dictum vel nam nam non
-            convallis. Ut sed bibendum blandit bibendum aliquam est risus quam. Tellus neque augue
-            in luctus ut in platea. Faucibus aliquam a velit nisl dictum nulla tristique et
-            bibendum. Lobortis tempus suspendisse quis vitae. Facilisis lorem consequat blandit leo
-            integer. Volutpat integer habitant porta ut quam. Id urna euismod erat at egestas porta
-            sem. Enim eu in ullamcorper vitae viverra consectetur condimentum purus. Habitasse
-            commodo quam nisl tristique quam interdum blandit. Sed sit et aliquam quis porta. Amet
-            urna metus rhoncus egestas dui non tellus duis sodales. Ultrices facilisi amet erat
-            blandit. Urna massa scelerisque a mauris. In lectus ornare commodo dolor quis tristique
-            sit neque. Integer viverra nunc adipiscing nullam etiam non diam. Cursus libero
-            habitasse libero id. Sem consectetur commodo senectus bibendum. Convallis vestibulum
-            urna amet nunc dignissim. Consectetur netus nulla lacus porta ipsum vitae netus ut.
-            Integer sit egestas orci lorem dignissim proin sed vestibulum. Suscipit nullam placerat
-            ullamcorper morbi amet.
+            В компании ведут свою деятельность 25 профессиональных сотрудников , компания имеет 14
+            летнюю практику , входит в топ 3 рекламных агентств. Главный офис компании расположен в
+            центре города . Кроме офиса имеется 2 производственных цеха , которые производят более
+            140 видов рекламной продукции оказывает услугу населению .
           </p>
         </div>
         <LazyLoad>
@@ -40,20 +30,12 @@ const AboutInfoPage: React.FC = () => (
         <div className={s.title}>
           <h2>Что мы делаем?</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Id cras ornare nulla dictum vel nam nam non
-            convallis. Ut sed bibendum blandit bibendum aliquam est risus quam. Tellus neque augue
-            in luctus ut in platea. Faucibus aliquam a velit nisl dictum nulla tristique et
-            bibendum. Lobortis tempus suspendisse quis vitae. Facilisis lorem consequat blandit leo
-            integer. Volutpat integer habitant porta ut quam. Id urna euismod erat at egestas porta
-            sem. Enim eu in ullamcorper vitae viverra consectetur condimentum purus. Habitasse
-            commodo quam nisl tristique quam interdum blandit. Sed sit et aliquam quis porta. Amet
-            urna metus rhoncus egestas dui non tellus duis sodales. Ultrices facilisi amet erat
-            blandit. Urna massa scelerisque a mauris. In lectus ornare commodo dolor quis tristique
-            sit neque. Integer viverra nunc adipiscing nullam etiam non diam. Cursus libero
-            habitasse libero id. Sem consectetur commodo senectus bibendum. Convallis vestibulum
-            urna amet nunc dignissim. Consectetur netus nulla lacus porta ipsum vitae netus ut.
-            Integer sit egestas orci lorem dignissim proin sed vestibulum. Suscipit nullam placerat
-            ullamcorper morbi amet.
+            Компания занимается производством различных видов рекламы : Наружной и интерьерной
+            рекламой , установка Led–экранов и сдача в аренду , при помощи и рекламы создавать
+            бренды на остановках , на автомобилях , делать рекламу на билбордах и брендмауерах ,
+            деятельность СМИ маркетинга , реклама через блогеров , через социальные сети ,
+            деятельность дижитал маркетинга , деятельность промоутеров BTL, реклама через ТВ и радио
+            , реклама на спец одежде , бумажных и полиэтиленовых пакетах.
           </p>
         </div>
         <AboutEmployers />

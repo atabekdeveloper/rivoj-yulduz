@@ -28,9 +28,8 @@ const HomePage: React.FC = () => (
               <span>«Rivoj Yulduz»</span>
             </h1>
             <p>
-              Egestas sagittis quis ultrices iaculis viverra id. Laoreet ipsum vitae lobortis erat
-              metus orci facilisi elementum. Sem in eget sed parturient tempus. Sed urna magna leo
-              neque convallis sit cras auctor. Vestibulum ut sed nunc risus ullamcorper donec.
+              Все виды рекламы. От дизайна до монтажа. 15-лет на рынке производство рекламных
+              продукций. Сделай свой бизнес ярче !
             </p>
             <Space size={20} wrap>
               <a href="#contact">

@@ -1,6 +1,7 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
-import yandex from 'src/assets/images/client/yandex.jpg';
+
+import { clientItems } from './clientItems';
 
 import s from './client.module.scss';
 
@@ -9,9 +10,9 @@ const ClientsPage: React.FC = () => (
     <div className="container">
       <h1 className="title">Наши клиенты</h1>
       <div className={s.items}>
-        {[...Array(5)].map((_, i) => (
+        {clientItems.map((img, i) => (
           <LazyLoad className={s.item} key={i}>
-            <img src={yandex} alt="Yandex" />
+            <img src={img} alt="Yandex" />
           </LazyLoad>
         ))}
       </div>

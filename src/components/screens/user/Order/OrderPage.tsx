@@ -5,6 +5,7 @@ import { MaskedInput } from 'antd-mask-input';
 import clsx from 'clsx';
 import React from 'react';
 import LazyLoad from 'react-lazyload';
+import { useNavigate } from 'react-router-dom';
 import click from 'src/assets/images/order/click.svg';
 import payme from 'src/assets/images/order/payme.svg';
 import { useSelectors } from 'src/hooks';
@@ -22,6 +23,7 @@ const payItems = [
 const OrderPage: React.FC = () => {
   const [paymentId, setPaymentId] = React.useState(0);
   const [submittable, setSubmittable] = React.useState(false);
+  const navigate = useNavigate();
   const { paramsItem } = useSelectors();
   const [form] = Form.useForm();
   const formValues = Form.useWatch([], form);
@@ -52,8 +54,9 @@ const OrderPage: React.FC = () => {
     );
   }, [form, formValues]);
   React.useEffect(() => {
-    if (isSuccess) window.location.replace(order.data.payment_url);
-  }, [isSuccess]);
+    if (isSuccess && paymentId !== 3) window.location.replace(order.data.payment_url);
+    if (isSuccess && paymentId === 3) navigate('/service');
+  }, [isSuccess, paymentId]);
   return (
     <div className={s.order}>
       <div className="container">
@@ -146,6 +149,12 @@ const OrderPage: React.FC = () => {
                       </LazyLoad>
                     </button>
                   ))}
+                  <button
+                    className={clsx(s.payment, paymentId === 3 && s.active)}
+                    onClick={() => setPaymentId(3)}
+                  >
+                    Оплата на месте
+                  </button>
                 </Space>
               </div>
               <Button

@@ -23,7 +23,7 @@ const PointPage: React.FC = () => {
         <h1 className="title">Аренда мест для рекламы</h1>
         <Map
           state={{
-            center: [42.4600059, 59.6153464],
+            center: [42.450868, 59.612779],
             zoom: 15,
           }}
           className={s.map}
@@ -32,7 +32,7 @@ const PointPage: React.FC = () => {
           <SearchControl />
           <ZoomControl />
           <Placemark
-            geometry={[42.4600059, 59.6153464]}
+            geometry={[42.450868, 59.612779]}
             options={{
               draggable: false,
               iconLayout: 'default#image',

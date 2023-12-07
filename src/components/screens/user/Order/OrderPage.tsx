@@ -55,8 +55,11 @@ const OrderPage: React.FC = () => {
   }, [form, formValues]);
   React.useEffect(() => {
     if (isSuccess && paymentId !== 3) window.location.replace(order.data.payment_url);
-    if (isSuccess && paymentId === 3) navigate('/service');
+    if (isSuccess && paymentId === 3) navigate(-1);
   }, [isSuccess, paymentId]);
+  React.useEffect(() => {
+    if (!paramsItem) navigate(-1);
+  }, [paramsItem]);
   return (
     <div className={s.order}>
       <div className="container">

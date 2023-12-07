@@ -1,8 +1,11 @@
 import { notification } from 'antd';
+import clsx from 'clsx';
 import React from 'react';
 import logo from 'src/assets/images/logo.svg';
+import billboard from 'src/assets/images/point/billboard.png';
 import blue from 'src/assets/images/point/blue.svg';
-import pink from 'src/assets/images/point/pink.svg';
+import building from 'src/assets/images/point/building.png';
+import bus from 'src/assets/images/point/bus-station.png';
 import { useGetUserPointsQuery } from 'src/services';
 
 import {
@@ -48,7 +51,12 @@ const PointPage: React.FC = () => {
               options={{
                 draggable: false,
                 iconLayout: 'default#image',
-                iconImageHref: point.point_type.slug === 'ekran' ? pink : blue,
+                iconImageHref: clsx(
+                  point.point_type.slug === 'ekran' && blue,
+                  point.point_type.slug === 'bilbord' && billboard,
+                  point.point_type.slug === 'brandmaueri' && building,
+                  point.point_type.slug === 'ostanovki' && bus,
+                ),
                 iconImageSize: [32, 32],
                 iconImageOffset: [-16, -16],
               }}

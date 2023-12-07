@@ -26,17 +26,14 @@ const HomeSlider: React.FC = () => {
         <div className={s.slider}>
           <Slider {...settings} className={s.items}>
             {sliders?.data.map((slider) => (
-              <LazyLoad key={slider.id}>
-                <img
-                  src={slider.image.image_url}
-                  alt={slider.title}
-                  onClick={() => {
-                    navigate(
-                      `/service/${slider.service.category.type.slug}/${slider.service.slug}`,
-                    );
-                  }}
-                />
-              </LazyLoad>
+              <img
+                key={slider.id}
+                src={slider.image.image_url}
+                alt={slider.title}
+                onClick={() => {
+                  navigate(`/service/${slider.service.category.type.slug}/${slider.service.slug}`);
+                }}
+              />
             ))}
           </Slider>
         </div>

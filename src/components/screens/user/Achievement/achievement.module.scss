@@ -3,15 +3,12 @@
   padding-bottom: 70px;
   p {
     font-weight: 400;
-    font-size: 24px;
-    @include adaptiv-font(24, 16, 24);
+    @include adaptiv-font(22, 16, 22);
   }
   li {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 15px;
-    padding: 50px 30px;
+    flex-direction: column;
+    padding: 30px;
     border-radius: 20px;
   }
   .items {
@@ -44,6 +41,10 @@
       &:nth-child(5) {
         background-color: var(--clr-pink);
         color: var(--clr-white);
+      }
+      &:nth-child(6) {
+        border: 1px solid var(--clr-blue);
+        color: var(--clr-blue);
       }
     }
   }
